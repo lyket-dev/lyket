@@ -1,6 +1,6 @@
 {
   "name": "@lyket/widget",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/lyket.js",
   "author": "",
@@ -11,7 +11,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@lyket/react": "^1.0.4",
+    "@lyket/react": "^1.1.0",
     "preact": "^10.4.8"
   },
   "scripts": {
