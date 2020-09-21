@@ -1,6 +1,7 @@
 import { getSessionId } from './getSessionId';
 import { generateRecaptchaToken } from './generateRecaptchaToken';
 import { ApiError } from './ApiError';
+import {debounceCollect} from './debounceCollect';
 
 export type ConstructorArguments = {
   apiKey: string;
@@ -35,7 +36,7 @@ class LikeButtonClient {
   }: Paths.LikeButtonInfo.PathParameters): Promise<
     Paths.LikeButtonInfo.Responses.$200
   > {
-    return this.client.get(
+    return this.client.enqueueToBatch(
       namespace ? `/like-buttons/${namespace}/${id}` : `/like-buttons/${id}`
     );
   }
@@ -68,7 +69,7 @@ class ClapButtonClient {
   }: Paths.ClapButtonInfo.PathParameters): Promise<
     Paths.ClapButtonInfo.Responses.$200
   > {
-    return this.client.get(
+    return this.client.enqueueToBatch(
       namespace ? `/clap-buttons/${namespace}/${id}` : `/clap-buttons/${id}`
     );
   }
@@ -80,13 +81,14 @@ class UpdownButtonClient {
   constructor(client: Client) {
     this.client = client;
   }
+
   info({
     id,
     namespace,
   }: Paths.UpdownButtonInfo.PathParameters): Promise<
     Paths.UpdownButtonInfo.Responses.$200
   > {
-    return this.client.get(
+    return this.client.enqueueToBatch(
       namespace ? `/updown-buttons/${namespace}/${id}` : `/updown-buttons/${id}`
     );
   }
@@ -127,6 +129,7 @@ export class Client {
   likeButtons: LikeButtonClient;
   clapButtons: ClapButtonClient;
   updownButtons: UpdownButtonClient;
+  enqueueToBatch: (url: string) => Promise<any>;
 
   constructor({ apiKey, recaptchaSiteKey, baseUrl }: ConstructorArguments) {
     this.apiKey = apiKey;
@@ -136,10 +139,39 @@ export class Client {
     this.likeButtons = new LikeButtonClient(this);
     this.clapButtons = new ClapButtonClient(this);
     this.updownButtons = new UpdownButtonClient(this);
+    
+    this.enqueueToBatch = debounceCollect<[string]>(this.batch.bind(this), 500);
   }
 
   get(url: string) {
     return this.request(url);
+  }
+
+  batch(calls: Array<[string]>) {
+    return Promise.all(calls.map(args => this.request(args[0])));
+
+    // const result = this.request('/batch', {
+    //   method: 'POST',
+    //   body: {
+    //     type: 'batch-request',
+    //     attributes: { urls: calls.map(args => args[0]) },
+    //   },
+    // });
+
+    // return result.data.attributes.responses;
+
+    // Receives:
+    //
+    // {
+    //   'type': 'batch-response',
+    //   'attributes': {
+    //     responses: [
+    //       { type: 'clap-button', attributes: ... },
+    //       {},
+    //       {},
+    //     ]
+    //   }
+    // }
   }
 
   put(url: string, recaptchaAction: string) {

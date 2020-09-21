@@ -17,7 +17,7 @@ const recaptchaSiteKey = getUrlParameter(scriptSrc, "recaptchaSiteKey");
 const apiKey = getUrlParameter(scriptSrc, "apiKey");
 
 if (!apiKey) {
-  console.error("Lyket Error!!!!!!: Api key missing!");
+  console.error("Lyket Error: Api key missing!");
 } else {
   const typeToComponent = {
     clap: ClapButton,
