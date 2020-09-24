@@ -1,12 +1,49 @@
 /* @jsx jsx */
 
-import { FC } from 'react';
-import { jsx } from 'theme-ui';
+import { jsx, ThemeProvider } from 'theme-ui';
 import { LikeButtonThemeComponentProps } from '../..';
-import { ThumbUpIcon } from './icons/ThumbUpIcon';
+import { ThumbIcon } from './icons/ThumbIcon';
+import { keyframes } from '@emotion/core';
+import { FC, useCallback, useState } from 'react';
 import { style } from './style';
-import { ThemeProvider } from 'theme-ui';
 import theme from './theme';
+
+const iconScale = keyframes({
+  '0%': {
+    transform: 'scale(0)',
+  },
+  '52%': {
+    transform: 'scale(1.2)',
+  },
+  '72%': {
+    transform: 'scale(0.9)',
+  },
+  '100%': {
+    transform: 'scale(1)',
+  },
+});
+
+const ringScale = keyframes({
+  '0%': {
+    opacity: '1',
+    borderWidth: '0.5em',
+  },
+  '52%': {
+    opacity: '0',
+    borderWidth: '0',
+  },
+});
+
+const RING = {
+  color: '#e095ed',
+  durationMs: 600,
+  animation: ringScale,
+};
+
+const ICON = {
+  animation: iconScale,
+  durationMs: 700,
+};
 
 export const Simple: FC<LikeButtonThemeComponentProps> = ({
   isLoading,
@@ -15,40 +52,61 @@ export const Simple: FC<LikeButtonThemeComponentProps> = ({
   onClick,
   isCounterVisible,
 }) => {
-  return isLoading ? (
-    <span>Loading...</span>
-  ) : (
+  const [animationActive, setAnimationActive] = useState<boolean>(false);
+
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      onClick(e);
+
+      if (!userLiked) {
+        setAnimationActive(true);
+        setTimeout(() => setAnimationActive(false), ICON.durationMs);
+      }
+    },
+    [userLiked, onClick]
+  );
+
+  const iconStyle = {
+    ...style.icon,
+    ...{
+      animation: animationActive
+        ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
+        : null,
+    },
+  };
+
+  const ringStyle = {
+    ...style.ring,
+    ...{
+      animation: animationActive
+        ? `${RING.animation} ${RING.durationMs}ms ease forwards`
+        : null,
+    },
+  };
+
+  return (
     <ThemeProvider theme={theme}>
       <div sx={style.root}>
         <button
-          onClick={onClick}
+          onClick={handleClick}
+          disabled={isLoading}
           sx={{
-            boxShadow: 'none',
-            padding: '1em 1.2em',
-            textAlign: 'center',
-            transitionProperty: 'none',
-            color: '#616161',
-            background: 'none',
-            border: 'none',
-            outline: 'none',
-            cursor: 'pointer',
-            borderRadius: '.25em',
-            variant: userLiked ? 'buttons.active' : 'buttons.primary',
-            bg: '#e0e0e0',
-            transition: 'all 0.2s ease-in-out',
-            '@media (hover: hover)': {
-              ':hover': {
-                transition: 'all 0.2s ease-in-out',
-                svg: {
-                  fill: '#292929',
+            ...style.button,
+            ...{
+              variant: userLiked ? 'buttons.upActive' : 'buttons.upInactive',
+              '@media (hover: hover)': {
+                ':hover': {
+                  variant: 'buttons.upActive',
+                  transition: 'all 0.2s ease-in-out',
                 },
               },
             },
           }}
         >
-          <ThumbUpIcon sx={style.icon} />
+          <div sx={ringStyle} />
+          <ThumbIcon sx={iconStyle} />
         </button>
-        {isCounterVisible && <span sx={style.counter}>{totalLikes}</span>}
+        {isCounterVisible && <div sx={style.counter}>{totalLikes}</div>}
       </div>
     </ThemeProvider>
   );

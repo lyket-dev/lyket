@@ -57,7 +57,6 @@ export const style: Record<string, SxStyleProp> = {
   icon: {
     height: '2em',
     transition: 'all 0.2s ease-in-out',
-    fill: '#E5214A',
     display: 'block',
     margin: '0 auto',
     animationTimingFunction: 'cubic-bezier(0.280, 0.840, 0.420, 1)',

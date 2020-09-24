@@ -138,11 +138,9 @@ export const Twitter: FC<LikeButtonThemeComponentProps> = ({
 
   const Icon = userLiked ? TwitterHeartFull : TwitterHeartEmpty;
 
-  return isLoading ? (
-    <span>Loading...</span>
-  ) : (
+  return (
     <div sx={style.root}>
-      <button onClick={handleClick} sx={style.button}>
+      <button onClick={handleClick} sx={style.button} disabled={isLoading}>
         <div sx={style.dotsContainer}> {dots} </div>
         <div sx={style.dotsRotContainer}> {dots} </div>
         {ring}
@@ -150,6 +148,7 @@ export const Twitter: FC<LikeButtonThemeComponentProps> = ({
           sx={{
             ...style.icon,
             ...{
+              fill: isLoading ? '#aaa' : '#E5214A',
               animation: animationActive
                 ? `${HEART.animation} ${HEART.durationMs}ms ease forwards`
                 : null,

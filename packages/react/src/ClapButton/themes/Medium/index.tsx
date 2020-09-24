@@ -161,13 +161,9 @@ export const Medium: FC<ClapButtonThemeComponentProps> = ({
 
   const Icon = userClaps && userClaps > 0 ? ClapFull : ClapEmpty;
 
-  if (isLoading) {
-    return <span>Loading...</span>;
-  }
-
   return (
     <div sx={style.root}>
-      <button onClick={handleClick} sx={style.button}>
+      <button onClick={handleClick} sx={style.button} disabled={isLoading}>
         <div sx={style.centeredContainer}> {triangles} </div>
         <div sx={style.centeredContainer}> {circles} </div>
         <div sx={style.centeredContainer}>
@@ -187,6 +183,7 @@ export const Medium: FC<ClapButtonThemeComponentProps> = ({
         </div>
         <Icon
           sx={{
+            fill: isLoading ? '#aaa' : 'auto',
             height: '3em',
             transition: 'all 0.2s ease-in-out',
             animation: animationActive

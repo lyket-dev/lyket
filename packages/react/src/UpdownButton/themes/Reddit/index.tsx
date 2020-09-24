@@ -65,10 +65,6 @@ export const Reddit: FC<UpdownButtonThemeComponentProps> = ({
     [userVoteDirection, onPressDown]
   );
 
-  if (isLoading) {
-    return <span>Loading...</span>;
-  }
-
   const iconStyleUp = {
     ...style.icon,
     ...{
@@ -92,6 +88,7 @@ export const Reddit: FC<UpdownButtonThemeComponentProps> = ({
       <div sx={style.root}>
         <button
           onClick={handleClickUp}
+          disabled={isLoading}
           sx={{
             ...style.button,
             ...{
@@ -111,8 +108,10 @@ export const Reddit: FC<UpdownButtonThemeComponentProps> = ({
           <RedditArrow sx={iconStyleUp} />
         </button>
         {isCounterVisible && <div sx={style.counter}>{totalScore}</div>}
+        {isLoading && <div sx={style.counter}>-</div>}
         <button
           onClick={handleClickDown}
+          disabled={isLoading}
           sx={{
             ...style.button,
             ...{
