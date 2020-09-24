@@ -39,20 +39,20 @@ export const Medium = () => (
       <ClapButton
         id="medium-example"
         namespace="stories"
-        component={ClapButton.themes.Medium}
+        component={ClapButton.templates.Medium}
       />
       <div style={{ fontSize: '20px' }}>
         <ClapButton
           id="medium-example"
           namespace="stories"
-          component={ClapButton.themes.Medium}
+          component={ClapButton.templates.Medium}
         />
       </div>
       <div style={{ fontSize: '30px' }}>
         <ClapButton
           id="medium-example"
           namespace="stories"
-          component={ClapButton.themes.Medium}
+          component={ClapButton.templates.Medium}
         />
       </div>
     </>

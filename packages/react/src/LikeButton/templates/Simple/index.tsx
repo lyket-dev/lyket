@@ -1,7 +1,7 @@
 /* @jsx jsx */
 
 import { jsx, ThemeProvider } from 'theme-ui';
-import { LikeButtonThemeComponentProps } from '../..';
+import { LikeButtonTemplateComponentProps } from '../..';
 import { ThumbIcon } from './icons/ThumbIcon';
 import { keyframes } from '@emotion/core';
 import { FC, useCallback, useState } from 'react';
@@ -44,7 +44,7 @@ const ICON = {
   durationMs: 700,
 };
 
-export const Simple: FC<LikeButtonThemeComponentProps> = ({
+export const Simple: FC<LikeButtonTemplateComponentProps> = ({
   isLoading,
   userLiked,
   totalLikes,

@@ -1,15 +1,15 @@
 import React, { FC, useCallback, useContext, useState } from 'react';
 import { ClientContext } from '../contexts/ClientContext';
 import { useSafeEffect } from '../hooks/useSafeEffect';
-import { Simple } from './themes/Simple';
-import { Medium } from './themes/Medium';
+import { Simple } from './templates/Simple';
+import { Medium } from './templates/Medium';
 
-const themes = {
+const templates = {
   Simple,
   Medium,
 };
 
-export interface ClapButtonThemeComponentProps {
+export interface ClapButtonTemplateComponentProps {
   isLoading: boolean;
   userClaps: number | undefined;
   totalClaps: number | undefined;
@@ -22,19 +22,19 @@ export interface ClapButtonProps {
   namespace?: string;
   hideCounterIfLessThan?: number;
   children?: (
-    props: ClapButtonThemeComponentProps
+    props: ClapButtonTemplateComponentProps
   ) => React.ReactElement<any, any> | null;
-  component?: React.ComponentType<ClapButtonThemeComponentProps>;
+  component?: React.ComponentType<ClapButtonTemplateComponentProps>;
 }
 
-type FCWithThemes<Props> = FC<Props> & {
-  themes: {
-    Simple: React.ComponentType<ClapButtonThemeComponentProps>;
-    Medium: React.ComponentType<ClapButtonThemeComponentProps>;
+type FCWithTemplates<Props> = FC<Props> & {
+  templates: {
+    Simple: React.ComponentType<ClapButtonTemplateComponentProps>;
+    Medium: React.ComponentType<ClapButtonTemplateComponentProps>;
   };
 };
 
-const ClapButton: FCWithThemes<ClapButtonProps> = ({
+const ClapButton: FCWithTemplates<ClapButtonProps> = ({
   id,
   namespace,
   hideCounterIfLessThan,
@@ -104,6 +104,6 @@ const ClapButton: FCWithThemes<ClapButtonProps> = ({
   return <Component {...props} />;
 };
 
-ClapButton.themes = themes;
+ClapButton.templates = templates;
 
 export { ClapButton };

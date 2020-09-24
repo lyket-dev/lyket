@@ -1,7 +1,7 @@
 /* @jsx jsx */
 
 import { jsx, ThemeProvider } from 'theme-ui';
-import { UpdownButtonThemeComponentProps } from '../..';
+import { UpdownButtonTemplateComponentProps } from '../..';
 import { ThumbIcon } from './icons/ThumbIcon';
 import { keyframes } from '@emotion/core';
 import { FC, useCallback, useState } from 'react';
@@ -44,7 +44,7 @@ const ICON = {
   durationMs: 700,
 };
 
-export const Simple: FC<UpdownButtonThemeComponentProps> = ({
+export const Simple: FC<UpdownButtonTemplateComponentProps> = ({
   isLoading,
   userVoteDirection,
   totalScore,

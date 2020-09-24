@@ -1,7 +1,7 @@
 /* @jsx jsx */
 
 import { jsx, ThemeProvider } from 'theme-ui';
-import { UpdownButtonThemeComponentProps } from '../..';
+import { UpdownButtonTemplateComponentProps } from '../..';
 import { RedditArrow } from './icons/RedditArrow';
 import { keyframes } from '@emotion/core';
 import { FC, useCallback, useState } from 'react';
@@ -28,7 +28,7 @@ const ICON = {
   durationMs: 700,
 };
 
-export const Reddit: FC<UpdownButtonThemeComponentProps> = ({
+export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
   isLoading,
   userVoteDirection,
   totalScore,

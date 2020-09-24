@@ -1,15 +1,15 @@
 import React, { FC, useCallback, useContext, useState } from 'react';
 import { ClientContext } from '../contexts/ClientContext';
 import { useSafeEffect } from '../hooks/useSafeEffect';
-import { Simple } from './themes/Simple';
-import { Reddit } from './themes/Reddit';
+import { Simple } from './templates/Simple';
+import { Reddit } from './templates/Reddit';
 
-const themes = {
+const templates = {
   Simple,
   Reddit,
 };
 
-export interface UpdownButtonThemeComponentProps {
+export interface UpdownButtonTemplateComponentProps {
   isLoading: boolean;
   userVoteDirection: number | undefined;
   totalScore: number | undefined;
@@ -23,19 +23,19 @@ export interface UpdownButtonProps {
   namespace?: string;
   hideCounterIfLessThan?: number;
   children?: (
-    props: UpdownButtonThemeComponentProps
+    props: UpdownButtonTemplateComponentProps
   ) => React.ReactElement<any, any> | null;
-  component?: React.ComponentType<UpdownButtonThemeComponentProps>;
+  component?: React.ComponentType<UpdownButtonTemplateComponentProps>;
 }
 
-type FCWithThemes<Props> = FC<Props> & {
-  themes: {
-    Simple: React.ComponentType<UpdownButtonThemeComponentProps>;
-    Reddit: React.ComponentType<UpdownButtonThemeComponentProps>;
+type FCWithTemplates<Props> = FC<Props> & {
+  templates: {
+    Simple: React.ComponentType<UpdownButtonTemplateComponentProps>;
+    Reddit: React.ComponentType<UpdownButtonTemplateComponentProps>;
   };
 };
 
-const UpdownButton: FCWithThemes<UpdownButtonProps> = ({
+const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
   id,
   namespace,
   hideCounterIfLessThan,
@@ -130,6 +130,6 @@ const UpdownButton: FCWithThemes<UpdownButtonProps> = ({
   return <Component {...props} />;
 };
 
-UpdownButton.themes = themes;
+UpdownButton.templates = templates;
 
 export { UpdownButton };

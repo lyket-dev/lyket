@@ -36,20 +36,20 @@ export const Reddit = () => (
       <UpdownButton
         id="reddit-example"
         namespace="stories"
-        component={UpdownButton.themes.Reddit}
+        component={UpdownButton.templates.Reddit}
       />
       <div style={{ fontSize: '20px' }}>
         <UpdownButton
           id="reddit-example"
           namespace="stories"
-          component={UpdownButton.themes.Reddit}
+          component={UpdownButton.templates.Reddit}
         />
       </div>
       <div style={{ fontSize: '30px' }}>
         <UpdownButton
           id="reddit-example"
           namespace="stories"
-          component={UpdownButton.themes.Reddit}
+          component={UpdownButton.templates.Reddit}
         />
       </div>
     </>

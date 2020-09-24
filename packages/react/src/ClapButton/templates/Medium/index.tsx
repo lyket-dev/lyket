@@ -1,7 +1,7 @@
 /* @jsx jsx */
 
 import { jsx } from 'theme-ui';
-import { ClapButtonThemeComponentProps } from '../..';
+import { ClapButtonTemplateComponentProps } from '../..';
 import { ClapEmpty } from './icons/ClapEmpty';
 import { ClapFull } from './icons/ClapFull';
 import { keyframes } from '@emotion/core';
@@ -75,7 +75,7 @@ const ICON = {
   durationMs: CIRCLES.durationMs,
   animation: iconScale,
 };
-export const Medium: FC<ClapButtonThemeComponentProps> = ({
+export const Medium: FC<ClapButtonTemplateComponentProps> = ({
   isLoading,
   userClaps,
   totalClaps,

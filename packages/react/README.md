@@ -67,7 +67,7 @@ export default BlogPost = ({ title, content }) => {
       <LikeButton
         id="how-to-reduce-footprint"
         namespace="post"
-        component={LikeButton.themes.Twitter}
+        component={LikeButton.templates.Twitter}
       />
       {content}
     </div>
@@ -89,7 +89,7 @@ export default BlogPost = ({ title, content }) => {
       <UpdownButton
         id="how-i-joined-the-raiders-of-the-lost-ark"
         namespace="post"
-        component={LikeButton.themes.Reddit}
+        component={LikeButton.templates.Reddit}
       />
       {content}
     </div>
@@ -153,7 +153,10 @@ export default StandingOvation = () => {
   return (
     <>
       <h2>Do you like pizza?</h2>
-      <ClapButton id="do-you-like-pizza" component={ClapButton.themes.Medium} />
+      <ClapButton
+        id="do-you-like-pizza"
+        component={ClapButton.templates.Medium}
+      />
     </>
   );
 };

@@ -1,7 +1,7 @@
 /* @jsx jsx */
 
 import { jsx } from 'theme-ui';
-import { LikeButtonThemeComponentProps } from '../..';
+import { LikeButtonTemplateComponentProps } from '../..';
 import { TwitterHeartFull } from './icons/TwitterHeartFull';
 import { TwitterHeartEmpty } from './icons/TwitterHeartEmpty';
 import { keyframes } from '@emotion/core';
@@ -74,7 +74,7 @@ const HEART = {
   durationMs: 700,
 };
 
-export const Twitter: FC<LikeButtonThemeComponentProps> = ({
+export const Twitter: FC<LikeButtonTemplateComponentProps> = ({
   isLoading,
   userLiked,
   totalLikes,

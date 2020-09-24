@@ -1,7 +1,7 @@
 /* @jsx jsx */
 
 import { jsx, ThemeProvider } from 'theme-ui';
-import { ClapButtonThemeComponentProps } from '../..';
+import { ClapButtonTemplateComponentProps } from '../..';
 import { ClapFull } from './icons/ClapFull';
 import { keyframes } from '@emotion/core';
 import { FC, useCallback, useState, useRef } from 'react';
@@ -64,7 +64,7 @@ const RING = {
   animation: ringScale,
 };
 
-export const Simple: FC<ClapButtonThemeComponentProps> = ({
+export const Simple: FC<ClapButtonTemplateComponentProps> = ({
   isLoading,
   userClaps,
   totalClaps,

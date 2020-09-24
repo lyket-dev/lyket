@@ -17,20 +17,20 @@ export const Twitter = () => (
       <LikeButton
         id="twitter-example"
         namespace="stories"
-        component={LikeButton.themes.Twitter}
+        component={LikeButton.templates.Twitter}
       />
       <div style={{ fontSize: '20px' }}>
         <LikeButton
           id="twitter-example"
           namespace="stories"
-          component={LikeButton.themes.Twitter}
+          component={LikeButton.templates.Twitter}
         />
       </div>
       <div style={{ fontSize: '30px' }}>
         <LikeButton
           id="twitter-example"
           namespace="stories"
-          component={LikeButton.themes.Twitter}
+          component={LikeButton.templates.Twitter}
         />
       </div>
     </>

@@ -1,15 +1,15 @@
 import React, { FC, useCallback, useContext, useState } from 'react';
 import { ClientContext } from '../contexts/ClientContext';
 import { useSafeEffect } from '../hooks/useSafeEffect';
-import { Simple } from './themes/Simple';
-import { Twitter } from './themes/Twitter';
+import { Simple } from './templates/Simple';
+import { Twitter } from './templates/Twitter';
 
-const themes = {
+const templates = {
   Simple,
   Twitter,
 };
 
-export interface LikeButtonThemeComponentProps {
+export interface LikeButtonTemplateComponentProps {
   isLoading: boolean;
   userLiked: boolean | undefined;
   totalLikes: number | undefined;
@@ -22,19 +22,19 @@ export interface LikeButtonProps {
   namespace?: string;
   hideCounterIfLessThan?: number;
   children?: (
-    props: LikeButtonThemeComponentProps
+    props: LikeButtonTemplateComponentProps
   ) => React.ReactElement<any, any> | null;
-  component?: React.ComponentType<LikeButtonThemeComponentProps>;
+  component?: React.ComponentType<LikeButtonTemplateComponentProps>;
 }
 
-type FCWithThemes<Props> = FC<Props> & {
-  themes: {
-    Simple: React.ComponentType<LikeButtonThemeComponentProps>;
-    Twitter: React.ComponentType<LikeButtonThemeComponentProps>;
+type FCWithTemplates<Props> = FC<Props> & {
+  templates: {
+    Simple: React.ComponentType<LikeButtonTemplateComponentProps>;
+    Twitter: React.ComponentType<LikeButtonTemplateComponentProps>;
   };
 };
 
-const LikeButton: FCWithThemes<LikeButtonProps> = ({
+const LikeButton: FCWithTemplates<LikeButtonProps> = ({
   id,
   namespace,
   hideCounterIfLessThan,
@@ -104,6 +104,6 @@ const LikeButton: FCWithThemes<LikeButtonProps> = ({
   return <Component {...props} />;
 };
 
-LikeButton.themes = themes;
+LikeButton.templates = templates;
 
 export { LikeButton };
