@@ -1,21 +1,17 @@
+import { alpha } from '@theme-ui/color';
+
 export default {
-  colors: {
-    lightGray: '#e0e0e0',
-    darkGray: '#292929',
-    darkBlue: '#22c1c3',
-    lightBlue: '#21fdd530',
-  },
   buttons: {
-    upInactive: {
-      backgroundColor: 'lightGray',
+    inactive: {
+      backgroundColor: 'background',
       svg: {
-        fill: 'darkGray',
+        fill: 'text',
       },
     },
-    upActive: {
-      backgroundColor: 'lightBlue',
+    active: {
+      backgroundColor: alpha('primary', 0.2),
       svg: {
-        fill: 'darkBlue',
+        fill: 'primary',
       },
     },
   },

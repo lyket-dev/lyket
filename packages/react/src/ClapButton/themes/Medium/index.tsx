@@ -168,7 +168,7 @@ export const Medium: FC<ClapButtonThemeComponentProps> = ({
         <div sx={style.centeredContainer}> {circles} </div>
         <div sx={style.centeredContainer}>
           <div
-            key={timeoutId.current as number | null}
+            key={timeoutId.current && timeoutId.current.toString()}
             sx={{
               ...style.baloon,
               ...{

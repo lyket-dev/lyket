@@ -25,13 +25,16 @@ const baloonFade = keyframes({
 
 const iconScale = keyframes({
   '0%': {
-    transform: 'scale(1)',
+    transform: 'scale(0)',
   },
-  '32%': {
-    transform: 'scale(1.15)',
+  '52%': {
+    transform: 'scale(1.2)',
+  },
+  '72%': {
+    transform: 'scale(0.9)',
   },
   '100%': {
-    transform: 'scale(1.1)',
+    transform: 'scale(1)',
   },
 });
 
@@ -57,7 +60,6 @@ const ICON = {
 };
 
 const RING = {
-  color: '#e095ed',
   durationMs: 600,
   animation: ringScale,
 };
@@ -105,11 +107,10 @@ export const Simple: FC<ClapButtonThemeComponentProps> = ({
           sx={{
             ...style.button,
             ...{
-              variant: userClaps ? 'buttons.upActive' : 'buttons.upInactive',
+              variant: userClaps ? 'buttons.active' : 'buttons.inactive',
               '@media (hover: hover)': {
                 ':hover': {
-                  variant: 'buttons.upActive',
-                  transition: 'all 0.2s ease-in-out',
+                  variant: 'buttons.active',
                 },
               },
             },
@@ -118,7 +119,7 @@ export const Simple: FC<ClapButtonThemeComponentProps> = ({
         >
           <div sx={style.centeredContainer}>
             <div
-              key={timeoutId.current as number | null}
+              key={timeoutId.current && timeoutId.current.toString()}
               sx={{
                 ...style.baloon,
                 ...{
@@ -136,7 +137,7 @@ export const Simple: FC<ClapButtonThemeComponentProps> = ({
             sx={{
               ...style.icon,
               ...{
-                fill: isLoading ? '#aaa' : 'auto',
+                fill: isLoading ? 'muted' : 'auto',
                 animation: animationActive
                   ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
                   : null,

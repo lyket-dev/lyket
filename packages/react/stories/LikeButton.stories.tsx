@@ -6,36 +6,30 @@ export default {
 };
 
 export const Simple = () => (
-  <Provider
-    apiKey="xxx"
-    baseUrl="http://localhost:3000"
-  >
-    <LikeButton id="everybody-like-now" namespace="test" />
+  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+    <LikeButton id="simple-example" namespace="stories" />
   </Provider>
 );
 
 export const Twitter = () => (
-  <Provider
-    apiKey="xxx"
-    baseUrl="http://localhost:3000"
-  >
+  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
     <>
       <LikeButton
-        id="everybody-like-now"
-        namespace="homepage"
+        id="twitter-example"
+        namespace="stories"
         component={LikeButton.themes.Twitter}
       />
       <div style={{ fontSize: '20px' }}>
         <LikeButton
-          id="everybody-like-now"
-          namespace="homepage"
+          id="twitter-example"
+          namespace="stories"
           component={LikeButton.themes.Twitter}
         />
       </div>
       <div style={{ fontSize: '30px' }}>
         <LikeButton
-          id="everybody-like-now"
-          namespace="homepage"
+          id="twitter-example"
+          namespace="stories"
           component={LikeButton.themes.Twitter}
         />
       </div>

@@ -35,7 +35,6 @@ const ringScale = keyframes({
 });
 
 const RING = {
-  color: '#e095ed',
   durationMs: 600,
   animation: ringScale,
 };
@@ -93,11 +92,10 @@ export const Simple: FC<LikeButtonThemeComponentProps> = ({
           sx={{
             ...style.button,
             ...{
-              variant: userLiked ? 'buttons.upActive' : 'buttons.upInactive',
+              variant: userLiked ? 'buttons.active' : 'buttons.inactive',
               '@media (hover: hover)': {
                 ':hover': {
-                  variant: 'buttons.upActive',
-                  transition: 'all 0.2s ease-in-out',
+                  variant: 'buttons.active',
                 },
               },
             },

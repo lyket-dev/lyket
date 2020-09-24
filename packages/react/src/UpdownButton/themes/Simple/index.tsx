@@ -35,7 +35,6 @@ const ringScale = keyframes({
 });
 
 const RING = {
-  color: '#e095ed',
   durationMs: 600,
   animation: ringScale,
 };
@@ -134,7 +133,6 @@ export const Simple: FC<UpdownButtonThemeComponentProps> = ({
               '@media (hover: hover)': {
                 ':hover': {
                   variant: 'buttons.upActive',
-                  transition: 'all 0.2s ease-in-out',
                 },
               },
             },
@@ -159,7 +157,6 @@ export const Simple: FC<UpdownButtonThemeComponentProps> = ({
               '@media (hover: hover)': {
                 ':hover': {
                   variant: 'buttons.downActive',
-                  transition: 'all 0.2s ease-in-out',
                 },
               },
             },

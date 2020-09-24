@@ -1,35 +1,29 @@
+import { alpha } from '@theme-ui/color';
+
 export default {
-  colors: {
-    lightGray: '#e0e0e0',
-    darkGray: '#292929',
-    darkBlue: '#22c1c3',
-    lightBlue: '#21fdd530',
-    darkPink: '#ff00c3',
-    lightPink: '#ff00c310',
-  },
   buttons: {
-    downInactive: {
-      backgroundColor: 'lightGray',
-      svg: {
-        fill: 'darkGray',
-      },
-    },
     upInactive: {
-      backgroundColor: 'lightGray',
+      backgroundColor: 'background',
       svg: {
-        fill: 'darkGray',
+        fill: 'text',
       },
     },
     upActive: {
-      backgroundColor: 'lightBlue',
+      backgroundColor: alpha('primary', 0.2),
       svg: {
-        fill: 'darkBlue',
+        fill: 'primary',
+      },
+    },
+    downInactive: {
+      backgroundColor: 'background',
+      svg: {
+        fill: 'text',
       },
     },
     downActive: {
-      backgroundColor: 'lightPink',
+      backgroundColor: alpha('secondary', 0.2),
       svg: {
-        fill: 'darkPink',
+        fill: 'secondary',
       },
     },
   },

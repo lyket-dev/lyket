@@ -39,6 +39,8 @@ ReactDOM.render(
 
 ##### Optional props
 
+- **theme**: This prop allows you to provide your own style to custom buttons or to some of the templates. Read more about it in the _Styling buttons_ section at the end of this document
+
 - **recaptchaSiteKey**: if you enabled reCAPTCHA you need to provide your public key. Read more at the end of this document
 
 ### The buttons
@@ -129,20 +131,20 @@ All buttons have the same prop types and need at least an ID to be created. You 
   You may not want to show a counter if you are not getting enough feedback. Specify the number of votes/claps/likes you want to receive before showing the counter.
 
 - **component**:
-  To change the aspect of the default button you can either provide one of the ready-made **themes** that Lyket provides or a **custom component** in the component attribute. Let's go deeper on this crucial prop.
+  To change the aspect of the default button you can either provide one of the ready-made **templates** that Lyket provides or a **custom component** in the component attribute. Let's go deeper on this crucial prop.
 
-#### Themes
+#### Templates
 
-A number of themes are provided to use Lyket out-of-the-box. You can see all the available options on [lyket.dev/demo](https://lyket.dev/demo)
+A number of templates are provided to use Lyket out-of-the-box. You can see all the available options on [lyket.dev/demo](https://lyket.dev/demo)
 
-- **Simple**: thumb up LikeButton (default)
+- **Simple**: default LikeButton - supports themes
 - **Twitter**: Twitter style LikeButton
-- **Simple**: thumb UpdownButton (default)
+- **Simple**: default UpdownButton - supports themes
 - **Reddit**: Reddit style UpdownButton
-- **Simple**: ClapButton (default)
+- **Simple**: default ClapButton - supports themes
 - **Medium**: Medium style ClapButton
 
-Import themed components directly from the button. Here is an example of using themes.
+Import templates directly from the button. Here is an example of using templates.
 
 ```javascript
 import { ClapButton } from '@lyket/react';
@@ -245,6 +247,45 @@ export default Faq = () => {
   )
 };
 ```
+
+# Styling buttons
+
+### Resizing
+
+All buttons can be resized by wrapping them in a container and changing the font-size.
+
+### Apply your theme
+
+Lyket uses the [theme-ui](https://theme-ui.com/home) library, allowing you to provide your own theme to the buttons through the **theme** prop in the provider.
+
+These are the default values:
+
+```js
+const defaultTheme = {
+  colors: {
+    background: '#e0e0e0',
+    text: '#292929',
+    primary: '#22c1c3',
+    secondary: '#ff00c3',
+    accent: '#fcff4b',
+    highlight: '#e095ed',
+    muted: '#aaa',
+  },
+  fonts: {
+    body: 'inherit',
+    heading: 'inherit',
+    monospace: 'inherit',
+  },
+  fontWeights: {
+    body: 400,
+    bold: 700,
+  },
+};
+```
+
+The Provider component makes a deep merge, so you can overwrite the theme object totally or partially.
+
+There are a few templates that support theming. Read the templates detail to know which ones.
 
 # reCAPTCHA
 
