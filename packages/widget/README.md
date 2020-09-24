@@ -16,7 +16,7 @@ When you add a Lyket element a GET request is made to retrieve info about the bu
 
 Notice that the server will create a new resource for every different and unique identifier, so if you change id or namespace the new button won’t inherit the votes.
 
-Every time a user clicks on a button, the component will update the likes counter and flag that the user has already voted. There is no need of signup or third party service.
+Every time a user clicks on a button, the template will update the likes counter and flag that the user has already voted. There is no need of signup or third party service.
 
 There are three different button types that have different behaviours.
 
@@ -37,12 +37,12 @@ Use the data-lyket-type="like" to create a like button.
   data-lyket-namespace="blog"
 ></div>
 
-<!-- with theme -->
+<!-- with non-default template -->
 <div
   data-lyket-type="like"
   data-lyket-id="my-first-post"
   data-lyket-namespace="blog"
-  data-lyket-theme="twitter"
+  data-lyket-template="twitter"
 ></div>
 ```
 
@@ -63,12 +63,12 @@ Use the data-lyket-type="clap" to create a clap button.
   data-lyket-namespace="blog"
 ></div>
 
-<!-- with theme -->
+<!-- with non-default template -->
 <div
   data-lyket-type="clap"
   data-lyket-id="my-first-post"
   data-lyket-namespace="blog"
-  data-lyket-theme="medium"
+  data-lyket-template="medium"
 ></div>
 ```
 
@@ -89,11 +89,11 @@ Use the data-lyket-type="updown" to create a updown button.
   data-lyket-namespace="blog"
 ></div>
 
-<!-- with theme -->
+<!-- with non-default template -->
 <div
   data-lyket-type="updown"
   data-lyket-id="my-first-post"
   data-lyket-namespace="blog"
-  data-lyket-theme="reddit"
+  data-lyket-template="reddit"
 ></div>
 ```

@@ -49,7 +49,7 @@ if (!apiKey) {
       lyketId: id,
       lyketNamespace: namespace,
       lyketType: type,
-      lyketTheme: theme,
+      lyketTemplate: template,
     } = element.dataset;
     const button = typeToButton[type.toLowerCase()];
 
@@ -60,8 +60,8 @@ if (!apiKey) {
     } else {
       const buttonProps = { id, namespace };
 
-      if (theme) {
-        buttonProps.component = button.themes[theme.toLowerCase()];
+      if (template) {
+        buttonProps.component = button.themes[template.toLowerCase()];
       }
 
       const Component = button.component;
