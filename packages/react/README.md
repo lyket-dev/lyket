@@ -136,11 +136,11 @@ All buttons have the same prop types and need at least an ID to be created. You 
 A number of themes are provided to use Lyket out-of-the-box. You can see all the available options on [lyket.dev/demo](https://lyket.dev/demo)
 
 - **Simple**: thumb up LikeButton (default)
-- **Twitter**: Twitter style LikeButton animated
+- **Twitter**: Twitter style LikeButton
 - **Simple**: thumb UpdownButton (default)
 - **Reddit**: Reddit style UpdownButton
 - **Simple**: ClapButton (default)
-- **Medium**: Medium style ClapButton animated
+- **Medium**: Medium style ClapButton
 
 Import themed components directly from the button. Here is an example of using themes.
 
@@ -172,12 +172,12 @@ export default Faq = () => {
   return (
     <>
       <h2>Do you like pizza?</h2>
-      <LikeButton id="do-you-like-pizza" namespace="faq">
-        ({ onClick, totalLikes, userHasVoted }) => {
+      <LikeButton id="do-you-like-pizza" namespace="faq" hideCounterIfLessThan=10>
+        ({ onClick, totalLikes, userHasVoted, isLoading, isCounterVisible }) => {
           return (
             <>
-              <button onClick={onClick}>Of course! 🍕🍕🍕</button>
-              <div>Total: {totalLikes}</div>
+              <button onClick={onClick} disabled={isLoading}>Of course! 🍕🍕🍕</button>
+              {isCounterVisible && <div>Total: {totalLikes}</div>}
               {userHasVoted && <div>Thanks for your vote!</div>}
             </>
           )
@@ -197,12 +197,12 @@ export default Faq = () => {
   return (
     <>
       <h2>Do you like pizza?</h2>
-      <ClapButton id="do-you-like-pizza" namespace="faq">
-        ({ onClick, totalClaps, userClaps }) => {
+      <ClapButton id="do-you-like-pizza" namespace="faq" hideCounterIfLessThan=10>
+        ({ onClick, totalClaps, userClaps, isLoading, isCounterVisible }) => {
           return (
             <>
-              <button onClick={onClick}>Of course! 🍕🍕🍕</button>
-              <div>Total: {totalClaps}</div>
+              <button onClick={onClick} disabled={isLoading}>Of course! 🍕🍕🍕</button>
+              {isCounterVisible && <div>Total: {totalClaps}</div>}
               <div>You clapped {userClaps} times</div>
             </>
           )
@@ -222,13 +222,20 @@ export default Faq = () => {
   return (
     <>
       <h2>Do you like pizza?</h2>
-      <UpdownButton id="do-you-like-pizza" namespace="faq">
-        ({ pressUp, pressDown, totalScore, userVoteDirection }) => {
+      <UpdownButton id="do-you-like-pizza" namespace="faq" hideCounterIfLessThan=10>
+        ({
+          pressUp,
+          pressDown,
+          totalScore,
+          userVoteDirection,
+          isCounterVisible,
+          isLoading
+        }) => {
           return (
             <>
-              <button onClick={pressUp}>Of course! 🍕🍕🍕</button>
-              <button onClick={pressDown}>I am a bad person</button>
-              <p>Total: {totalScore}</p>
+              <button onClick={pressUp} disabled={isLoading}>Of course! 🍕🍕🍕</button>
+              <button onClick={pressDown} disabled={isLoading}>I am a bad person</button>
+              {isCounterVisible && <p>Total: {totalScore}</p>}
               <p>Your vote: {userVoteDirection}</p>
             </>
           )
