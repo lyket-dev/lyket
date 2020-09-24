@@ -19,28 +19,28 @@ const apiKey = getUrlParameter(scriptSrc, 'apiKey');
 if (!apiKey) {
   console.error('Lyket Error: Api key missing!');
 } else {
-  const themeHashGenerator = button => {
-    const themeObj = {};
+  const templateHashGenerator = button => {
+    const templateObj = {};
 
-    Object.keys(button.themes).forEach(
-      key => (themeObj[key.toLowerCase()] = button.themes[key])
+    Object.keys(button.templates).forEach(
+      key => (templateObj[key.toLowerCase()] = button.templates[key])
     );
 
-    return themeObj;
+    return templateObj;
   };
 
   const typeToButton = {
     clap: {
       component: ClapButton,
-      themes: themeHashGenerator(ClapButton),
+      templates: templateHashGenerator(ClapButton),
     },
     updown: {
       component: UpdownButton,
-      themes: themeHashGenerator(UpdownButton),
+      templates: templateHashGenerator(UpdownButton),
     },
     like: {
       component: LikeButton,
-      themes: themeHashGenerator(LikeButton),
+      templates: templateHashGenerator(LikeButton),
     },
   };
 
@@ -61,7 +61,7 @@ if (!apiKey) {
       const buttonProps = { id, namespace };
 
       if (template) {
-        buttonProps.component = button.themes[template.toLowerCase()];
+        buttonProps.component = button.templates[template.toLowerCase()];
       }
 
       const Component = button.component;
