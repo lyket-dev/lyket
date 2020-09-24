@@ -113,8 +113,9 @@ const UpdownButton: FCWithThemes<UpdownButtonProps> = ({
 
   const props = {
     isLoading: !response,
-    totalScore: response?.attributes.total_score,
-    userVoteDirection: response?.attributes.user_vote_direction,
+    totalScore: (response && response.attributes.total_score) || 0,
+    userVoteDirection:
+      (response && response.attributes.user_vote_direction) || 0,
     onPressUp: handlePressUp,
     onPressDown: handlePressDown,
     isCounterVisible,

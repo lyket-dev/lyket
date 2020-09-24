@@ -89,8 +89,8 @@ const LikeButton: FCWithThemes<LikeButtonProps> = ({
 
   const props = {
     isLoading: !response,
-    totalLikes: response?.attributes.total_likes,
-    userLiked: response?.attributes.user_has_liked,
+    totalLikes: (response && response.attributes.total_likes) || 0,
+    userLiked: (response && response.attributes.user_has_liked) || false,
     onClick: handleClick,
     isCounterVisible,
   };

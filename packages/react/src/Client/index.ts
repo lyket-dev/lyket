@@ -1,7 +1,7 @@
 import { getSessionId } from './getSessionId';
 import { generateRecaptchaToken } from './generateRecaptchaToken';
 import { ApiError } from './ApiError';
-import {debounceCollect} from './debounceCollect';
+import { debounceCollect } from './debounceCollect';
 
 export type ConstructorArguments = {
   apiKey: string;
@@ -139,7 +139,7 @@ export class Client {
     this.likeButtons = new LikeButtonClient(this);
     this.clapButtons = new ClapButtonClient(this);
     this.updownButtons = new UpdownButtonClient(this);
-    
+
     this.enqueueToBatch = debounceCollect<[string]>(this.batch.bind(this), 500);
   }
 
@@ -147,31 +147,21 @@ export class Client {
     return this.request(url);
   }
 
-  batch(calls: Array<[string]>) {
-    return Promise.all(calls.map(args => this.request(args[0])));
+  async batch(calls: Array<[string]>) {
+    // return Promise.all(calls.map(args => this.request(args[0])));
+    const url: RequestInfo = '/buttons/batch';
 
-    // const result = this.request('/batch', {
-    //   method: 'POST',
-    //   body: {
-    //     type: 'batch-request',
-    //     attributes: { urls: calls.map(args => args[0]) },
-    //   },
-    // });
+    const result = await this.request(url, {
+      method: 'POST',
+      body: {
+        type: 'batch',
+        data: {
+          attributes: { urls: calls.map(args => args[0]) },
+        },
+      },
+    });
 
-    // return result.data.attributes.responses;
-
-    // Receives:
-    //
-    // {
-    //   'type': 'batch-response',
-    //   'attributes': {
-    //     responses: [
-    //       { type: 'clap-button', attributes: ... },
-    //       {},
-    //       {},
-    //     ]
-    //   }
-    // }
+    return result.data.attributes.responses;
   }
 
   put(url: string, recaptchaAction: string) {
@@ -180,9 +170,11 @@ export class Client {
 
   async request(
     input: string,
-    init?: Omit<RequestInit, 'body'> & {
+    init?: {
+      method: string;
       body?: Record<string, any>;
       recaptchaAction?: string;
+      headers?: Record<string, string>;
     }
   ) {
     if (typeof window === 'undefined') {

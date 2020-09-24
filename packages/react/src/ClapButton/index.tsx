@@ -89,8 +89,8 @@ const ClapButton: FCWithThemes<ClapButtonProps> = ({
 
   const props = {
     isLoading: !response,
-    totalClaps: response?.attributes.total_claps,
-    userClaps: response?.attributes.user_claps,
+    totalClaps: (response && response.attributes.total_claps) || 0,
+    userClaps: (response && response.attributes.user_claps) || 0,
     onClick: handleClick,
     isCounterVisible,
   };

@@ -29,6 +29,7 @@ export function debounceCollect<Args extends Array<any>>(
 
   async function call() {
     const results = await func.call(null, args);
+
     for (let i = 0; i < results.length; i++) {
       deferreds[i].resolve(results[i]);
     }
