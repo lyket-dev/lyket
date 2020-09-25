@@ -39,8 +39,6 @@ export const Provider: FC<ProviderProps> = ({
     getClientInstanceForSettings({ apiKey, recaptchaSiteKey, baseUrl })
   );
 
-  console.log(clientInstances);
-
   useEffect(() => {
     setClient(
       getClientInstanceForSettings({ apiKey, recaptchaSiteKey, baseUrl })
