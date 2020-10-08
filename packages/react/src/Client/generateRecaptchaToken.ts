@@ -18,7 +18,7 @@ export function generateRecaptchaToken(
             });
             resolve(token);
           } catch (e) {
-            console.log('recaptcha error!', e);
+            console.error('recaptcha error!', e);
             reject(e);
           }
         });
