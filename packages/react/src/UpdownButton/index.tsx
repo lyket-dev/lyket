@@ -13,15 +13,20 @@ export interface UpdownButtonTemplateComponentProps {
   isLoading: boolean;
   userVoteDirection: number | undefined;
   totalScore: number | undefined;
-  onPressUp: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  onPressDown: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  pressUp: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  pressDown: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   isCounterVisible: boolean;
 }
+
+type CallbackProps = Components.Schemas.UpdownButton['data'];
 
 export interface UpdownButtonProps {
   id: string;
   namespace?: string;
   hideCounterIfLessThan?: number;
+  onLoad?: (props: CallbackProps) => void;
+  onPressUp?: (props: CallbackProps) => void;
+  onPressDown?: (props: CallbackProps) => void;
   children?: (
     props: UpdownButtonTemplateComponentProps
   ) => React.ReactElement<any, any> | null;
@@ -41,6 +46,9 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
   hideCounterIfLessThan,
   children,
   component,
+  onLoad,
+  onPressUp,
+  onPressDown,
 }) => {
   const client = useContext(ClientContext);
 
@@ -51,14 +59,18 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
   useSafeEffect(async () => {
     try {
       if (client) {
-        const response = await client.updownButtons.info({ id, namespace });
-        setResponse(response.data);
+        const result = await client.updownButtons.info({ id, namespace });
+        setResponse(result.data);
+
+        if (onLoad) {
+          onLoad(result.data);
+        }
       }
     } catch (error) {
       console.error('Lyket error:', error);
       throw error;
     }
-  }, [client, id, namespace]);
+  }, [client, id, namespace, onLoad]);
 
   const handlePressUp = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -66,18 +78,22 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
 
       try {
         if (client) {
-          const response = await client.updownButtons.pressUp({
+          const result = await client.updownButtons.pressUp({
             id,
             namespace,
           });
-          setResponse(response.data);
+          setResponse(result.data);
+
+          if (onPressUp) {
+            onPressUp(result.data);
+          }
         }
       } catch (error) {
         console.error('Lyket error:', error);
         throw error;
       }
     },
-    [client, id, namespace]
+    [client, id, namespace, onPressUp]
   );
 
   const handlePressDown = useCallback(
@@ -86,18 +102,22 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
 
       try {
         if (client) {
-          const response = await client.updownButtons.pressDown({
+          const result = await client.updownButtons.pressDown({
             id,
             namespace,
           });
-          setResponse(response.data);
+          setResponse(result.data);
+
+          if (onPressDown) {
+            onPressDown(result.data);
+          }
         }
       } catch (error) {
         console.error('Lyket error:', error);
         throw error;
       }
     },
-    [client, id, namespace]
+    [client, id, namespace, onPressDown]
   );
 
   let isCounterVisible = true;
@@ -116,8 +136,8 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
     totalScore: (response && response.attributes.total_score) || 0,
     userVoteDirection:
       (response && response.attributes.user_vote_direction) || 0,
-    onPressUp: handlePressUp,
-    onPressDown: handlePressDown,
+    pressUp: handlePressUp,
+    pressDown: handlePressDown,
     isCounterVisible,
   };
 

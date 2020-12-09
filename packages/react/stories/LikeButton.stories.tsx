@@ -11,28 +11,75 @@ export const Simple = () => (
   </Provider>
 );
 
+const onLoad = async data => {
+  const foo = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(data);
+    }, 250);
+  });
+
+  console.log(await foo);
+};
+
+const onPress = button => {
+  if (button.attributes.user_has_liked) {
+    alert('Thanks for your support 🥳');
+  } else {
+    alert('Why the change of mind? 🧐');
+  }
+};
+
 export const Twitter = () => (
   <Provider apiKey="xxx" baseUrl="http://localhost:3000">
     <>
       <LikeButton
-        id="twitter-example"
+        id="twitter-example-small"
         namespace="stories"
+        onLoad={onLoad}
+        onPress={onPress}
         component={LikeButton.templates.Twitter}
       />
       <div style={{ fontSize: '20px' }}>
         <LikeButton
-          id="twitter-example"
+          id="twitter-example-med"
           namespace="stories"
           component={LikeButton.templates.Twitter}
         />
       </div>
       <div style={{ fontSize: '30px' }}>
         <LikeButton
-          id="twitter-example"
+          id="twitter-example-big"
           namespace="stories"
           component={LikeButton.templates.Twitter}
         />
       </div>
     </>
+  </Provider>
+);
+
+export const Custom = () => (
+  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+    <LikeButton
+      id="custom-button"
+      namespace="stories"
+      onLoad={onLoad}
+      onPress={onPress}
+    >
+      {({
+        pressButton,
+        totalLikes,
+        userLiked,
+        isLoading,
+        isCounterVisible,
+      }) => (
+        <>
+          <button onClick={pressButton} disabled={isLoading}>
+            Of course! 🍕🍕🍕
+          </button>
+          {isCounterVisible && <div>Total: {totalLikes}</div>}
+          {userLiked && <div>Thanks for your vote!</div>}
+        </>
+      )}
+    </LikeButton>
   </Provider>
 );

@@ -52,3 +52,29 @@ export const Reddit = () => (
     </>
   </Provider>
 );
+
+export const Custom = () => (
+  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+    <UpdownButton id="custom" namespace="stories">
+      {({
+        pressUp,
+        pressDown,
+        totalScore,
+        userVoteDirection,
+        isCounterVisible,
+        isLoading,
+      }) => (
+        <>
+          <button onClick={pressUp} disabled={isLoading}>
+            Of course! 🍕🍕🍕
+          </button>
+          <button onClick={pressDown} disabled={isLoading}>
+            I am a bad person
+          </button>
+          {isCounterVisible && <p>Total: {totalScore}</p>}
+          <p>Your vote: {userVoteDirection}</p>
+        </>
+      )}
+    </UpdownButton>
+  </Provider>
+);

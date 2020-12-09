@@ -13,14 +13,18 @@ export interface ClapButtonTemplateComponentProps {
   isLoading: boolean;
   userClaps: number | undefined;
   totalClaps: number | undefined;
-  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  pressButton: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   isCounterVisible: boolean;
 }
+
+type CallbackProps = Components.Schemas.ClapButton['data'];
 
 export interface ClapButtonProps {
   id: string;
   namespace?: string;
   hideCounterIfLessThan?: number;
+  onLoad?: (props: CallbackProps) => void;
+  onPress?: (props: CallbackProps) => void;
   children?: (
     props: ClapButtonTemplateComponentProps
   ) => React.ReactElement<any, any> | null;
@@ -40,6 +44,8 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
   hideCounterIfLessThan,
   children,
   component,
+  onLoad,
+  onPress,
 }) => {
   const client = useContext(ClientContext);
 
@@ -50,8 +56,12 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
   useSafeEffect(async () => {
     try {
       if (client) {
-        const response = await client.clapButtons.info({ id, namespace });
-        setResponse(response.data);
+        const result = await client.clapButtons.info({ id, namespace });
+        setResponse(result.data);
+
+        if (onLoad) {
+          onLoad(result.data);
+        }
       }
     } catch (error) {
       console.error('Lyket error:', error);
@@ -65,8 +75,12 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
 
       try {
         if (client) {
-          const response = await client.clapButtons.press({ id, namespace });
-          setResponse(response.data);
+          const result = await client.clapButtons.press({ id, namespace });
+          setResponse(result.data);
+
+          if (onPress) {
+            onPress(result.data);
+          }
         }
       } catch (error) {
         console.error('Lyket error:', error);
@@ -91,7 +105,7 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
     isLoading: !response,
     totalClaps: (response && response.attributes.total_claps) || 0,
     userClaps: (response && response.attributes.user_claps) || 0,
-    onClick: handleClick,
+    pressButton: handleClick,
     isCounterVisible,
   };
 

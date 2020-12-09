@@ -55,3 +55,25 @@ export const Medium = () => (
     </>
   </Provider>
 );
+
+export const Custom = () => (
+  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+    <ClapButton id="custom-clap" namespace="stories" hideCounterIfLessThan={2}>
+      {({
+        pressButton,
+        totalClaps,
+        userClaps,
+        isLoading,
+        isCounterVisible,
+      }) => (
+        <>
+          <button onClick={pressButton} disabled={isLoading}>
+            Of course! 🍕🍕🍕
+          </button>
+          {isCounterVisible && <div>Total: {totalClaps}</div>}
+          <div>You clapped {userClaps} times</div>
+        </>
+      )}
+    </ClapButton>
+  </Provider>
+);

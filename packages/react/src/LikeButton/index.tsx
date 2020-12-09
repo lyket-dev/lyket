@@ -13,14 +13,18 @@ export interface LikeButtonTemplateComponentProps {
   isLoading: boolean;
   userLiked: boolean | undefined;
   totalLikes: number | undefined;
-  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  pressButton: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   isCounterVisible: boolean;
 }
+
+type CallbackProps = Components.Schemas.LikeButton['data'];
 
 export interface LikeButtonProps {
   id: string;
   namespace?: string;
   hideCounterIfLessThan?: number;
+  onLoad?: (props: CallbackProps) => void;
+  onPress?: (props: CallbackProps) => void;
   children?: (
     props: LikeButtonTemplateComponentProps
   ) => React.ReactElement<any, any> | null;
@@ -40,6 +44,8 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
   hideCounterIfLessThan,
   children,
   component,
+  onLoad,
+  onPress,
 }) => {
   const client = useContext(ClientContext);
 
@@ -50,30 +56,39 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
   useSafeEffect(async () => {
     try {
       if (client) {
-        const response = await client.likeButtons.info({ id, namespace });
-        setResponse(response.data);
+        const result = await client.likeButtons.info({ id, namespace });
+        setResponse(result.data);
+
+        if (onLoad) {
+          onLoad(result.data);
+        }
       }
     } catch (error) {
       console.error('Lyket error:', error);
       throw error;
     }
-  }, [client, id, namespace]);
+  }, [client, id, namespace, onLoad]);
 
   const handleClick = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
+      if (!client) {
+        return;
+      }
 
       try {
-        if (client) {
-          const response = await client.likeButtons.press({ id, namespace });
-          setResponse(response.data);
+        const result = await client.likeButtons.press({ id, namespace });
+        setResponse(result.data);
+
+        if (onPress) {
+          onPress(result.data);
         }
       } catch (error) {
         console.error('Lyket error:', error);
         throw error;
       }
     },
-    [client, id, namespace]
+    [client, id, namespace, onPress]
   );
 
   let isCounterVisible = true;
@@ -91,7 +106,7 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
     isLoading: !response,
     totalLikes: (response && response.attributes.total_likes) || 0,
     userLiked: (response && response.attributes.user_has_liked) || false,
-    onClick: handleClick,
+    pressButton: handleClick,
     isCounterVisible,
   };
 
