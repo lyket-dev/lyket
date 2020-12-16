@@ -9,20 +9,16 @@ type Colors = {
   text?: string;
   primary?: string;
   secondary?: string;
-  accent?: string;
   highlight?: string;
-  muted?: string;
 };
 
 export const defaultTheme: ThemeRecord = {
   colors: {
-    background: '#e0e0e0',
+    background: 'transparent',
     text: '#292929',
     primary: '#22c1c3',
     secondary: '#ff00c3',
-    accent: '#fcff4b',
     highlight: '#e095ed',
-    muted: '#aaa',
   },
   fonts: {
     body: 'inherit',

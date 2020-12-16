@@ -297,18 +297,22 @@ All buttons can be resized by wrapping them in a container and changing the font
 
 Lyket uses the [theme-ui](https://theme-ui.com/home) library, allowing you to provide your own theme to the buttons through the **theme** prop in the provider.
 
+- **primary** - Changes the color of the "like" button, when user has liked.
+- **secondary** - Changes the color of the "dislike" button, when user has disliked.
+- **background** - Changes the background color of the inactive button.
+- **text** - Changes the counter's text and the inactive icon's color.
+- **highlight** - Changes the animation color.
+
 These are the default values:
 
 ```js
 const defaultTheme = {
   colors: {
-    background: '#e0e0e0',
-    text: '#292929',
     primary: '#22c1c3',
     secondary: '#ff00c3',
-    accent: '#fcff4b',
+    background: 'transparent',
+    text: '#292929',
     highlight: '#e095ed',
-    muted: '#aaa',
   },
   fonts: {
     body: 'inherit',

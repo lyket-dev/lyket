@@ -11,6 +11,7 @@ export const style: Record<string, SxStyleProp> = {
     ml: '.5em',
     mr: '.5em',
     minWidth: '2em',
+    color: 'text',
     textAlign: 'center',
     fontFamily: 'body',
     fontWeight: 'body',

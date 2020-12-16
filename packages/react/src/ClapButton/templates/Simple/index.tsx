@@ -137,7 +137,6 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
             sx={{
               ...style.icon,
               ...{
-                fill: isLoading ? 'muted' : 'auto',
                 animation: animationActive
                   ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
                   : null,

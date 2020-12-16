@@ -1,8 +1,8 @@
-# Lyket Widget
+## Lyket Widget
 
 A simple script that lets you embed Lyket in your html/Wordpress/Webflow/Notion website and more!
 
-# Installation
+## Installation
 
 In your html file add the script top-level passing your Lyket API key as argument, then just add an element with a data-lyket-type anywhere in your code.
 
@@ -10,7 +10,7 @@ In your html file add the script top-level passing your Lyket API key as argumen
 <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=[YOUR-API-KEY]"></script>
 ```
 
-# Buttons
+## Buttons
 
 When you add a Lyket element a GET request is made to retrieve info about the button with that certain id and namespace. If no button is found, a new resource is created with the id/namespace identifier.
 
@@ -95,5 +95,30 @@ Use the data-lyket-type="updown" to create a updown button.
   data-lyket-id="my-first-post"
   data-lyket-namespace="blog"
   data-lyket-template="reddit"
+></div>
+```
+
+## Styling the buttons
+
+You can change the default colors by providing your own color scheme. The color scheme does not apply on buttons with non-default templates.
+
+- **data-lyket-color-primary** - Changes the color of the "like" button, when user has liked.
+- **data-lyket-color-secondary** - Changes the color of the "dislike" button, when user has disliked.
+- **data-lyket-color-background** - Changes the background color of the inactive button.
+- **data-lyket-color-text** - Changes the counter's text and the inactive icon's color.
+- **data-lyket-color-highligh** - Changes the animation's color.
+
+Here is an example for a updown button
+
+```html
+<!-- button with color scheme -->
+<div
+  data-lyket-type="updown"
+  data-lyket-id="my-first-post"
+  data-lyket-color-primary="#e095ed"
+  data-lyket-color-secondary="blue"
+  data-lyket-color-background="#333"
+  data-lyket-color-text="green"
+  data-lyket-color-highligh="#ff00c3"
 ></div>
 ```

@@ -50,7 +50,35 @@ if (!apiKey) {
       lyketNamespace: namespace,
       lyketType: type,
       lyketTemplate: template,
+      lyketColorBackground,
+      lyketColorPrimary,
+      lyketColorSecondary,
+      lyketColorText,
+      lyketColorHighlight,
     } = element.dataset;
+
+    const providerProps = { baseUrl, recaptchaSiteKey, apiKey };
+
+    if (
+      lyketColorBackground ||
+      lyketColorPrimary ||
+      lyketColorSecondary ||
+      lyketColorText ||
+      lyketColorHighlight
+    ) {
+      providerProps.theme = { colors: {} };
+
+      if (lyketColorBackground)
+        providerProps.theme.colors.background = lyketColorBackground;
+      if (lyketColorPrimary)
+        providerProps.theme.colors.primary = lyketColorPrimary;
+      if (lyketColorSecondary)
+        providerProps.theme.colors.secondary = lyketColorSecondary;
+      if (lyketColorText) providerProps.theme.colors.text = lyketColorText;
+      if (lyketColorHighlight)
+        providerProps.theme.colors.highlight = lyketColorHighlight;
+    }
+
     const button = typeToButton[type.toLowerCase()];
 
     if (!id) {
@@ -65,14 +93,7 @@ if (!apiKey) {
       }
 
       const Component = button.component;
-      render(
-        h(
-          Provider,
-          { baseUrl, recaptchaSiteKey, apiKey },
-          h(Component, buttonProps)
-        ),
-        element
-      );
+      render(h(Provider, providerProps, h(Component, buttonProps)), element);
     }
   });
 }

@@ -13,11 +13,8 @@ export const Simple = () => (
       colors: {
         primary: 'red',
         secondary: 'blue',
-        text: '#292929',
-        muted: '#aaa',
-        background: '#eed',
-        highlight: 'green',
-        accent: 'orange',
+        text: 'green',
+        background: 'white',
       },
     }}
   >
