@@ -13,8 +13,8 @@ export interface UpdownButtonTemplateComponentProps {
   isLoading: boolean;
   userVoteDirection: number | undefined;
   totalScore: number | undefined;
-  pressUp: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  pressDown: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handlePressUp: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handlePressDown: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   isCounterVisible: boolean;
 }
 
@@ -136,8 +136,8 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
     totalScore: (response && response.attributes.total_score) || 0,
     userVoteDirection:
       (response && response.attributes.user_vote_direction) || 0,
-    pressUp: handlePressUp,
-    pressDown: handlePressDown,
+    handlePressUp,
+    handlePressDown,
     isCounterVisible,
   };
 

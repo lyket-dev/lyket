@@ -48,21 +48,21 @@ export const Simple: FC<LikeButtonTemplateComponentProps> = ({
   isLoading,
   userLiked,
   totalLikes,
-  onClick,
+  handlePress,
   isCounterVisible,
 }) => {
   const [animationActive, setAnimationActive] = useState<boolean>(false);
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      onClick(e);
+      handlePress(e);
 
       if (!userLiked) {
         setAnimationActive(true);
         setTimeout(() => setAnimationActive(false), ICON.durationMs);
       }
     },
-    [userLiked, onClick]
+    [userLiked, handlePress]
   );
 
   const iconStyle = {

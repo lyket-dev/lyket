@@ -13,7 +13,7 @@ export interface ClapButtonTemplateComponentProps {
   isLoading: boolean;
   userClaps: number | undefined;
   totalClaps: number | undefined;
-  pressButton: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handlePress: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   isCounterVisible: boolean;
 }
 
@@ -69,7 +69,7 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
     }
   }, [client, id, namespace]);
 
-  const handleClick = useCallback(
+  const handlePress = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
 
@@ -105,7 +105,7 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
     isLoading: !response,
     totalClaps: (response && response.attributes.total_claps) || 0,
     userClaps: (response && response.attributes.user_claps) || 0,
-    pressButton: handleClick,
+    handlePress,
     isCounterVisible,
   };
 

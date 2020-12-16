@@ -66,14 +66,14 @@ export const Custom = () => (
       onPress={onPress}
     >
       {({
-        pressButton,
+        handlePress,
         totalLikes,
         userLiked,
         isLoading,
         isCounterVisible,
       }) => (
         <>
-          <button onClick={pressButton} disabled={isLoading}>
+          <button onClick={handlePress} disabled={isLoading}>
             Of course! 🍕🍕🍕
           </button>
           {isCounterVisible && <div>Total: {totalLikes}</div>}

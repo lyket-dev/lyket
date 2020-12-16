@@ -79,7 +79,7 @@ export const Medium: FC<ClapButtonTemplateComponentProps> = ({
   isLoading,
   userClaps,
   totalClaps,
-  onClick,
+  handlePress,
   isCounterVisible,
 }) => {
   const [animationActive, setAnimationActive] = useState<boolean>(false);
@@ -154,9 +154,9 @@ export const Medium: FC<ClapButtonTemplateComponentProps> = ({
         () => setAnimationActive(false),
         BALOON.durationMs
       );
-      onClick(e);
+      handlePress(e);
     },
-    [onClick]
+    [handlePress]
   );
 
   const Icon = userClaps && userClaps > 0 ? ClapFull : ClapEmpty;

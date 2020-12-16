@@ -78,7 +78,7 @@ export const Twitter: FC<LikeButtonTemplateComponentProps> = ({
   isLoading,
   userLiked,
   totalLikes,
-  onClick,
+  handlePress,
   isCounterVisible,
 }) => {
   const [animationActive, setAnimationActive] = useState<boolean>(false);
@@ -131,9 +131,9 @@ export const Twitter: FC<LikeButtonTemplateComponentProps> = ({
         setAnimationActive(true);
         setTimeout(() => setAnimationActive(false), DOTS.durationMs);
       }
-      onClick(e);
+      handlePress(e);
     },
-    [userLiked, onClick]
+    [userLiked, handlePress]
   );
 
   const Icon = userLiked ? TwitterHeartFull : TwitterHeartEmpty;

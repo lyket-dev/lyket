@@ -13,7 +13,7 @@ export interface LikeButtonTemplateComponentProps {
   isLoading: boolean;
   userLiked: boolean | undefined;
   totalLikes: number | undefined;
-  pressButton: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handlePress: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   isCounterVisible: boolean;
 }
 
@@ -69,7 +69,7 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
     }
   }, [client, id, namespace, onLoad]);
 
-  const handleClick = useCallback(
+  const handlePress = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
       if (!client) {
@@ -106,7 +106,7 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
     isLoading: !response,
     totalLikes: (response && response.attributes.total_likes) || 0,
     userLiked: (response && response.attributes.user_has_liked) || false,
-    pressButton: handleClick,
+    handlePress,
     isCounterVisible,
   };
 

@@ -35,19 +35,19 @@ ReactDOM.render(
 
 ##### Required props
 
-- **apiKey**: you can get your public API key by registering on [Lyket](https://app.lyket.dev).
+- **apiKey**: **string** - You can get your public API key by registering on [Lyket](https://app.lyket.dev).
 
 ##### Optional props
 
-- **theme**: allows you to provide your custom colors and style to buttons. It just applies to some of the templates. Read more about it in the _Styling buttons_ section at the end of this document.
+- **theme**: **Record<'colors' | 'fonts' | 'fontWeights', Record<string, string>>** - Allows you to change the default buttons color scheme and font/fontWeights. It doesn't apply to all templates. Read more about it in the _Styling buttons_ section at the end of this document.
 
-- **recaptchaSiteKey**: if you enabled reCAPTCHA you need to provide your public key. Read more in the _ReCAPTCHA_ section at the end of this document.
+- **recaptchaSiteKey**: **string** - If you enabled reCAPTCHA you need to provide your public key. Read more in the _ReCAPTCHA_ section at the end of this document.
 
-## The buttons
+## The button components
 
 Once you configured the Provider you can start adding buttons anywhere in your app.
 
-There are three different button types that have different behaviours and purposes, but they all share these basic features and props:
+You can choose among three different button types that have different behaviours and purposes, but they all share these basic features and props:
 
 - As soon as a button component is mounted, a fetch request is made to retrieve info on the button that identifies with id and namespace that you provided. If no button is found, a new one will be created using the id/namespace identifier.
 
@@ -57,21 +57,23 @@ There are three different button types that have different behaviours and purpos
 
 ### Button props
 
-All buttons have the same prop types and need at least an ID to be created. Here we list in detail all required and optional props.
+All buttons share these required and optional props.
 
 ##### Required props
 
-- **id**: The API uses the ID to find a button. It should be unique for namespace. It accepts an alphanumeric string with maximum 50 characters.
+- **id**: **string** - The API uses the ID to find a button. It should be unique for namespace. It accepts an alphanumeric string with maximum 50 characters.
 
 ##### Optional props
 
-- **namespace**: Giving a namespace is useful to keep buttons organised, and can be used to fetch statistics. Check the API docs for more information.
+- **namespace**: **string** - Giving a namespace is useful to keep buttons organised, and can be used to fetch statistics. Check the API docs for more information.
 
-- **hideCounterIfLessThan**:
+- **hideCounterIfLessThan**: **number** -
   You may want to hide the counter if you are not getting enough feedback. Specify the number of votes/claps/likes you want to receive before showing the counter.
 
-- **component**:
-  To change the aspect of the default button you can either provide one of the ready-made **templates** that Lyket provides or a **custom component** in the component attribute.
+- **component**: **React.ReactNode** -
+  If this prop is not provided you will see the Simple template. To change the aspect from the default you can either choose one of the ready-made **templates** that Lyket provides or a **custom component** in the component attribute.
+
+- **onLoad**: **(buttonData) => void** - This function gets called when the button has finished loading
 
 ## Button types
 
@@ -100,11 +102,15 @@ export BlogPost = ({ title, content }) => {
 };
 ```
 
+##### Optional props
+
+- **onPress**: **(buttonData) => void** - This function gets called whenever a Press action is triggered.
+
 ### Up/down Button
 
 Up/down buttons behave as Reddit like/dislike buttons.
 
-Users can only like or dislike once and a subsequent call from the same user will remove the user's like or dislike.
+Users can only like or dislike once and a subsequent action from the same user will remove the user's like or dislike.
 
 ```javascript
 import { UpdownButton } from '@lyket/react';
@@ -123,6 +129,12 @@ export BlogPost = ({ title, content }) => {
 };
 ```
 
+##### Optional props
+
+- **onPressUp**: **(buttonData) => void** - This function gets called whenever a PressUp action is triggered.
+
+- **onPressDown**: **(buttonData) => void** - This function gets called whenever a PressDown action is triggered.
+
 ### Clap Button
 
 Clap buttons behave like Medium applauses. Users can like multiple times and every other call from the same user will increment the claps number.
@@ -140,6 +152,10 @@ export BlogPost = ({ title, content }) => {
   );
 };
 ```
+
+##### Optional props
+
+- **onPress**: **(buttonData) => void** - This function gets called whenever a Press action is triggered.
 
 ## Button Templates
 
@@ -193,14 +209,14 @@ export Faq = () => {
         hideCounterIfLessThan={1}
       >
         {({
-          pressButton,
+          handlePress,
           totalLikes,
           userLiked,
           isLoading,
           isCounterVisible
         }) => (
           <>
-            <button onClick={pressButton} disabled={isLoading}>
+            <button onClick={handlePress} disabled={isLoading}>
               Of course! 🍕🍕🍕
             </button>
             {isCounterVisible && <div>Total: {totalLikes}</div>}
@@ -228,14 +244,14 @@ export Faq = () => {
         hideCounterIfLessThan={3}
       >
         {({
-          pressButton,
+          handlePress,
           totalClaps,
           userClaps,
           isLoading,
           isCounterVisible,
         }) => (
           <>
-            <button onClick={pressButton} disabled={isLoading}>
+            <button onClick={handlePress} disabled={isLoading}>
               Of course! 🍕🍕🍕
             </button>
             {isCounterVisible && <div>Total: {totalClaps}</div>}
@@ -263,18 +279,18 @@ export Faq = () => {
         hideCounterIfLessThan={1}
       >
         {({
-          pressUp,
-          pressDown,
+          handlePressUp,
+          handlePressDown,
           totalScore,
           userVoteDirection,
           isCounterVisible,
           isLoading,
         }) => (
           <>
-            <button onClick={pressUp} disabled={isLoading}>
+            <button onClick={handlePressUp} disabled={isLoading}>
               Of course! 🍕🍕🍕
             </button>
-            <button onClick={pressDown} disabled={isLoading}>
+            <button onClick={handlePressDown} disabled={isLoading}>
               I am a bad person
             </button>
             {isCounterVisible && <p>Total: {totalScore}</p>}

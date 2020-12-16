@@ -11,7 +11,8 @@ export const Simple = () => (
     baseUrl="http://localhost:3000"
     theme={{
       colors: {
-        text: 'blue',
+        secondary: 'blue',
+        background: '#eed',
       },
     }}
   >
@@ -57,18 +58,18 @@ export const Custom = () => (
   <Provider apiKey="xxx" baseUrl="http://localhost:3000">
     <UpdownButton id="custom" namespace="stories">
       {({
-        pressUp,
-        pressDown,
+        handlePressUp,
+        handlePressDown,
         totalScore,
         userVoteDirection,
         isCounterVisible,
         isLoading,
       }) => (
         <>
-          <button onClick={pressUp} disabled={isLoading}>
+          <button onClick={handlePressUp} disabled={isLoading}>
             Of course! 🍕🍕🍕
           </button>
-          <button onClick={pressDown} disabled={isLoading}>
+          <button onClick={handlePressDown} disabled={isLoading}>
             I am a bad person
           </button>
           {isCounterVisible && <p>Total: {totalScore}</p>}

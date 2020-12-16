@@ -32,8 +32,8 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
   isLoading,
   userVoteDirection,
   totalScore,
-  onPressUp,
-  onPressDown,
+  handlePressUp,
+  handlePressDown,
   isCounterVisible,
 }) => {
   const [animationActiveUp, setAnimationActiveUp] = useState<boolean>(false);
@@ -43,26 +43,26 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
 
   const handleClickUp = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      onPressUp(e);
+      handlePressUp(e);
 
       if (userVoteDirection !== 1) {
         setAnimationActiveUp(true);
         setTimeout(() => setAnimationActiveUp(false), ICON.durationMs);
       }
     },
-    [userVoteDirection, onPressUp]
+    [userVoteDirection, handlePressUp]
   );
 
   const handleClickDown = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      onPressDown(e);
+      handlePressDown(e);
 
       if (userVoteDirection !== -1) {
         setAnimationActiveDown(true);
         setTimeout(() => setAnimationActiveDown(false), ICON.durationMs);
       }
     },
-    [userVoteDirection, onPressDown]
+    [userVoteDirection, handlePressDown]
   );
 
   const iconStyleUp = {
