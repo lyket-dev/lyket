@@ -23,5 +23,22 @@
     "start": "webpack --config webpack.config.js --watch",
     "serve": "webpack-dev-server --config webpack.config.js"
   },
-  "gitHead": "eb76708cf567e3f51afc04350bdbdbbb1fa9b12a"
+  "gitHead": "eb76708cf567e3f51afc04350bdbdbbb1fa9b12a",
+  "keywords": [
+    "embedded",
+    "like button",
+    "clap button",
+    "like",
+    "like/dislike",
+    "like/dislike button",
+    "applause",
+    "applause button",
+    "comment",
+    "feedback",
+    "tool",
+    "html",
+    "javascript",
+    "widget",
+    "feed"
+  ]
 }
