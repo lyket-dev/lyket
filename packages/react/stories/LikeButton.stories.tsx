@@ -18,7 +18,7 @@ const onLoad = async data => {
     }, 250);
   });
 
-  console.log(await foo);
+  console.log('response', await foo);
 };
 
 const onPress = button => {

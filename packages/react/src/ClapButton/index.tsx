@@ -3,6 +3,7 @@ import { ClientContext } from '../contexts/ClientContext';
 import { useSafeEffect } from '../hooks/useSafeEffect';
 import { Simple } from './templates/Simple';
 import { Medium } from './templates/Medium';
+import { camelizeKeys } from 'humps';
 
 const templates = {
   Simple,
@@ -60,7 +61,7 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
         setResponse(result.data);
 
         if (onLoad) {
-          onLoad(result.data);
+          onLoad(camelizeKeys(result.data));
         }
       }
     } catch (error) {
@@ -79,7 +80,7 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
           setResponse(result.data);
 
           if (onPress) {
-            onPress(result.data);
+            onPress(camelizeKeys(result.data));
           }
         }
       } catch (error) {

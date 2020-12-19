@@ -3,6 +3,7 @@ import { ClientContext } from '../contexts/ClientContext';
 import { useSafeEffect } from '../hooks/useSafeEffect';
 import { Simple } from './templates/Simple';
 import { Reddit } from './templates/Reddit';
+import { camelizeKeys } from 'humps';
 
 const templates = {
   Simple,
@@ -63,7 +64,7 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
         setResponse(result.data);
 
         if (onLoad) {
-          onLoad(result.data);
+          onLoad(camelizeKeys(result.data));
         }
       }
     } catch (error) {
@@ -85,7 +86,7 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
           setResponse(result.data);
 
           if (onPressUp) {
-            onPressUp(result.data);
+            onPressUp(camelizeKeys(result.data));
           }
         }
       } catch (error) {
@@ -109,7 +110,7 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
           setResponse(result.data);
 
           if (onPressDown) {
-            onPressDown(result.data);
+            onPressDown(camelizeKeys(result.data));
           }
         }
       } catch (error) {

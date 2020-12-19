@@ -67,6 +67,7 @@
   },
   "dependencies": {
     "@theme-ui/color": "^0.3.1",
+    "humps": "^2.0.1",
     "theme-ui": "^0.3.1"
   },
   "gitHead": "eb76708cf567e3f51afc04350bdbdbbb1fa9b12a",

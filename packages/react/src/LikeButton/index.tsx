@@ -3,6 +3,7 @@ import { ClientContext } from '../contexts/ClientContext';
 import { useSafeEffect } from '../hooks/useSafeEffect';
 import { Simple } from './templates/Simple';
 import { Twitter } from './templates/Twitter';
+import { camelizeKeys } from 'humps';
 
 const templates = {
   Simple,
@@ -60,7 +61,7 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
         setResponse(result.data);
 
         if (onLoad) {
-          onLoad(result.data);
+          onLoad(camelizeKeys(result.data));
         }
       }
     } catch (error) {
@@ -81,7 +82,7 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
         setResponse(result.data);
 
         if (onPress) {
-          onPress(result.data);
+          onPress(camelizeKeys(result.data));
         }
       } catch (error) {
         console.error('Lyket error:', error);
