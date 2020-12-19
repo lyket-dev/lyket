@@ -33,11 +33,11 @@ ReactDOM.render(
 );
 ```
 
-##### Required props
+#### Required props
 
 - **apiKey**: **string** - You can get your public API key by registering on [Lyket](https://app.lyket.dev).
 
-##### Optional props
+#### Optional props
 
 - **theme**: **Record<'colors' | 'fonts' | 'fontWeights', Record<string, string>>** - Allows you to change the default buttons color scheme and font/fontWeights. It doesn't apply to all templates. Read more about it in the _Styling buttons_ section at the end of this document.
 
@@ -59,11 +59,11 @@ You can choose among three different button types that have different behaviours
 
 All buttons share these required and optional props.
 
-##### Required props
+#### Required props
 
 - **id**: **string** - The API uses the ID to find a button. It should be unique for namespace. It accepts an alphanumeric string with maximum 50 characters.
 
-##### Optional props
+#### Optional props
 
 - **namespace**: **string** - Giving a namespace is useful to keep buttons organised, and can be used to fetch statistics. Check the API docs for more information.
 
@@ -73,7 +73,8 @@ All buttons share these required and optional props.
 - **component**: **React.ReactNode** -
   If this prop is not provided you will see the Simple template. To change the aspect from the default you can either choose one of the ready-made **templates** that Lyket provides or a **custom component** in the component attribute.
 
-- **onLoad**: **(buttonData) => void** - This function gets called when the button has finished loading
+- **onLoad**: **(buttonData: UpdownButtonData | ClapButtonData | LikeButtonData) => void** -
+  This function gets called when the button has finished loading. buttonData has different format depending on the button type.
 
 ## Button types
 
@@ -102,9 +103,21 @@ export BlogPost = ({ title, content }) => {
 };
 ```
 
-##### Optional props
+#### Optional props
 
-- **onPress**: **(buttonData) => void** - This function gets called whenever a Press action is triggered.
+- **onPress**: **(buttonData: LikeButtonData) => void** - This function gets called whenever a Press action is triggered.
+
+  **LikeButtonData**
+
+  - **id**: **string**
+  - **type**: **like_button**
+  - **attributes**: **Object**
+    - **namespace**: **string**
+    - **namespaceRank**: **number**
+    - **totalLikes**: **number**
+    - **totalRank**: **number**
+    - **totalVotes**: **number**
+    - **userHasLiked**: **boolean**
 
 ### Up/down Button
 
@@ -129,11 +142,23 @@ export BlogPost = ({ title, content }) => {
 };
 ```
 
-##### Optional props
+#### Optional props
 
-- **onPressUp**: **(buttonData) => void** - This function gets called whenever a PressUp action is triggered.
+- **onPressUp**: **(buttonData: UpdownButtonData) => void** - This function gets called whenever a PressUp action is triggered.
 
-- **onPressDown**: **(buttonData) => void** - This function gets called whenever a PressDown action is triggered.
+- **onPressDown**: **(buttonData: UpdownButtonData) => void** - This function gets called whenever a PressDown action is triggered.
+
+  **UpdownButtonData**
+
+  - **id**: **string**
+  - **type**: **updown_button**
+  - **attributes**: **Object**
+    - **namespace**: **string**
+    - **namespaceRank**: **number**
+    - **totalScore**: **number**
+    - **totalRank**: **number**
+    - **totalVotes**: **number**
+    - **userVoteDirection**: **-1 | 0 | 1**
 
 ### Clap Button
 
@@ -153,9 +178,20 @@ export BlogPost = ({ title, content }) => {
 };
 ```
 
-##### Optional props
+#### Optional props
 
-- **onPress**: **(buttonData) => void** - This function gets called whenever a Press action is triggered.
+- **onPress**: **(buttonData: ClapButtonData) => void** - This function gets called whenever a Press action is triggered.
+
+  **ClapButtonData**
+
+  - **id**: **string**
+  - **type**: **clap_button**
+  - **attributes**: **Object**
+    - **namespace**: **string**
+    - **namespaceRank**: **number**
+    - **totalClaps**: **number**
+    - **totalRank**: **number**
+    - **userClaps**: **number**
 
 ## Button Templates
 
