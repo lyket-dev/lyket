@@ -99,7 +99,7 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
               '@media (hover: hover)': {
                 ':hover': {
                   variant: 'buttons.upActive',
-                  transition: 'all 0.2s ease-in-out',
+                  transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
                 },
               },
             },
@@ -123,7 +123,7 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
               '@media (hover: hover)': {
                 ':hover': {
                   variant: 'buttons.downActive',
-                  transition: 'all 0.2s ease-in-out',
+                  transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
                 },
               },
             },

@@ -12,7 +12,7 @@ export const Simple = () => (
 );
 
 const onLoad = async data => {
-  const foo = new Promise((resolve, reject) => {
+  const foo = new Promise(resolve => {
     setTimeout(() => {
       resolve(data);
     }, 250);

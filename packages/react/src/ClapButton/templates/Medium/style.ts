@@ -22,13 +22,13 @@ export const style: Record<string, SxStyleProp> = {
     '@media (hover: hover)': {
       ':hover': {
         svg: {
-          transition: 'all 0.2s ease-in-out',
+          transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
           transform: 'scale(1.1)',
         },
       },
       ':active': {
         svg: {
-          transition: 'all 0.2s ease-in-out',
+          transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
           transform: 'scale(1.1)',
         },
       },
@@ -37,7 +37,7 @@ export const style: Record<string, SxStyleProp> = {
   baloon: {
     opacity: '0',
     position: 'absolute',
-    transition: 'all 0.2s ease-in-out',
+    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     fontSize: '.8em',
     height: '3.4em',
     width: '3.4em',

@@ -19,14 +19,14 @@ export const style: Record<string, SxStyleProp> = {
     position: 'relative',
     fontSize: 'inherit',
     borderRadius: '100%',
-    transition: 'all 0.2s ease-in-out',
+    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     width: '3em',
     height: '3em',
     padding: '0',
     lineHeight: '1em',
     '@media (hover: hover)': {
       ':hover': {
-        transition: 'all 0.2s ease-in-out',
+        transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
         backgroundColor: '#E5214A20',
       },
     },
@@ -56,7 +56,6 @@ export const style: Record<string, SxStyleProp> = {
   },
   icon: {
     height: '2em',
-    transition: 'all 0.2s ease-in-out',
     display: 'block',
     margin: '0 auto',
     animationTimingFunction: 'cubic-bezier(0.280, 0.840, 0.420, 1)',

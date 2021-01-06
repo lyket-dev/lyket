@@ -185,7 +185,7 @@ export const Medium: FC<ClapButtonTemplateComponentProps> = ({
           sx={{
             fill: isLoading ? '#aaa' : 'auto',
             height: '3em',
-            transition: 'all 0.2s ease-in-out',
+            transition: 'all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
             animation: animationActive
               ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
               : null,

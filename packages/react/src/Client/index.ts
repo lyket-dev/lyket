@@ -134,7 +134,7 @@ export class Client {
   constructor({ apiKey, recaptchaSiteKey, baseUrl }: ConstructorArguments) {
     this.apiKey = apiKey;
     this.recaptchaSiteKey = recaptchaSiteKey;
-    this.baseUrl = baseUrl || 'https://lyket.herokuapp.com';
+    this.baseUrl = baseUrl || 'https://api.lyket.dev';
 
     this.likeButtons = new LikeButtonClient(this);
     this.clapButtons = new ClapButtonClient(this);

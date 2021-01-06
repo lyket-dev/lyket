@@ -1,5 +1,3 @@
-import { alpha } from '@theme-ui/color';
-
 export default {
   buttons: {
     upInactive: {
@@ -9,10 +7,8 @@ export default {
       },
     },
     upActive: {
-      backgroundColor: alpha('primary', 0.2),
-      svg: {
-        fill: 'primary',
-      },
+      backgroundColor: 'primary',
+      transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     },
     downInactive: {
       backgroundColor: 'background',
@@ -21,10 +17,8 @@ export default {
       },
     },
     downActive: {
-      backgroundColor: alpha('secondary', 0.2),
-      svg: {
-        fill: 'secondary',
-      },
+      transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+      backgroundColor: 'secondary',
     },
   },
 };

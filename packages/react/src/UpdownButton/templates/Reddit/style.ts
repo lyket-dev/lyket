@@ -16,7 +16,6 @@ export const style: Record<string, SxStyleProp> = {
   },
   icon: {
     height: '1em',
-    transition: 'all 0.2s ease-in-out',
     display: 'block',
     margin: '0 auto',
     animationTimingFunction: 'cubic-bezier(0.280, 0.840, 0.420, 1)',
@@ -30,7 +29,7 @@ export const style: Record<string, SxStyleProp> = {
     position: 'relative',
     fontSize: 'inherit',
     borderRadius: '3px',
-    transition: 'all 0.2s ease-in-out',
+    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     width: '2em',
     height: '2em',
     padding: '0',
