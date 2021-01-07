@@ -48,14 +48,12 @@ export const Provider: FC<ProviderProps> = ({
   const theme = customTheme || {};
   const colors = { ...defaultTheme.colors, ...theme.colors };
   const fonts = { ...defaultTheme.fonts, ...theme.fonts };
-  const fontWeights = { ...defaultTheme.fontWeights, ...theme.fontWeights };
 
   return (
     <ThemeProvider
       theme={{
         colors,
         fonts,
-        fontWeights,
         styles: {},
         useBodyStyles: false,
         useLocalStorage: false,

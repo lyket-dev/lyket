@@ -1,7 +1,6 @@
 export type ThemeRecord = {
   colors?: Colors;
-  fonts?: Record<string, string>;
-  fontWeights?: Record<string, number>;
+  fonts?: Fonts;
 };
 
 type Colors = {
@@ -12,21 +11,19 @@ type Colors = {
   highlight?: string;
 };
 
+type Fonts = {
+  body?: string;
+};
+
 export const defaultTheme: ThemeRecord = {
   colors: {
     background: 'transparent',
     text: '#292929',
-    primary: '#22c1c3',
-    secondary: '#ff00c3',
+    primary: '#BFFCED',
+    secondary: '#FBDEFB',
     highlight: '#e095ed',
   },
   fonts: {
     body: 'inherit',
-    heading: 'inherit',
-    monospace: 'inherit',
-  },
-  fontWeights: {
-    body: 400,
-    bold: 700,
   },
 };

@@ -11,10 +11,10 @@ export const Simple = () => (
     baseUrl="http://localhost:3000"
     theme={{
       colors: {
-        primary: 'red',
+        primary: 'rgba(36, 252, 201, 0.4)',
         secondary: 'blue',
-        text: 'green',
-        background: 'white',
+        text: 'black',
+        background: 'rgba(, 0.5)',
       },
     }}
   >
