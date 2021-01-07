@@ -13,6 +13,7 @@ export const Simple = () => (
       colors: {
         primary: '#BFFCED',
         secondary: '#FBDEFB',
+        text: 'grey',
         background: '#eed',
       },
     }}

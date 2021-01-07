@@ -17,7 +17,7 @@ export const style: Record<string, SxStyleProp> = {
     height: '1em',
     display: 'block',
     margin: '0 auto',
-    fill: '#292929',
+    fill: 'text',
   },
   ring: {
     opacity: '0',
