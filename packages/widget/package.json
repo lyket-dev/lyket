@@ -23,7 +23,7 @@
     "start": "webpack --config webpack.config.js --watch",
     "serve": "webpack-dev-server --config webpack.config.js"
   },
-  "gitHead": "eb76708cf567e3f51afc04350bdbdbbb1fa9b12a",
+  "gitHead": "ee2d7ca1df3eb61e3b5fa5aa547a222bbaf64a59",
   "keywords": [
     "embedded",
     "like button",

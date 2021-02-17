@@ -45,7 +45,7 @@ export const Provider: FC<ProviderProps> = ({
     );
   }, [apiKey, recaptchaSiteKey, baseUrl]);
 
-  const theme = customTheme || {};
+  const theme = customTheme || { colors: {}, fonts: {} };
   const colors = { ...defaultTheme.colors, ...theme.colors };
   const fonts = { ...defaultTheme.fonts, ...theme.fonts };
 
