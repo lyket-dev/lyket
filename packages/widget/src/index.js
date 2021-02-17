@@ -49,6 +49,7 @@ if (!apiKey) {
       lyketId: id,
       lyketNamespace: namespace,
       lyketType: type,
+      lyketHideCounter: hideCounterIfLessThan,
       lyketTemplate: template,
       lyketColorBackground,
       lyketColorPrimary,
@@ -86,7 +87,7 @@ if (!apiKey) {
     } else if (!button) {
       console.error(`Lyket Error: "${type}" is not a valid button type`);
     } else {
-      const buttonProps = { id, namespace };
+      const buttonProps = { id, namespace, hideCounterIfLessThan };
 
       if (template) {
         buttonProps.component = button.templates[template.toLowerCase()];

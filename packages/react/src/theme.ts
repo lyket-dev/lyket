@@ -1,6 +1,7 @@
 export type ThemeRecord = {
   colors?: Colors;
   fonts?: Fonts;
+  useLocalStorage: boolean;
 };
 
 type Colors = {
@@ -16,6 +17,7 @@ type Fonts = {
 };
 
 export const defaultTheme: ThemeRecord = {
+  useLocalStorage: false,
   colors: {
     background: 'transparent',
     text: '#292929',
