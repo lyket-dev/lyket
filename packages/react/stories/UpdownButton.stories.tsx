@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Provider, UpdownButton } from '../src';
 
 export default {
