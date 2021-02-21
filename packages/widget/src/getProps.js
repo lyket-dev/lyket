@@ -48,7 +48,7 @@ export const getComponentProps = (dataset, button) => {
   const {
     lyketId: id,
     lyketNamespace: namespace,
-    lyketHideCounter: hideCounterIfLessThan,
+    lyketShowCounterFrom: hideCounterIfLessThan,
     lyketTemplate: template,
   } = dataset;
 
