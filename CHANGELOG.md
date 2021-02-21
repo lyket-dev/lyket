@@ -1,10 +1,22 @@
 # Changelog
 
+## v1.3.8 21-02-2021
+
+[React]
+
+- Disabled useLocalStorage for theme-ui
+
+[Widget]
+
+- Now script can be loaded in <head>
+- Added mutation observer for data-lyket attributes
+- Add hide-counter prop
+
 ## v1.3.0 17-12-2020
 
 - Renamed custom button functions from onPress to handlePress
-- Add onPress and onLoad callbacks to all buttons [React]
-- Add color options to widget
+- [React] Add onPress and onLoad callbacks to all buttons
+- [Widget] Add color options to widget
 
 ## v1.2.0 24-09-2020
 

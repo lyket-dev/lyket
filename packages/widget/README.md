@@ -106,7 +106,7 @@ You can change the default colors by providing your own color scheme. The color 
 - **data-lyket-color-secondary** - Changes the color of the "dislike" button, when user has disliked.
 - **data-lyket-color-background** - Changes the background color of the inactive button.
 - **data-lyket-color-text** - Changes the counter's text and the inactive icon's color.
-- **data-lyket-color-highligh** - Changes the animation's color.
+- **data-lyket-color-highlight** - Changes the animation's color.
 
 Here is an example for a updown button
 
@@ -119,6 +119,19 @@ Here is an example for a updown button
   data-lyket-color-secondary="blue"
   data-lyket-color-background="#333"
   data-lyket-color-text="green"
-  data-lyket-color-highligh="#ff00c3"
+  data-lyket-color-highlight="#ff00c3"
 ></div>
+```
+
+## Other props
+
+- **data-lyket-show-counter-from** - Number of likes required to show the counter.
+
+```html
+<!-- the counter will show only if it reaches 4 votes -->
+<div
+  data-lyket-type="updown"
+  data-lyket-id="my-hidden-counter"
+  data-lyket-show-counter-from="4"
+></div
 ```
