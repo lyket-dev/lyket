@@ -128,7 +128,7 @@ Here is an example for a updown button
 - **data-lyket-show-counter-from** - Number of likes required to show the counter.
 
 ```html
-<!-- the counter will show only if it reaches 4 votes -->
+<!-- The counter will show only if it reaches 4 votes -->
 <div
   data-lyket-type="updown"
   data-lyket-id="my-hidden-counter"
