@@ -1,6 +1,6 @@
-import { SxStyleProp } from 'theme-ui';
+import { ThemeUIStyleObject } from 'theme-ui';
 
-export const style: Record<string, SxStyleProp> = {
+export const style: Record<string, ThemeUIStyleObject> = {
   root: {
     color: 'inherit',
     fontFamily: 'inherit',
