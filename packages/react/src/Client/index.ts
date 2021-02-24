@@ -1,4 +1,4 @@
-import { getSessionId } from './getSessionId';
+import { getSessionId } from './sessionId';
 import { generateRecaptchaToken } from './generateRecaptchaToken';
 import { ApiError } from './ApiError';
 import { debounceCollect } from './debounceCollect';
@@ -7,6 +7,7 @@ export type ConstructorArguments = {
   apiKey: string;
   recaptchaSiteKey?: string;
   baseUrl?: string;
+  disableSessionId?: boolean;
 };
 
 class LikeButtonClient {
@@ -125,15 +126,22 @@ class UpdownButtonClient {
 export class Client {
   apiKey: string;
   baseUrl: string;
+  disableSessionId: boolean;
   recaptchaSiteKey: string | undefined;
   likeButtons: LikeButtonClient;
   clapButtons: ClapButtonClient;
   updownButtons: UpdownButtonClient;
   enqueueToBatch: (url: string) => Promise<any>;
 
-  constructor({ apiKey, recaptchaSiteKey, baseUrl }: ConstructorArguments) {
+  constructor({
+    apiKey,
+    recaptchaSiteKey,
+    baseUrl,
+    disableSessionId,
+  }: ConstructorArguments) {
     this.apiKey = apiKey;
     this.recaptchaSiteKey = recaptchaSiteKey;
+    this.disableSessionId = disableSessionId;
     this.baseUrl = baseUrl || 'https://api.lyket.dev';
 
     this.likeButtons = new LikeButtonClient(this);
@@ -185,8 +193,11 @@ export class Client {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.apiKey}`,
-      'x-session-id': getSessionId(),
     };
+
+    if (!this.disableSessionId) {
+      defaultHeaders['x-session-id'] = getSessionId();
+    }
 
     if (this.recaptchaSiteKey && init && init.recaptchaAction) {
       defaultHeaders['x-recaptcha-token'] = await generateRecaptchaToken(
