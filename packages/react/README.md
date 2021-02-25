@@ -4,7 +4,7 @@ Lyket is a tool to quickly implement GDPR-compliant clap, like and like/dislike 
 
 Visit [Lyket website](https://lyket.dev/docs/react) to get started with Lyket.
 
-## How does it work
+## How it works
 
 To create a button you just need to provide a React component that has an ID, namespace and type.
 

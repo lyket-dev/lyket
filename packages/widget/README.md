@@ -4,7 +4,7 @@ A simple script that lets you embed Lyket in your html/Wordpress/Webflow/Notion 
 
 Visit [Lyket website](https://lyket.dev/docs/widget) to get started with Lyket.
 
-## How does it work
+## How it works
 
 To create a button you just need to provide a HTML element that has an ID, namespace and type.
 
