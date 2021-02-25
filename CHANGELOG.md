@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.4.0 25-02-2021
+
+- Added `disableSessionId` parameter to Provider [React] and script URL [Widget]. Use this parameter to avoid saving a session ID for every visitor.
+- Updated theme-ui to 0.6.0-alpha.7 to avoid unnecessary saving to local storage.
+- Moved documentation to website.
+
 ## v1.3.9 21-02-2021
 
 [React]
