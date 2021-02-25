@@ -54,7 +54,6 @@
     "@types/theme-ui": "^0.3.6",
     "babel-loader": "^8.1.0",
     "husky": "^4.2.5",
-    "np": "^6.5.0",
     "react": "^16.13.1",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.13.1",
@@ -66,9 +65,8 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@theme-ui/color": "^0.3.1",
     "humps": "^2.0.1",
-    "theme-ui": "^0.3.1"
+    "theme-ui": "0.6.0-alpha.7"
   },
   "gitHead": "ee2d7ca1df3eb61e3b5fa5aa547a222bbaf64a59",
   "keywords": [

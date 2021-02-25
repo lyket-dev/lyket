@@ -9,6 +9,7 @@ import { defaultTheme, ThemeRecord } from './theme';
 export interface ProviderProps extends HTMLAttributes<HTMLDivElement> {
   apiKey: string;
   recaptchaSiteKey?: string;
+  disableSessionId?: boolean;
   baseUrl?: string;
   children?: ReactChild;
   theme?: ThemeRecord | null;
@@ -31,19 +32,30 @@ const getClientInstanceForSettings = (settings: ConstructorArguments) => {
 export const Provider: FC<ProviderProps> = ({
   apiKey,
   recaptchaSiteKey,
+  disableSessionId,
   baseUrl,
   children,
   theme: customTheme,
 }) => {
   const [client, setClient] = useState<Client>(
-    getClientInstanceForSettings({ apiKey, recaptchaSiteKey, baseUrl })
+    getClientInstanceForSettings({
+      apiKey,
+      recaptchaSiteKey,
+      disableSessionId,
+      baseUrl,
+    })
   );
 
   useEffect(() => {
     setClient(
-      getClientInstanceForSettings({ apiKey, recaptchaSiteKey, baseUrl })
+      getClientInstanceForSettings({
+        apiKey,
+        recaptchaSiteKey,
+        disableSessionId,
+        baseUrl,
+      })
     );
-  }, [apiKey, recaptchaSiteKey, baseUrl]);
+  }, [apiKey, disableSessionId, recaptchaSiteKey, baseUrl]);
 
   const theme = customTheme || { colors: {}, fonts: {} };
   const colors = { ...defaultTheme.colors, ...theme.colors };
@@ -52,11 +64,11 @@ export const Provider: FC<ProviderProps> = ({
   return (
     <ThemeProvider
       theme={{
+        useBodyStyles: false,
+        useLocalStorage: false,
         colors,
         fonts,
         styles: {},
-        useBodyStyles: false,
-        useLocalStorage: false,
       }}
     >
       <ClientContext.Provider value={client}>{children}</ClientContext.Provider>

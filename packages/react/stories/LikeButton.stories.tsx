@@ -22,7 +22,7 @@ const onLoad = async data => {
 };
 
 const onPress = button => {
-  if (button.attributes.user_has_liked) {
+  if (button.attributes.userHasLiked) {
     alert('Thanks for your support 🥳');
   } else {
     alert('Why the change of mind? 🧐');

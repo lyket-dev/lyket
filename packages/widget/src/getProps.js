@@ -2,9 +2,7 @@ export const getUrlParameter = (url, name) => {
   const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
   const results = regex.exec(url);
 
-  return results === null
-    ? ''
-    : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  return results && decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
 export const getProviderProps = (dataset, scriptSrc) => {
@@ -19,8 +17,9 @@ export const getProviderProps = (dataset, scriptSrc) => {
   const apiKey = getUrlParameter(scriptSrc, 'apiKey');
   const baseUrl = getUrlParameter(scriptSrc, 'baseUrl');
   const recaptchaSiteKey = getUrlParameter(scriptSrc, 'recaptchaSiteKey');
+  const disableSessionId = scriptSrc.includes('disableSessionId');
 
-  const providerProps = { baseUrl, recaptchaSiteKey, apiKey };
+  const providerProps = { baseUrl, recaptchaSiteKey, apiKey, disableSessionId };
 
   if (
     lyketColorBackground ||

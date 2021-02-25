@@ -1,5 +1,5 @@
 {
-  "name": "mono",
+  "name": "lyket",
   "private": true,
   "devDependencies": {
     "@types/react": "^16.9.43",

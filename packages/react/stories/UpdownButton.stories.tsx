@@ -9,6 +9,7 @@ export const Simple = () => (
   <Provider
     apiKey="xxx"
     baseUrl="http://localhost:3000"
+    disableSessionId
     theme={{
       colors: {
         primary: '#BFFCED',
@@ -19,12 +20,12 @@ export const Simple = () => (
     }}
   >
     <>
-      <UpdownButton id="simple-example" namespace="stories" />
+      <UpdownButton id="simple-example-sm" namespace="stories" />
       <div style={{ fontSize: '20px' }}>
-        <UpdownButton id="simple-example" namespace="stories" />
+        <UpdownButton id="simple-example-md" namespace="stories" />
       </div>
       <div style={{ fontSize: '30px' }}>
-        <UpdownButton id="simple-example" namespace="stories" />
+        <UpdownButton id="simple-example-bg" namespace="stories" />
       </div>
     </>
   </Provider>
@@ -34,20 +35,20 @@ export const Reddit = () => (
   <Provider apiKey="xxx" baseUrl="http://localhost:3000">
     <>
       <UpdownButton
-        id="reddit-example"
+        id="reddit-example-sm"
         namespace="stories"
         component={UpdownButton.templates.Reddit}
       />
       <div style={{ fontSize: '20px' }}>
         <UpdownButton
-          id="reddit-example"
+          id="reddit-example-md"
           namespace="stories"
           component={UpdownButton.templates.Reddit}
         />
       </div>
       <div style={{ fontSize: '30px' }}>
         <UpdownButton
-          id="reddit-example"
+          id="reddit-example-bg"
           namespace="stories"
           component={UpdownButton.templates.Reddit}
         />
