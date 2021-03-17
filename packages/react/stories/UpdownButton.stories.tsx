@@ -1,38 +1,37 @@
 import * as React from 'react';
-import { Provider, UpdownButton } from '../src';
+import { UpdownButton } from '../src';
+import {
+  Provider,
+  ThemedProviderContrast,
+  ThemedProvider,
+} from './utils/testProvider';
 
 export default {
   title: 'UpdownButton',
 };
 
 export const Simple = () => (
-  <Provider
-    apiKey="xxx"
-    baseUrl="http://localhost:3000"
-    disableSessionId
-    theme={{
-      colors: {
-        primary: '#BFFCED',
-        secondary: '#FBDEFB',
-        text: 'grey',
-        background: '#eed',
-      },
-    }}
-  >
-    <>
+  <>
+    <Provider>
       <UpdownButton id="simple-example-sm" namespace="stories" />
+    </Provider>
+
+    <ThemedProvider>
       <div style={{ fontSize: '20px' }}>
         <UpdownButton id="simple-example-md" namespace="stories" />
       </div>
+    </ThemedProvider>
+
+    <ThemedProviderContrast>
       <div style={{ fontSize: '30px' }}>
         <UpdownButton id="simple-example-bg" namespace="stories" />
       </div>
-    </>
-  </Provider>
+    </ThemedProviderContrast>
+  </>
 );
 
 export const Reddit = () => (
-  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+  <Provider>
     <>
       <UpdownButton
         id="reddit-example-sm"
@@ -58,7 +57,7 @@ export const Reddit = () => (
 );
 
 export const Custom = () => (
-  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+  <Provider>
     <UpdownButton id="custom" namespace="stories">
       {({
         handlePressUp,

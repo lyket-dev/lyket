@@ -99,6 +99,15 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
     },
   };
 
+  const buttonStyle = {
+    variant: userClaps ? 'buttons.active' : 'buttons.inactive',
+    '@media (hover: hover)': {
+      ':hover': {
+        bg: userClaps ? 'primary' : 'background',
+      },
+    },
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <div sx={style.root}>
@@ -106,14 +115,7 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
           onClick={handleClick}
           sx={{
             ...style.button,
-            ...{
-              variant: userClaps ? 'buttons.active' : 'buttons.inactive',
-              '@media (hover: hover)': {
-                ':hover': {
-                  variant: 'buttons.active',
-                },
-              },
-            },
+            ...buttonStyle,
           }}
           disabled={isLoading}
         >

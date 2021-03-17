@@ -117,6 +117,27 @@ export const Simple: FC<UpdownButtonTemplateComponentProps> = ({
     },
   };
 
+  const upButtonStyle = {
+    variant:
+      userVoteDirection === 1 ? 'buttons.upActive' : 'buttons.upInactive',
+    '@media (hover: hover)': {
+      ':hover': {
+        bg: userVoteDirection === 1 ? 'primary' : 'background',
+      },
+    },
+  };
+
+  const downButtonStyle = {
+    transform: 'rotate(180deg)',
+    variant:
+      userVoteDirection === -1 ? 'buttons.downActive' : 'buttons.downInactive',
+    '@media (hover: hover)': {
+      ':hover': {
+        bg: userVoteDirection === -1 ? 'secondary' : 'background',
+      },
+    },
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <div sx={style.root}>
@@ -125,17 +146,7 @@ export const Simple: FC<UpdownButtonTemplateComponentProps> = ({
           disabled={isLoading}
           sx={{
             ...style.button,
-            ...{
-              variant:
-                userVoteDirection === 1
-                  ? 'buttons.upActive'
-                  : 'buttons.upInactive',
-              '@media (hover: hover)': {
-                ':hover': {
-                  variant: 'buttons.upActive',
-                },
-              },
-            },
+            ...upButtonStyle,
           }}
         >
           <div sx={ringStyleUp} />
@@ -148,18 +159,7 @@ export const Simple: FC<UpdownButtonTemplateComponentProps> = ({
           disabled={isLoading}
           sx={{
             ...style.button,
-            ...{
-              transform: 'rotate(180deg)',
-              variant:
-                userVoteDirection === -1
-                  ? 'buttons.downActive'
-                  : 'buttons.downInactive',
-              '@media (hover: hover)': {
-                ':hover': {
-                  variant: 'buttons.downActive',
-                },
-              },
-            },
+            ...downButtonStyle,
           }}
         >
           <div sx={ringStyleDown} />

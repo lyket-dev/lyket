@@ -2,7 +2,7 @@
 
 import { jsx, ThemeProvider } from 'theme-ui';
 import { LikeButtonTemplateComponentProps } from '../..';
-import { ThumbIcon } from './icons/ThumbIcon';
+import { ChevronIcon } from './icons/ChevronIcon';
 import { keyframes } from '@emotion/core';
 import { FC, useCallback, useState } from 'react';
 import { style } from './style';
@@ -44,7 +44,7 @@ const ICON = {
   durationMs: 700,
 };
 
-export const Simple: FC<LikeButtonTemplateComponentProps> = ({
+export const Chevron: FC<LikeButtonTemplateComponentProps> = ({
   isLoading,
   userLiked,
   totalLikes,
@@ -104,9 +104,11 @@ export const Simple: FC<LikeButtonTemplateComponentProps> = ({
           }}
         >
           <div sx={ringStyle} />
-          <ThumbIcon sx={iconStyle} />
+          <div sx={style.iconContainer}>
+            <ChevronIcon sx={iconStyle} />
+          </div>
+          {isCounterVisible && <div sx={style.counter}>{totalLikes}</div>}
         </button>
-        {isCounterVisible && <div sx={style.counter}>{totalLikes}</div>}
       </div>
     </ThemeProvider>
   );

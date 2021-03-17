@@ -6,16 +6,19 @@ export const style: Record<string, any> = {
     alignItems: 'center',
   },
   counter: {
-    ml: '.5em',
     color: 'text',
     fontFamily: 'body',
     fontWeight: 'body',
+    mt: '.2em',
   },
   icon: {
-    height: '1em',
+    height: '0.8em',
     display: 'block',
     margin: '0 auto',
     fill: 'text',
+  },
+  iconContainer: {
+    transform: 'rotate(180deg)',
   },
   ring: {
     opacity: '0',
@@ -34,7 +37,6 @@ export const style: Record<string, any> = {
     border: 'none',
     outline: 'none',
     cursor: 'pointer',
-    bg: 'background',
     appearance: 'none',
     position: 'relative',
     fontSize: 'inherit',
@@ -44,6 +46,7 @@ export const style: Record<string, any> = {
     height: '3em',
     padding: '0',
     lineHeight: '1em',
+    bg: 'background',
     ':hover': {
       transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
       opacity: 0.8,

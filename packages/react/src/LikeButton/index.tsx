@@ -3,11 +3,13 @@ import { ClientContext } from '../contexts/ClientContext';
 import { useSafeEffect } from '../hooks/useSafeEffect';
 import { Simple } from './templates/Simple';
 import { Twitter } from './templates/Twitter';
+import { Chevron } from './templates/Chevron';
 import { camelizeKeys } from 'humps';
 
 const templates = {
   Simple,
   Twitter,
+  Chevron,
 };
 
 export interface LikeButtonTemplateComponentProps {
@@ -36,6 +38,7 @@ type FCWithTemplates<Props> = FC<Props> & {
   templates: {
     Simple: React.ComponentType<LikeButtonTemplateComponentProps>;
     Twitter: React.ComponentType<LikeButtonTemplateComponentProps>;
+    Chevron: React.ComponentType<LikeButtonTemplateComponentProps>;
   };
 };
 

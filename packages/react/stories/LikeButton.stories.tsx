@@ -1,14 +1,49 @@
 import * as React from 'react';
-import { Provider, LikeButton } from '../src';
+import { LikeButton } from '../src';
+import { Provider, ThemedProvider } from './utils/testProvider';
 
 export default {
   title: 'LikeButton',
 };
 
 export const Simple = () => (
-  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
-    <LikeButton id="simple-example" namespace="stories" />
+  <Provider>
+    <div style={{ fontSize: '20px' }}>
+      <LikeButton id="simple-example" namespace="stories" />
+    </div>
   </Provider>
+);
+
+export const Chevron = () => (
+  <>
+    <Provider>
+      <div style={{ fontSize: '10px' }}>
+        <LikeButton
+          id="chevron-example"
+          namespace="stories"
+          component={LikeButton.templates.Chevron}
+        />
+      </div>
+      <div style={{ fontSize: '20px' }}>
+        <LikeButton
+          id="chevron-example"
+          namespace="stories"
+          component={LikeButton.templates.Chevron}
+          hideCounterIfLessThan={1}
+        />
+      </div>
+    </Provider>
+    <ThemedProvider>
+      <div style={{ fontSize: '80px' }}>
+        <LikeButton
+          id="chevron-example"
+          namespace="stories"
+          component={LikeButton.templates.Chevron}
+          hideCounterIfLessThan={1}
+        />
+      </div>
+    </ThemedProvider>
+  </>
 );
 
 const onLoad = async data => {
@@ -30,7 +65,7 @@ const onPress = button => {
 };
 
 export const Twitter = () => (
-  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+  <Provider>
     <>
       <LikeButton
         id="twitter-example-small"
@@ -58,7 +93,7 @@ export const Twitter = () => (
 );
 
 export const Custom = () => (
-  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+  <Provider>
     <LikeButton
       id="custom-button"
       namespace="stories"

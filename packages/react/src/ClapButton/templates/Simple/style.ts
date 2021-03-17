@@ -1,6 +1,4 @@
-import { ThemeUIStyleObject } from 'theme-ui';
-
-export const style: Record<string, ThemeUIStyleObject> = {
+export const style: Record<string, any> = {
   root: {
     color: 'inherit',
     fontFamily: 'inherit',
@@ -36,7 +34,6 @@ export const style: Record<string, ThemeUIStyleObject> = {
     border: 'none',
     outline: 'none',
     cursor: 'pointer',
-    background: 'transparent',
     appearance: 'none',
     position: 'relative',
     fontSize: 'inherit',
@@ -46,6 +43,11 @@ export const style: Record<string, ThemeUIStyleObject> = {
     height: '3em',
     padding: '0',
     lineHeight: '1em',
+    bg: 'background',
+    ':hover': {
+      transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+      opacity: 0.8,
+    },
   },
   baloon: {
     opacity: '0',

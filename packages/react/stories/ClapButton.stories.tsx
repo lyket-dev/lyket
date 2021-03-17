@@ -1,37 +1,29 @@
 import * as React from 'react';
-import { Provider, ClapButton } from '../src';
+import { ClapButton } from '../src';
+import { Provider, ThemedProvider } from './utils/testProvider';
 
 export default {
   title: 'ClapButton',
 };
 
 export const Simple = () => (
-  <Provider
-    apiKey="xxx"
-    baseUrl="http://localhost:3000"
-    theme={{
-      colors: {
-        primary: 'rgba(36, 252, 201, 0.4)',
-        secondary: 'blue',
-        text: 'black',
-        background: 'rgba(, 0.5)',
-      },
-    }}
-  >
-    <>
+  <>
+    <Provider>
       <ClapButton id="simple-example" namespace="stories" />
       <div style={{ fontSize: '20px' }}>
         <ClapButton id="simple-example" namespace="stories" />
       </div>
+    </Provider>
+    <ThemedProvider>
       <div style={{ fontSize: '40px' }}>
         <ClapButton id="simple-example" namespace="stories" />
       </div>
-    </>
-  </Provider>
+    </ThemedProvider>
+  </>
 );
 
 export const Medium = () => (
-  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+  <Provider>
     <>
       <ClapButton
         id="medium-example"
@@ -57,7 +49,7 @@ export const Medium = () => (
 );
 
 export const Custom = () => (
-  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+  <Provider>
     <ClapButton id="custom-clap" namespace="stories" hideCounterIfLessThan={2}>
       {({
         handlePress,
