@@ -186,7 +186,7 @@ export class Client {
     }
   ) {
     if (typeof window === 'undefined') {
-      throw 'Client is supposed to be used client-side only!';
+      throw new Error('Client is supposed to be used client-side only!');
     }
 
     const defaultHeaders: Record<string, string> = {

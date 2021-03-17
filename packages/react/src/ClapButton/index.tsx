@@ -68,7 +68,7 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
       console.error('Lyket error:', error);
       throw error;
     }
-  }, [client, id, namespace]);
+  }, [client, id, namespace, setResponse]);
 
   const handlePress = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -88,7 +88,7 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
         throw error;
       }
     },
-    [client, id, namespace]
+    [client, id, namespace, onPress]
   );
 
   let isCounterVisible = true;

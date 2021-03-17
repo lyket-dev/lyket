@@ -58,24 +58,27 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
   >(null);
 
   useSafeEffect(async () => {
-    try {
-      if (client) {
-        const result = await client.likeButtons.info({ id, namespace });
-        setResponse(result.data);
+    if (!client) {
+      return;
+    }
 
-        if (onLoad) {
-          onLoad(camelizeKeys(result.data));
-        }
+    try {
+      const result = await client.likeButtons.info({ id, namespace });
+      setResponse(result.data);
+
+      if (onLoad) {
+        onLoad(camelizeKeys(result.data));
       }
     } catch (error) {
       console.error('Lyket error:', error);
       throw error;
     }
-  }, [client, id, namespace, onLoad]);
+  }, [client, id, namespace, onLoad, setResponse]);
 
   const handlePress = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
+
       if (!client) {
         return;
       }
@@ -92,7 +95,7 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
         throw error;
       }
     },
-    [client, id, namespace, onPress]
+    [client, id, namespace, onPress, setResponse]
   );
 
   let isCounterVisible = true;

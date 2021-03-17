@@ -20,5 +20,6 @@ export const useSafeEffect = (
     }
 
     safeRunner();
-  }, deps);
+    // eslint-disable-next-line
+  }, [...(deps || []), setState]);
 };
