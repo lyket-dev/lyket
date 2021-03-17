@@ -1,19 +1,15 @@
 export class ApiError extends Error {
   requestInfo: RequestInfo;
   requestInit: RequestInit;
-  response: Response;
+  status: Response['status'];
+  errors: [Response];
 
-  constructor(
-    requestInfo: RequestInfo,
-    requestInit: RequestInit,
-    response: Response
-  ) {
-    super(
-      `Failed API request to ${requestInfo} with status ${response.status}`
-    );
+  constructor(requestInfo, requestInit, status, errors) {
+    super(`Failed API request to ${requestInfo} with status ${status}`);
 
     this.requestInfo = requestInfo;
     this.requestInit = requestInit;
-    this.response = response;
+    this.status = status;
+    this.errors = errors;
   }
 }

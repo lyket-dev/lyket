@@ -71,7 +71,7 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
         }
       }
     } catch (error) {
-      console.error('Lyket error:', error);
+      console.error('Lyket error:', error && error.errors[0].message);
       throw error;
     }
   }, [client, id, namespace, onLoad]);
@@ -93,7 +93,7 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
           }
         }
       } catch (error) {
-        console.error('Lyket error:', error);
+        console.error('Lyket error:', error && error.errors[0].message);
         throw error;
       }
     },
@@ -117,7 +117,7 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
           }
         }
       } catch (error) {
-        console.error('Lyket error:', error);
+        console.error('Lyket error:', error && error.errors[0].message);
         throw error;
       }
     },

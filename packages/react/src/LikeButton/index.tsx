@@ -70,7 +70,7 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
         onLoad(camelizeKeys(result.data));
       }
     } catch (error) {
-      console.error('Lyket error:', error);
+      console.error('Lyket error:', error && error.errors[0].message);
       throw error;
     }
   }, [client, id, namespace, onLoad, setResponse]);
@@ -91,7 +91,7 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
           onPress(camelizeKeys(result.data));
         }
       } catch (error) {
-        console.error('Lyket error:', error);
+        console.error('Lyket error:', error && error.errors[0].message);
         throw error;
       }
     },

@@ -218,7 +218,14 @@ export class Client {
     const response = await fetch(url, requestInit);
 
     if (response.status < 200 || response.status >= 300) {
-      throw new ApiError(url, requestInit, response);
+      const errorMessages = await response.json();
+
+      throw new ApiError(
+        url,
+        requestInit,
+        response.status,
+        errorMessages.errors
+      );
     }
 
     return response.json();

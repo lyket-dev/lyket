@@ -90,6 +90,24 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
     [handlePress]
   );
 
+  const baloonStyle = {
+    ...style.baloon,
+    ...{
+      animation: animationActive
+        ? `${BALOON.animation} ${BALOON.durationMs}ms ease forwards`
+        : null,
+    },
+  };
+
+  const iconStyle = {
+    ...style.icon,
+    ...{
+      animation: animationActive
+        ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
+        : null,
+    },
+  };
+
   const ringStyle = {
     ...style.ring,
     ...{
@@ -100,6 +118,7 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
   };
 
   const buttonStyle = {
+    ...style.button,
     variant: userClaps ? 'buttons.active' : 'buttons.inactive',
     '@media (hover: hover)': {
       ':hover': {
@@ -111,40 +130,17 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
   return (
     <ThemeProvider theme={theme}>
       <div sx={style.root}>
-        <button
-          onClick={handleClick}
-          sx={{
-            ...style.button,
-            ...buttonStyle,
-          }}
-          disabled={isLoading}
-        >
+        <button onClick={handleClick} sx={buttonStyle} disabled={isLoading}>
           <div sx={style.centeredContainer}>
             <div
               key={timeoutId.current && timeoutId.current.toString()}
-              sx={{
-                ...style.baloon,
-                ...{
-                  animation: animationActive
-                    ? `${BALOON.animation} ${BALOON.durationMs}ms ease forwards`
-                    : null,
-                },
-              }}
+              sx={baloonStyle}
             >
               {userClaps}
             </div>
           </div>
           <div sx={ringStyle} />
-          <ClapFull
-            sx={{
-              ...style.icon,
-              ...{
-                animation: animationActive
-                  ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
-                  : null,
-              },
-            }}
-          />
+          <ClapFull sx={iconStyle} />
         </button>
         {isCounterVisible && <div sx={style.counter}>{totalClaps}</div>}
       </div>
