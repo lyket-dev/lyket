@@ -8,7 +8,7 @@ export default {
 
 export const Simple = () => (
   <Provider>
-    <div style={{ fontSize: '20px' }}>
+    <div style={{ marginBottom: '50px', fontSize: '20px' }}>
       <LikeButton id="simple-example" namespace="stories" />
     </div>
   </Provider>
@@ -17,26 +17,25 @@ export const Simple = () => (
 export const Chevron = () => (
   <>
     <Provider>
-      <div style={{ fontSize: '10px' }}>
+      <div style={{ marginBottom: '50px', fontSize: '20px' }}>
         <LikeButton
           id="chevron-example"
           namespace="stories"
           component={LikeButton.templates.Chevron}
         />
       </div>
-      <div style={{ fontSize: '20px' }}>
+      <div style={{ marginBottom: '50px', fontSize: '40px' }}>
         <LikeButton
-          id="chevron-example"
+          id="chevron-example-med"
           namespace="stories"
           component={LikeButton.templates.Chevron}
-          hideCounterIfLessThan={1}
         />
       </div>
     </Provider>
     <ThemedProvider>
-      <div style={{ fontSize: '80px' }}>
+      <div style={{ marginBottom: '50px', fontSize: '80px' }}>
         <LikeButton
-          id="chevron-example"
+          id="chevron-example-big"
           namespace="stories"
           component={LikeButton.templates.Chevron}
           hideCounterIfLessThan={1}
@@ -74,14 +73,14 @@ export const Twitter = () => (
         onPress={onPress}
         component={LikeButton.templates.Twitter}
       />
-      <div style={{ fontSize: '20px' }}>
+      <div style={{ marginBottom: '50px', fontSize: '20px' }}>
         <LikeButton
           id="twitter-example-med"
           namespace="stories"
           component={LikeButton.templates.Twitter}
         />
       </div>
-      <div style={{ fontSize: '30px' }}>
+      <div style={{ marginBottom: '50px', fontSize: '30px' }}>
         <LikeButton
           id="twitter-example-big"
           namespace="stories"

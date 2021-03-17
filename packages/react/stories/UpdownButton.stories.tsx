@@ -17,13 +17,13 @@ export const Simple = () => (
     </Provider>
 
     <ThemedProvider>
-      <div style={{ fontSize: '20px' }}>
+      <div style={{ marginBottom: '40px', fontSize: '40px' }}>
         <UpdownButton id="simple-example-md" namespace="stories" />
       </div>
     </ThemedProvider>
 
     <ThemedProviderContrast>
-      <div style={{ fontSize: '30px' }}>
+      <div style={{ marginBottom: '40px', fontSize: '60px' }}>
         <UpdownButton id="simple-example-bg" namespace="stories" />
       </div>
     </ThemedProviderContrast>
@@ -38,14 +38,14 @@ export const Reddit = () => (
         namespace="stories"
         component={UpdownButton.templates.Reddit}
       />
-      <div style={{ fontSize: '20px' }}>
+      <div style={{ marginBottom: '40px', fontSize: '20px' }}>
         <UpdownButton
           id="reddit-example-md"
           namespace="stories"
           component={UpdownButton.templates.Reddit}
         />
       </div>
-      <div style={{ fontSize: '30px' }}>
+      <div style={{ marginBottom: '40px', fontSize: '30px' }}>
         <UpdownButton
           id="reddit-example-bg"
           namespace="stories"
