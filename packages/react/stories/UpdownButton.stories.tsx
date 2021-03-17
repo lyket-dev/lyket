@@ -13,7 +13,9 @@ export default {
 export const Simple = () => (
   <>
     <Provider>
-      <UpdownButton id="simple-example-sm" namespace="stories" />
+      <div style={{ marginBottom: '40px', fontSize: '30px' }}>
+        <UpdownButton id="simple-example-sm" namespace="stories" />
+      </div>
     </Provider>
 
     <ThemedProvider>
@@ -30,14 +32,51 @@ export const Simple = () => (
   </>
 );
 
+export const Chevron = () => (
+  <>
+    <Provider>
+      <div style={{ marginBottom: '40px', fontSize: '30px' }}>
+        <UpdownButton
+          id="simple-example-sm"
+          namespace="stories"
+          component={UpdownButton.templates.Chevron}
+        />
+      </div>
+    </Provider>
+
+    <ThemedProvider>
+      <div style={{ marginBottom: '40px', fontSize: '40px' }}>
+        <UpdownButton
+          id="simple-example-md"
+          namespace="stories"
+          component={UpdownButton.templates.Chevron}
+        />
+      </div>
+    </ThemedProvider>
+
+    <ThemedProviderContrast>
+      <div style={{ marginBottom: '40px', fontSize: '60px' }}>
+        <UpdownButton
+          id="simple-example-bg"
+          namespace="stories"
+          component={UpdownButton.templates.Chevron}
+        />
+      </div>
+    </ThemedProviderContrast>
+  </>
+);
+
 export const Reddit = () => (
   <Provider>
     <>
-      <UpdownButton
-        id="reddit-example-sm"
-        namespace="stories"
-        component={UpdownButton.templates.Reddit}
-      />
+      <div style={{ marginBottom: '40px', fontSize: '30px' }}>
+        <UpdownButton
+          id="reddit-example-sm"
+          namespace="stories"
+          component={UpdownButton.templates.Reddit}
+        />
+      </div>
+
       <div style={{ marginBottom: '40px', fontSize: '20px' }}>
         <UpdownButton
           id="reddit-example-md"

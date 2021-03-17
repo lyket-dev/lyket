@@ -2,11 +2,13 @@ import React, { FC, useCallback, useContext, useState } from 'react';
 import { ClientContext } from '../contexts/ClientContext';
 import { useSafeEffect } from '../hooks/useSafeEffect';
 import { Simple } from './templates/Simple';
+import { Chevron } from './templates/Chevron';
 import { Reddit } from './templates/Reddit';
 import { camelizeKeys } from 'humps';
 
 const templates = {
   Simple,
+  Chevron,
   Reddit,
 };
 
@@ -37,6 +39,7 @@ export interface UpdownButtonProps {
 type FCWithTemplates<Props> = FC<Props> & {
   templates: {
     Simple: React.ComponentType<UpdownButtonTemplateComponentProps>;
+    Chevron: React.ComponentType<UpdownButtonTemplateComponentProps>;
     Reddit: React.ComponentType<UpdownButtonTemplateComponentProps>;
   };
 };
