@@ -48,6 +48,8 @@ export const style: Record<string, any> = {
     bg: 'background',
     transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     opacity: 1,
+    boxShadow: '0 0 0',
+    transform: 'translate3d(0,0,0)',
     ':hover': {
       transition: 'all 250ms cubic-bezier(0.4, 0.0, 0.2, 1) 0ms',
       opacity: 0.75,

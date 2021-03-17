@@ -33,6 +33,8 @@ export const style: Record<string, any> = {
   button: {
     border: 'none',
     outline: 'none',
+    boxShadow: '0 0 0',
+    transform: 'translate3d(0,0,0)',
     cursor: 'pointer',
     appearance: 'none',
     position: 'relative',

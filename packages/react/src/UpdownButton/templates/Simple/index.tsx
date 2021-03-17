@@ -128,7 +128,6 @@ export const Simple: FC<UpdownButtonTemplateComponentProps> = ({
   };
 
   const downButtonStyle = {
-    transform: 'rotate(180deg)',
     variant:
       userVoteDirection === -1 ? 'buttons.downActive' : 'buttons.downInactive',
     '@media (hover: hover)': {
@@ -163,7 +162,9 @@ export const Simple: FC<UpdownButtonTemplateComponentProps> = ({
           }}
         >
           <div sx={ringStyleDown} />
-          <ThumbIcon sx={iconStyleDown} />
+          <div style={{ transform: 'rotate(180deg)' }}>
+            <ThumbIcon sx={iconStyleDown} />
+          </div>
         </button>
       </div>
     </ThemeProvider>

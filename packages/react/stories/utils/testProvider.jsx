@@ -25,7 +25,7 @@ export const ThemedProviderContrast = ({ children }) => (
     baseUrl="http://localhost:3000"
     theme={{
       colors: {
-        primary: 'rgba(blue, 0.9)',
+        primary: 'blue',
         secondary: 'red',
         text: 'black',
         background: 'aliceblue',
