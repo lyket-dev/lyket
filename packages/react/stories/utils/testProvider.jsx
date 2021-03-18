@@ -13,6 +13,9 @@ export const ThemedProvider = ({ children }) => (
         background: 'rgba(243, 255, 135, 0.8)',
         highlight: 'orange',
       },
+      fonts: {
+        body: 'monospace',
+      },
     }}
   >
     {children}

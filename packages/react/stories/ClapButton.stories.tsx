@@ -22,6 +22,43 @@ export const Simple = () => (
   </>
 );
 
+export const Heart = () => (
+  <div style={{ marginTop: '100px' }}>
+    <Provider>
+      <div
+        style={{
+          fontSize: '30px',
+          marginRight: '50px',
+          display: 'inline',
+          fontFamily: 'Arial Black',
+        }}
+      >
+        <ClapButton
+          id="clap-heart-sm"
+          namespace="stories"
+          component={ClapButton.templates.Heart}
+        />
+      </div>
+    </Provider>
+    <ThemedProvider>
+      <div style={{ fontSize: '30px', marginRight: '50px', display: 'inline' }}>
+        <ClapButton
+          id="clap-heart-med"
+          namespace="stories"
+          component={ClapButton.templates.Heart}
+        />
+      </div>
+      <div style={{ fontSize: '30px', marginRight: '20px', display: 'inline' }}>
+        <ClapButton
+          id="clap-heart-big"
+          namespace="stories"
+          component={ClapButton.templates.Heart}
+        />
+      </div>
+    </ThemedProvider>
+  </div>
+);
+
 export const Medium = () => (
   <Provider>
     <>
