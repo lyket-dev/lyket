@@ -18,7 +18,7 @@ export const style: Record<string, any> = {
     height: '1em',
     display: 'block',
     margin: '0 auto',
-    fill: 'text',
+    fill: 'icon',
   },
   ring: {
     opacity: '0',

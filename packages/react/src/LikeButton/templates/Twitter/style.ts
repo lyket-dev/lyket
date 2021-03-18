@@ -1,6 +1,4 @@
-import { ThemeUIStyleObject } from 'theme-ui';
-
-export const style: Record<string, ThemeUIStyleObject> = {
+export const style: Record<string, any> = {
   root: {
     color: 'inherit',
     fontFamily: 'inherit',
@@ -8,7 +6,15 @@ export const style: Record<string, ThemeUIStyleObject> = {
     alignItems: 'center',
   },
   counter: {
-    ml: '.2em',
+    ml: '.4em',
+    fontFamily: 'body',
+    color: 'text',
+  },
+  icon: {
+    height: '1.7em',
+    display: 'block',
+    margin: '0 auto',
+    animationTimingFunction: 'cubic-bezier(0.280, 0.840, 0.420, 1)',
   },
   button: {
     border: 'none',
@@ -53,11 +59,5 @@ export const style: Record<string, ThemeUIStyleObject> = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-  },
-  icon: {
-    height: '2em',
-    display: 'block',
-    margin: '0 auto',
-    animationTimingFunction: 'cubic-bezier(0.280, 0.840, 0.420, 1)',
   },
 };

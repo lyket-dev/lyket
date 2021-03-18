@@ -7,11 +7,28 @@ export default {
 };
 
 export const Simple = () => (
-  <Provider>
-    <div style={{ marginBottom: '50px', fontSize: '20px' }}>
-      <LikeButton id="simple-example" namespace="stories" />
-    </div>
-  </Provider>
+  <>
+    <Provider>
+      <div
+        style={{
+          fontSize: '30px',
+          marginRight: '50px',
+          display: 'inline',
+          fontFamily: 'Papyrus',
+        }}
+      >
+        <LikeButton id="simple-example-f" namespace="stories" />
+      </div>
+      <div style={{ marginTop: '20px', fontSize: '30px' }}>
+        <LikeButton id="simple-example-s" namespace="stories" />
+      </div>
+    </Provider>
+    <ThemedProvider>
+      <div style={{ marginTop: '20px', fontSize: '40px' }}>
+        <LikeButton id="simple-example" namespace="stories" />
+      </div>
+    </ThemedProvider>
+  </>
 );
 
 export const Chevron = () => (

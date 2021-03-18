@@ -15,11 +15,11 @@ const baloonFade = keyframes({
   },
   '72%': {
     opacity: '1',
-    transform: 'translateY(-4em)',
+    transform: 'translateY(-3.4em)',
   },
   '100%': {
     opacity: '0',
-    transform: 'translateY(-6em)',
+    transform: 'translateY(-5em)',
   },
 });
 
@@ -55,7 +55,7 @@ const BALOON = {
 };
 
 const ICON = {
-  durationMs: 500,
+  durationMs: 700,
   animation: iconScale,
 };
 

@@ -12,13 +12,12 @@ export const style: Record<string, any> = {
     color: 'text',
     textAlign: 'center',
     fontFamily: 'body',
-    fontWeight: 'body',
   },
   icon: {
     height: '1em',
     display: 'block',
     margin: '0 auto',
-    fill: 'text',
+    fill: 'icon',
   },
   ring: {
     opacity: '0',

@@ -13,7 +13,14 @@ export default {
 export const Simple = () => (
   <>
     <Provider>
-      <div style={{ marginBottom: '40px', fontSize: '30px' }}>
+      <div
+        style={{
+          fontSize: '30px',
+          marginBottom: '40px',
+          display: 'inline',
+          fontFamily: 'Papyrus',
+        }}
+      >
         <UpdownButton id="simple-example-sm" namespace="stories" />
       </div>
     </Provider>

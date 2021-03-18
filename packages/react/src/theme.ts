@@ -4,8 +4,9 @@ export type ThemeRecord = {
 };
 
 type Colors = {
-  background?: string;
+  icon?: string;
   text?: string;
+  background?: string;
   primary?: string;
   secondary?: string;
   highlight?: string;
@@ -17,6 +18,7 @@ type Fonts = {
 
 export const defaultTheme: ThemeRecord = {
   colors: {
+    icon: '#292929',
     background: 'transparent',
     text: '#292929',
     primary: '#BFFCED',

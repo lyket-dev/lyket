@@ -9,13 +9,12 @@ export const style: Record<string, any> = {
     ml: '.5em',
     color: 'text',
     fontFamily: 'body',
-    fontWeight: 'body',
   },
   icon: {
     height: '1em',
     display: 'block',
     margin: '0 auto',
-    fill: 'text',
+    fill: 'icon',
   },
   ring: {
     opacity: '0',

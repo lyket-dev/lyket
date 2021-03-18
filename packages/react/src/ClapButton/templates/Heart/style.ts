@@ -7,6 +7,11 @@ export const style: Record<string, any> = {
   counter: {
     ml: '.4em',
     fontFamily: 'body',
+    color: 'text',
+  },
+  icon: {
+    height: '2.2em',
+    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
   },
   button: {
     border: 'none',
@@ -21,13 +26,13 @@ export const style: Record<string, any> = {
       ':hover': {
         svg: {
           transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-          transform: 'scale(1.1)',
+          transform: 'scale(1.05)',
         },
       },
       ':active': {
         svg: {
           transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-          transform: 'scale(1.1)',
+          transform: 'scale(1)',
         },
       },
     },
@@ -36,18 +41,18 @@ export const style: Record<string, any> = {
     opacity: '0',
     position: 'absolute',
     transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-    fontSize: '.8em',
-    height: '3.4em',
-    width: '3.4em',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     color: 'white',
-    backgroundColor: 'secondary',
+    backgroundColor: 'text',
     fontFamily: 'body',
     borderRadius: '100%',
-    top: '-3em',
-    left: '-1.7em',
+    fontSize: '.7em',
+    height: '2.2em',
+    width: '2.2em',
+    top: '-1.1em',
+    left: '-1.1em',
   },
   centeredContainer: {
     position: 'absolute',

@@ -13,6 +13,7 @@ export const style: Record<string, ThemeUIStyleObject> = {
     mb: '.2em',
     minWidth: '2em',
     textAlign: 'center',
+    fontFamily: 'body',
   },
   icon: {
     height: '1em',

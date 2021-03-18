@@ -8,14 +8,13 @@ export const style: Record<string, any> = {
   counter: {
     color: 'text',
     fontFamily: 'body',
-    fontWeight: 'body',
     mt: '.2em',
   },
   icon: {
     height: '0.8em',
     display: 'block',
     margin: '0 auto',
-    fill: 'text',
+    fill: 'icon',
   },
   iconContainer: {
     transform: 'rotate(180deg)',

@@ -10,16 +10,16 @@ import { style } from './style';
 
 const baloonFade = keyframes({
   '0%': {
-    opacity: '0',
+    opacity: '0.4',
     transform: 'translateY(-1em)',
   },
   '72%': {
     opacity: '1',
-    transform: 'translateY(-4em)',
+    transform: 'translateY(-3.4em)',
   },
   '100%': {
     opacity: '0',
-    transform: 'translateY(-6em)',
+    transform: 'translateY(-5em)',
   },
 });
 
@@ -43,10 +43,10 @@ const iconScale = keyframes({
     transform: 'scale(1)',
   },
   '32%': {
-    transform: 'scale(1.15)',
+    transform: 'scale(1.1)',
   },
   '100%': {
-    transform: 'scale(1.1)',
+    transform: 'scale(1)',
   },
 });
 
@@ -75,6 +75,7 @@ const ICON = {
   durationMs: CIRCLES.durationMs,
   animation: iconScale,
 };
+
 export const Medium: FC<ClapButtonTemplateComponentProps> = ({
   isLoading,
   userClaps,
@@ -160,6 +161,12 @@ export const Medium: FC<ClapButtonTemplateComponentProps> = ({
   );
 
   const Icon = userClaps && userClaps > 0 ? ClapFull : ClapEmpty;
+  const iconStyle = {
+    ...style.icon,
+    animation: animationActive
+      ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
+      : null,
+  };
 
   return (
     <div sx={style.root}>
@@ -181,16 +188,7 @@ export const Medium: FC<ClapButtonTemplateComponentProps> = ({
             {userClaps}
           </div>
         </div>
-        <Icon
-          sx={{
-            fill: isLoading ? '#aaa' : 'auto',
-            height: '3em',
-            transition: 'all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-            animation: animationActive
-              ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
-              : null,
-          }}
-        />
+        <Icon sx={iconStyle} />
       </button>
       {isCounterVisible && <div sx={style.counter}>{totalClaps}</div>}
     </div>

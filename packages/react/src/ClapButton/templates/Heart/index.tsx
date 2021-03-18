@@ -14,11 +14,11 @@ const baloonFade = keyframes({
   },
   '72%': {
     opacity: '1',
-    transform: 'translateY(-4em)',
+    transform: 'translateY(-3.4em)',
   },
   '100%': {
     opacity: '0',
-    transform: 'translateY(-6em)',
+    transform: 'translateY(-5em)',
   },
 });
 
@@ -42,10 +42,10 @@ const iconScale = keyframes({
     transform: 'scale(1)',
   },
   '32%': {
-    transform: 'scale(1.15)',
+    transform: 'scale(1.1)',
   },
   '100%': {
-    transform: 'scale(1.1)',
+    transform: 'scale(1.05)',
   },
 });
 
@@ -57,7 +57,7 @@ const BALOON = {
 const TRIANGLES = {
   count: 5,
   size: 0.2,
-  color: 'highlight',
+  color: 'secondary',
   durationMs: 300,
   animation: triangleFade,
 };
@@ -74,6 +74,7 @@ const ICON = {
   durationMs: CIRCLES.durationMs,
   animation: iconScale,
 };
+
 export const Heart: FC<ClapButtonTemplateComponentProps> = ({
   isLoading,
   userClaps,
@@ -157,9 +158,8 @@ export const Heart: FC<ClapButtonTemplateComponentProps> = ({
   );
 
   const iconStyle = {
-    fill: userClaps && userClaps > 0 ? 'primary' : 'background',
-    height: '3em',
-    transition: 'all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+    ...style.icon,
+    fill: userClaps && userClaps > 0 ? 'highlight' : 'icon',
     animation: animationActive
       ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
       : null,

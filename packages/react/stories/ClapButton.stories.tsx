@@ -30,24 +30,30 @@ export const Heart = () => (
           fontSize: '30px',
           marginRight: '50px',
           display: 'inline',
-          fontFamily: 'Arial Black',
         }}
       >
         <ClapButton
-          id="clap-heart-sm"
+          id="clap-heart-fir"
           namespace="stories"
           component={ClapButton.templates.Heart}
         />
       </div>
-    </Provider>
-    <ThemedProvider>
-      <div style={{ fontSize: '30px', marginRight: '50px', display: 'inline' }}>
+      <div
+        style={{
+          fontSize: '30px',
+          marginRight: '50px',
+          display: 'inline',
+          fontFamily: 'Papyrus',
+        }}
+      >
         <ClapButton
           id="clap-heart-med"
           namespace="stories"
           component={ClapButton.templates.Heart}
         />
       </div>
+    </Provider>
+    <ThemedProvider>
       <div style={{ fontSize: '30px', marginRight: '20px', display: 'inline' }}>
         <ClapButton
           id="clap-heart-big"
@@ -62,21 +68,25 @@ export const Heart = () => (
 export const Medium = () => (
   <Provider>
     <>
-      <ClapButton
-        id="medium-example"
-        namespace="stories"
-        component={ClapButton.templates.Medium}
-      />
-      <div style={{ fontSize: '20px' }}>
+      <div
+        style={{ marginTop: '100px', marginBottom: '20px', fontSize: '20px' }}
+      >
         <ClapButton
           id="medium-example"
           namespace="stories"
           component={ClapButton.templates.Medium}
         />
       </div>
-      <div style={{ fontSize: '30px' }}>
+      <div style={{ marginBottom: '20px', fontSize: '30px' }}>
         <ClapButton
-          id="medium-example"
+          id="medium-example-mid"
+          namespace="stories"
+          component={ClapButton.templates.Medium}
+        />
+      </div>
+      <div style={{ marginBottom: '20px', fontSize: '60px' }}>
+        <ClapButton
+          id="medium-example-big"
           namespace="stories"
           component={ClapButton.templates.Medium}
         />

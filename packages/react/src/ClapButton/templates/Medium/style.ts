@@ -1,6 +1,4 @@
-import { ThemeUIStyleObject } from 'theme-ui';
-
-export const style: Record<string, ThemeUIStyleObject> = {
+export const style: Record<string, any> = {
   root: {
     color: 'inherit',
     fontFamily: 'inherit',
@@ -8,7 +6,13 @@ export const style: Record<string, ThemeUIStyleObject> = {
     alignItems: 'center',
   },
   counter: {
-    ml: '.2em',
+    ml: '.6em',
+    fontFamily: 'body',
+  },
+  icon: {
+    height: '2em',
+    fill: 'icon',
+    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
   },
   button: {
     border: 'none',
@@ -21,15 +25,13 @@ export const style: Record<string, ThemeUIStyleObject> = {
     p: 0,
     '@media (hover: hover)': {
       ':hover': {
-        svg: {
-          transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-          transform: 'scale(1.1)',
-        },
+        transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+        opacity: 0.65,
       },
       ':active': {
         svg: {
           transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-          transform: 'scale(1.1)',
+          transform: 'scale(0.9)',
         },
       },
     },
@@ -38,17 +40,18 @@ export const style: Record<string, ThemeUIStyleObject> = {
     opacity: '0',
     position: 'absolute',
     transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-    fontSize: '.8em',
-    height: '3.4em',
-    width: '3.4em',
+    fontFamily: 'inherit',
+    fontSize: '.7em',
+    height: '2em',
+    width: '2em',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     color: 'white',
-    background: '#292929',
+    backgroundColor: '#292929',
     borderRadius: '100%',
-    top: '-3em',
-    left: '-1.7em',
+    top: '-1em',
+    left: '-1em',
   },
   centeredContainer: {
     position: 'absolute',
