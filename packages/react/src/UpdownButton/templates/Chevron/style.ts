@@ -1,4 +1,6 @@
-export const style: Record<string, any> = {
+import { ThemeUIStyleObject } from '@theme-ui/css';
+
+export const style: Record<string, ThemeUIStyleObject> = {
   root: {
     color: 'inherit',
     fontFamily: 'inherit',

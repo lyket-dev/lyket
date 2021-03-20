@@ -1,6 +1,6 @@
 /* @jsx jsx */
 
-import { jsx } from 'theme-ui';
+import { jsx, ThemeUIStyleObject } from 'theme-ui';
 import { ClapButtonTemplateComponentProps } from '../..';
 import { ClapHeart } from './icons/ClapHeart';
 import { keyframes } from '@emotion/core';
@@ -9,16 +9,16 @@ import { style } from './style';
 
 const baloonFade = keyframes({
   '0%': {
-    opacity: '0',
-    transform: 'translateY(-1em)',
+    opacity: '0.2',
+    transform: 'translateY(-3em)',
   },
   '72%': {
     opacity: '1',
-    transform: 'translateY(-3.4em)',
+    transform: 'translateY(-3.6em)',
   },
   '100%': {
     opacity: '0',
-    transform: 'translateY(-5em)',
+    transform: 'translateY(-5.2em)',
   },
 });
 
@@ -86,7 +86,7 @@ export const Heart: FC<ClapButtonTemplateComponentProps> = ({
 
   const triangles = [];
   for (let i = 0; i < TRIANGLES.count; i++) {
-    const trianglesStyle = {
+    const trianglesStyle: ThemeUIStyleObject = {
       width: '0',
       height: '0',
       opacity: '0',
@@ -114,7 +114,7 @@ export const Heart: FC<ClapButtonTemplateComponentProps> = ({
 
   const circles = [];
   for (let i = 0; i < CIRCLES.count; i++) {
-    const circlesStyle = {
+    const circlesStyle: ThemeUIStyleObject = {
       width: '0',
       height: '0',
       opacity: '0',
@@ -176,9 +176,7 @@ export const Heart: FC<ClapButtonTemplateComponentProps> = ({
 
   return (
     <div sx={style.root}>
-      <button onClick={handleClick} sx={style.button} disabled={isLoading}>
-        <div sx={style.centeredContainer}> {triangles} </div>
-        <div sx={style.centeredContainer}> {circles} </div>
+      <div sx={style.buttonContainer}>
         <div sx={style.centeredContainer}>
           <div
             key={timeoutId.current && timeoutId.current.toString()}
@@ -187,8 +185,13 @@ export const Heart: FC<ClapButtonTemplateComponentProps> = ({
             {userClaps}
           </div>
         </div>
-        <ClapHeart sx={iconStyle} />
-      </button>
+        <button onClick={handleClick} sx={style.button} disabled={isLoading}>
+          <div sx={style.centeredContainer}> {triangles} </div>
+          <div sx={style.centeredContainer}> {circles} </div>
+          <ClapHeart sx={iconStyle} />
+        </button>
+      </div>
+
       {isCounterVisible && <div sx={style.counter}>{totalClaps}</div>}
     </div>
   );

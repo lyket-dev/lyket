@@ -11,15 +11,15 @@ import theme from './theme';
 const baloonFade = keyframes({
   '0%': {
     opacity: '0',
-    transform: 'translateY(-1em)',
+    transform: 'translateY(-3.2em)',
   },
   '72%': {
     opacity: '1',
-    transform: 'translateY(-3.4em)',
+    transform: 'translateY(-4em)',
   },
   '100%': {
     opacity: '0',
-    transform: 'translateY(-5em)',
+    transform: 'translateY(-6em)',
   },
 });
 
@@ -130,7 +130,7 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
   return (
     <ThemeProvider theme={theme}>
       <div sx={style.root}>
-        <button onClick={handleClick} sx={buttonStyle} disabled={isLoading}>
+        <div sx={style.buttonContainer}>
           <div sx={style.centeredContainer}>
             <div
               key={timeoutId.current && timeoutId.current.toString()}
@@ -139,9 +139,11 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
               {userClaps}
             </div>
           </div>
-          <div sx={ringStyle} />
-          <ClapFull sx={iconStyle} />
-        </button>
+          <button onClick={handleClick} sx={buttonStyle} disabled={isLoading}>
+            <div sx={ringStyle} />
+            <ClapFull sx={iconStyle} />
+          </button>
+        </div>
         {isCounterVisible && <div sx={style.counter}>{totalClaps}</div>}
       </div>
     </ThemeProvider>

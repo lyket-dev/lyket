@@ -1,4 +1,6 @@
-export const style: Record<string, any> = {
+import { ThemeUIStyleObject } from 'theme-ui';
+
+export const style: Record<string, ThemeUIStyleObject> = {
   root: {
     color: 'inherit',
     display: 'inline-flex',
@@ -45,7 +47,7 @@ export const style: Record<string, any> = {
     justifyContent: 'center',
     alignItems: 'center',
     color: 'white',
-    backgroundColor: 'text',
+    backgroundColor: '#292929',
     fontFamily: 'body',
     borderRadius: '100%',
     fontSize: '.7em',
@@ -59,5 +61,8 @@ export const style: Record<string, any> = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
+  },
+  buttonContainer: {
+    position: 'relative',
   },
 };

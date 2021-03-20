@@ -10,8 +10,8 @@ import { style } from './style';
 
 const baloonFade = keyframes({
   '0%': {
-    opacity: '0.4',
-    transform: 'translateY(-1em)',
+    opacity: '0.5',
+    transform: 'translateY(-2.6em)',
   },
   '72%': {
     opacity: '1',
@@ -148,19 +148,23 @@ export const Medium: FC<ClapButtonTemplateComponentProps> = ({
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       setAnimationActive(true);
+
       if (timeoutId.current) {
         clearTimeout(timeoutId.current);
       }
+
       timeoutId.current = setTimeout(
         () => setAnimationActive(false),
         BALOON.durationMs
       );
+
       handlePress(e);
     },
     [handlePress]
   );
 
   const Icon = userClaps && userClaps > 0 ? ClapFull : ClapEmpty;
+
   const iconStyle = {
     ...style.icon,
     animation: animationActive
@@ -170,9 +174,7 @@ export const Medium: FC<ClapButtonTemplateComponentProps> = ({
 
   return (
     <div sx={style.root}>
-      <button onClick={handleClick} sx={style.button} disabled={isLoading}>
-        <div sx={style.centeredContainer}> {triangles} </div>
-        <div sx={style.centeredContainer}> {circles} </div>
+      <div sx={style.buttonContainer}>
         <div sx={style.centeredContainer}>
           <div
             key={timeoutId.current && timeoutId.current.toString()}
@@ -188,8 +190,12 @@ export const Medium: FC<ClapButtonTemplateComponentProps> = ({
             {userClaps}
           </div>
         </div>
-        <Icon sx={iconStyle} />
-      </button>
+        <button onClick={handleClick} sx={style.button} disabled={isLoading}>
+          <div sx={style.centeredContainer}> {triangles} </div>
+          <div sx={style.centeredContainer}> {circles} </div>
+          <Icon sx={iconStyle} />
+        </button>
+      </div>
       {isCounterVisible && <div sx={style.counter}>{totalClaps}</div>}
     </div>
   );
