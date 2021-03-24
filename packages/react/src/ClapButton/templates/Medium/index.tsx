@@ -172,20 +172,22 @@ export const Medium: FC<ClapButtonTemplateComponentProps> = ({
       : null,
   };
 
+  const baloonStyle = {
+    ...style.baloon,
+    ...{
+      animation: animationActive
+        ? `${BALOON.animation} ${BALOON.durationMs}ms ease forwards`
+        : null,
+    },
+  };
+
   return (
     <div sx={style.root}>
       <div sx={style.buttonContainer}>
         <div sx={style.centeredContainer}>
           <div
             key={timeoutId.current && timeoutId.current.toString()}
-            sx={{
-              ...style.baloon,
-              ...{
-                animation: animationActive
-                  ? `${BALOON.animation} ${BALOON.durationMs}ms ease forwards`
-                  : null,
-              },
-            }}
+            sx={baloonStyle}
           >
             {userClaps}
           </div>

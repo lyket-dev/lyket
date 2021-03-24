@@ -55,7 +55,6 @@ export const style: Record<string, ThemeUIStyleObject> = {
   baloon: {
     opacity: '0',
     position: 'absolute',
-    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     fontFamily: 'body',
     display: 'flex',
     justifyContent: 'center',

@@ -10,11 +10,11 @@ import { style } from './style';
 const baloonFade = keyframes({
   '0%': {
     opacity: '0.2',
-    transform: 'translateY(-3em)',
+    transform: 'translateY(-3.2em)',
   },
   '72%': {
     opacity: '1',
-    transform: 'translateY(-3.6em)',
+    transform: 'translateY(-3.8em)',
   },
   '100%': {
     opacity: '0',

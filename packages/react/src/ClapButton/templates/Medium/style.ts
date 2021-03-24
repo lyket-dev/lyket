@@ -49,10 +49,10 @@ export const style: Record<string, ThemeUIStyleObject> = {
     backgroundColor: '#292929',
     borderRadius: '100%',
     fontSize: '.7em',
-    height: '2.2em',
-    width: '2.2em',
-    top: '-1em',
-    left: '-1em',
+    height: '2.4em',
+    width: '2.4em',
+    top: '-1.2em',
+    left: '-1.2em',
     '@media (hover: hover)': {
       ':hover': {
         opacity: '1',
