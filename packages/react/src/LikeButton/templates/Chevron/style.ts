@@ -8,15 +8,18 @@ export const style: Record<string, ThemeUIStyleObject> = {
     alignItems: 'center',
   },
   counter: {
-    ml: '.5em',
     color: 'text',
     fontFamily: 'body',
+    mt: '.2em',
   },
   icon: {
-    height: '1.6em',
+    height: '0.8em',
     display: 'block',
     margin: '0 auto',
     fill: 'icon',
+  },
+  iconContainer: {
+    transform: 'rotate(180deg)',
   },
   ring: {
     opacity: '0',
@@ -51,31 +54,5 @@ export const style: Record<string, ThemeUIStyleObject> = {
       transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
       opacity: 0.75,
     },
-  },
-  baloon: {
-    opacity: '0',
-    position: 'absolute',
-    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-    fontFamily: 'body',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    backgroundColor: '#292929',
-    borderRadius: '100%',
-    fontSize: '.7em',
-    height: '2.8em',
-    width: '2.8em',
-    top: '-1.4em',
-    left: '-1.4em',
-  },
-  centeredContainer: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  },
-  buttonContainer: {
-    position: 'relative',
   },
 };

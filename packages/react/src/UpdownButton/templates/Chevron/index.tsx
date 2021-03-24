@@ -2,7 +2,7 @@
 
 import { jsx, ThemeProvider } from 'theme-ui';
 import { UpdownButtonTemplateComponentProps } from '../..';
-import { ThumbIcon } from './icons/ThumbIcon';
+import { ChevronIcon } from './icons/ChevronIcon';
 import { keyframes } from '@emotion/core';
 import { FC, useCallback, useState } from 'react';
 import { style } from './style';
@@ -44,7 +44,7 @@ const ICON = {
   durationMs: 700,
 };
 
-export const Simple: FC<UpdownButtonTemplateComponentProps> = ({
+export const Chevron: FC<UpdownButtonTemplateComponentProps> = ({
   isLoading,
   userVoteDirection,
   totalScore,
@@ -149,7 +149,9 @@ export const Simple: FC<UpdownButtonTemplateComponentProps> = ({
           }}
         >
           <div sx={ringStyleUp} />
-          <ThumbIcon sx={iconStyleUp} />
+          <div style={{ transform: 'rotate(180deg)' }}>
+            <ChevronIcon sx={iconStyleUp} />
+          </div>
         </button>
         {isCounterVisible && <div sx={style.counter}>{totalScore}</div>}
         {isLoading && <div sx={style.counter}>-</div>}
@@ -162,9 +164,7 @@ export const Simple: FC<UpdownButtonTemplateComponentProps> = ({
           }}
         >
           <div sx={ringStyleDown} />
-          <div style={{ transform: 'rotate(180deg)' }}>
-            <ThumbIcon sx={iconStyleDown} />
-          </div>
+          <ChevronIcon sx={iconStyleDown} />
         </button>
       </div>
     </ThemeProvider>

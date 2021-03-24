@@ -1,53 +1,92 @@
 import * as React from 'react';
-import { Provider, ClapButton } from '../src';
+import { ClapButton } from '../src';
+import { Provider, ThemedProvider } from './utils/testProvider';
 
 export default {
   title: 'ClapButton',
 };
 
 export const Simple = () => (
-  <Provider
-    apiKey="xxx"
-    baseUrl="http://localhost:3000"
-    theme={{
-      colors: {
-        primary: 'rgba(36, 252, 201, 0.4)',
-        secondary: 'blue',
-        text: 'black',
-        background: 'rgba(, 0.5)',
-      },
-    }}
-  >
-    <>
+  <>
+    <Provider>
       <ClapButton id="simple-example" namespace="stories" />
       <div style={{ fontSize: '20px' }}>
         <ClapButton id="simple-example" namespace="stories" />
       </div>
+    </Provider>
+    <ThemedProvider>
       <div style={{ fontSize: '40px' }}>
         <ClapButton id="simple-example" namespace="stories" />
       </div>
-    </>
-  </Provider>
+    </ThemedProvider>
+  </>
+);
+
+export const Heart = () => (
+  <div style={{ marginTop: '100px' }}>
+    <Provider>
+      <div
+        style={{
+          fontSize: '30px',
+          marginRight: '50px',
+          display: 'inline',
+        }}
+      >
+        <ClapButton
+          id="clap-heart-fir"
+          namespace="stories"
+          component={ClapButton.templates.Heart}
+        />
+      </div>
+      <div
+        style={{
+          fontSize: '30px',
+          marginRight: '50px',
+          display: 'inline',
+          fontFamily: 'Papyrus',
+        }}
+      >
+        <ClapButton
+          id="clap-heart-med"
+          namespace="stories"
+          component={ClapButton.templates.Heart}
+        />
+      </div>
+    </Provider>
+    <ThemedProvider>
+      <div style={{ fontSize: '30px', marginRight: '20px', display: 'inline' }}>
+        <ClapButton
+          id="clap-heart-big"
+          namespace="stories"
+          component={ClapButton.templates.Heart}
+        />
+      </div>
+    </ThemedProvider>
+  </div>
 );
 
 export const Medium = () => (
-  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+  <Provider>
     <>
-      <ClapButton
-        id="medium-example"
-        namespace="stories"
-        component={ClapButton.templates.Medium}
-      />
-      <div style={{ fontSize: '20px' }}>
+      <div
+        style={{ marginTop: '100px', marginBottom: '20px', fontSize: '20px' }}
+      >
         <ClapButton
           id="medium-example"
           namespace="stories"
           component={ClapButton.templates.Medium}
         />
       </div>
-      <div style={{ fontSize: '30px' }}>
+      <div style={{ marginBottom: '20px', fontSize: '30px' }}>
         <ClapButton
-          id="medium-example"
+          id="medium-example-mid"
+          namespace="stories"
+          component={ClapButton.templates.Medium}
+        />
+      </div>
+      <div style={{ marginBottom: '20px', fontSize: '60px' }}>
+        <ClapButton
+          id="medium-example-big"
           namespace="stories"
           component={ClapButton.templates.Medium}
         />
@@ -57,7 +96,7 @@ export const Medium = () => (
 );
 
 export const Custom = () => (
-  <Provider apiKey="xxx" baseUrl="http://localhost:3000">
+  <Provider>
     <ClapButton id="custom-clap" namespace="stories" hideCounterIfLessThan={2}>
       {({
         handlePress,

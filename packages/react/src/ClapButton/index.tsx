@@ -2,12 +2,14 @@ import React, { FC, useCallback, useContext, useState } from 'react';
 import { ClientContext } from '../contexts/ClientContext';
 import { useSafeEffect } from '../hooks/useSafeEffect';
 import { Simple } from './templates/Simple';
+import { Heart } from './templates/Heart';
 import { Medium } from './templates/Medium';
 import { camelizeKeys } from 'humps';
 
 const templates = {
   Simple,
   Medium,
+  Heart,
 };
 
 export interface ClapButtonTemplateComponentProps {
@@ -36,6 +38,7 @@ type FCWithTemplates<Props> = FC<Props> & {
   templates: {
     Simple: React.ComponentType<ClapButtonTemplateComponentProps>;
     Medium: React.ComponentType<ClapButtonTemplateComponentProps>;
+    Heart: React.ComponentType<ClapButtonTemplateComponentProps>;
   };
 };
 
@@ -65,10 +68,10 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
         }
       }
     } catch (error) {
-      console.error('Lyket error:', error);
+      console.error('Lyket error:', error.errors[0].message);
       throw error;
     }
-  }, [client, id, namespace]);
+  }, [client, id, namespace, setResponse]);
 
   const handlePress = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -84,11 +87,11 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
           }
         }
       } catch (error) {
-        console.error('Lyket error:', error);
+        console.error('Lyket error:', error.errors[0].message);
         throw error;
       }
     },
-    [client, id, namespace]
+    [client, id, namespace, onPress]
   );
 
   let isCounterVisible = true;

@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.4.2 24-03-2021
+
+- Added `chevron` template for like and updown button.
+- Added `heart` template for clap button.
+- Changed on hover animation for Medium template.
+- Added `icon` color to theme.
+
 ## v1.4.0 25-02-2021
 
 - Added `disableSessionId` parameter to Provider [React] and script URL [Widget]. Use this parameter to avoid saving a session ID for every visitor.

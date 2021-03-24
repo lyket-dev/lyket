@@ -1,4 +1,4 @@
-import { ThemeUIStyleObject } from 'theme-ui';
+import { ThemeUIStyleObject } from '@theme-ui/css';
 
 export const style: Record<string, ThemeUIStyleObject> = {
   root: {
@@ -20,7 +20,7 @@ export const style: Record<string, ThemeUIStyleObject> = {
     height: '1em',
     display: 'block',
     margin: '0 auto',
-    fill: 'text',
+    fill: 'icon',
   },
   ring: {
     opacity: '0',
@@ -39,15 +39,22 @@ export const style: Record<string, ThemeUIStyleObject> = {
     border: 'none',
     outline: 'none',
     cursor: 'pointer',
-    background: 'transparent',
     appearance: 'none',
     position: 'relative',
     fontSize: 'inherit',
     borderRadius: '100%',
-    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     width: '3em',
     height: '3em',
     padding: '0',
     lineHeight: '1em',
+    bg: 'background',
+    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+    opacity: 1,
+    boxShadow: '0 0 0',
+    transform: 'translate3d(0,0,0)',
+    ':hover': {
+      transition: 'all 250ms cubic-bezier(0.4, 0.0, 0.2, 1) 0ms',
+      opacity: 0.75,
+    },
   },
 };

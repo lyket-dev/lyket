@@ -11,7 +11,7 @@ import theme from './theme';
 const baloonFade = keyframes({
   '0%': {
     opacity: '0',
-    transform: 'translateY(-1em)',
+    transform: 'translateY(-3.2em)',
   },
   '72%': {
     opacity: '1',
@@ -55,7 +55,7 @@ const BALOON = {
 };
 
 const ICON = {
-  durationMs: 500,
+  durationMs: 700,
   animation: iconScale,
 };
 
@@ -90,6 +90,24 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
     [handlePress]
   );
 
+  const baloonStyle = {
+    ...style.baloon,
+    ...{
+      animation: animationActive
+        ? `${BALOON.animation} ${BALOON.durationMs}ms ease forwards`
+        : null,
+    },
+  };
+
+  const iconStyle = {
+    ...style.icon,
+    ...{
+      animation: animationActive
+        ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
+        : null,
+    },
+  };
+
   const ringStyle = {
     ...style.ring,
     ...{
@@ -99,51 +117,33 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
     },
   };
 
+  const buttonStyle = {
+    ...style.button,
+    variant: userClaps ? 'buttons.active' : 'buttons.inactive',
+    '@media (hover: hover)': {
+      ':hover': {
+        bg: userClaps ? 'primary' : 'background',
+      },
+    },
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <div sx={style.root}>
-        <button
-          onClick={handleClick}
-          sx={{
-            ...style.button,
-            ...{
-              variant: userClaps ? 'buttons.active' : 'buttons.inactive',
-              '@media (hover: hover)': {
-                ':hover': {
-                  variant: 'buttons.active',
-                },
-              },
-            },
-          }}
-          disabled={isLoading}
-        >
+        <div sx={style.buttonContainer}>
           <div sx={style.centeredContainer}>
             <div
               key={timeoutId.current && timeoutId.current.toString()}
-              sx={{
-                ...style.baloon,
-                ...{
-                  animation: animationActive
-                    ? `${BALOON.animation} ${BALOON.durationMs}ms ease forwards`
-                    : null,
-                },
-              }}
+              sx={baloonStyle}
             >
               {userClaps}
             </div>
           </div>
-          <div sx={ringStyle} />
-          <ClapFull
-            sx={{
-              ...style.icon,
-              ...{
-                animation: animationActive
-                  ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
-                  : null,
-              },
-            }}
-          />
-        </button>
+          <button onClick={handleClick} sx={buttonStyle} disabled={isLoading}>
+            <div sx={ringStyle} />
+            <ClapFull sx={iconStyle} />
+          </button>
+        </div>
         {isCounterVisible && <div sx={style.counter}>{totalClaps}</div>}
       </div>
     </ThemeProvider>

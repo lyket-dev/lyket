@@ -3,17 +3,16 @@ import { ThemeUIStyleObject } from 'theme-ui';
 export const style: Record<string, ThemeUIStyleObject> = {
   root: {
     color: 'inherit',
-    fontFamily: 'inherit',
     display: 'inline-flex',
     alignItems: 'center',
   },
   counter: {
-    ml: '.6em',
+    ml: '.4em',
     fontFamily: 'body',
+    color: 'text',
   },
   icon: {
-    height: '2em',
-    fill: 'icon',
+    height: '2.2em',
     transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
   },
   button: {
@@ -27,13 +26,15 @@ export const style: Record<string, ThemeUIStyleObject> = {
     p: 0,
     '@media (hover: hover)': {
       ':hover': {
-        transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-        opacity: 0.65,
+        svg: {
+          transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+          transform: 'scale(1.05)',
+        },
       },
       ':active': {
         svg: {
           transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-          transform: 'scale(0.9)',
+          transform: 'scale(1)',
         },
       },
     },
@@ -41,23 +42,19 @@ export const style: Record<string, ThemeUIStyleObject> = {
   baloon: {
     opacity: '0',
     position: 'absolute',
-    fontFamily: 'inherit',
+    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     color: 'white',
     backgroundColor: '#292929',
+    fontFamily: 'body',
     borderRadius: '100%',
     fontSize: '.7em',
     height: '2.2em',
     width: '2.2em',
-    top: '-1em',
-    left: '-1em',
-    '@media (hover: hover)': {
-      ':hover': {
-        opacity: '1',
-      },
-    },
+    top: '-1.1em',
+    left: '-1.1em',
   },
   centeredContainer: {
     position: 'absolute',

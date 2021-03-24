@@ -3,11 +3,13 @@ import { ClientContext } from '../contexts/ClientContext';
 import { useSafeEffect } from '../hooks/useSafeEffect';
 import { Simple } from './templates/Simple';
 import { Twitter } from './templates/Twitter';
+import { Chevron } from './templates/Chevron';
 import { camelizeKeys } from 'humps';
 
 const templates = {
   Simple,
   Twitter,
+  Chevron,
 };
 
 export interface LikeButtonTemplateComponentProps {
@@ -36,6 +38,7 @@ type FCWithTemplates<Props> = FC<Props> & {
   templates: {
     Simple: React.ComponentType<LikeButtonTemplateComponentProps>;
     Twitter: React.ComponentType<LikeButtonTemplateComponentProps>;
+    Chevron: React.ComponentType<LikeButtonTemplateComponentProps>;
   };
 };
 
@@ -55,24 +58,27 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
   >(null);
 
   useSafeEffect(async () => {
-    try {
-      if (client) {
-        const result = await client.likeButtons.info({ id, namespace });
-        setResponse(result.data);
+    if (!client) {
+      return;
+    }
 
-        if (onLoad) {
-          onLoad(camelizeKeys(result.data));
-        }
+    try {
+      const result = await client.likeButtons.info({ id, namespace });
+      setResponse(result.data);
+
+      if (onLoad) {
+        onLoad(camelizeKeys(result.data));
       }
     } catch (error) {
-      console.error('Lyket error:', error);
+      console.error('Lyket error:', error && error.errors[0].message);
       throw error;
     }
-  }, [client, id, namespace, onLoad]);
+  }, [client, id, namespace, onLoad, setResponse]);
 
   const handlePress = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
+
       if (!client) {
         return;
       }
@@ -85,11 +91,11 @@ const LikeButton: FCWithTemplates<LikeButtonProps> = ({
           onPress(camelizeKeys(result.data));
         }
       } catch (error) {
-        console.error('Lyket error:', error);
+        console.error('Lyket error:', error && error.errors[0].message);
         throw error;
       }
     },
-    [client, id, namespace, onPress]
+    [client, id, namespace, onPress, setResponse]
   );
 
   let isCounterVisible = true;
