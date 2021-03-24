@@ -1,3 +1,12 @@
+const allowedProviderProps = {
+  lyketColorBackground: 'background',
+  lyketColorPrimary: 'primary',
+  lyketColorSecondary: 'secondary',
+  lyketColorText: 'text',
+  lyketColorHighlight: 'highlight',
+  lyketColorIcon: 'icon',
+};
+
 export const getUrlParameter = (url, name) => {
   const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
   const results = regex.exec(url);
@@ -6,14 +15,6 @@ export const getUrlParameter = (url, name) => {
 };
 
 export const getProviderProps = (dataset, scriptSrc) => {
-  const {
-    lyketColorBackground,
-    lyketColorPrimary,
-    lyketColorSecondary,
-    lyketColorText,
-    lyketColorHighlight,
-  } = dataset;
-
   const apiKey = getUrlParameter(scriptSrc, 'apiKey');
   const baseUrl = getUrlParameter(scriptSrc, 'baseUrl');
   const recaptchaSiteKey = getUrlParameter(scriptSrc, 'recaptchaSiteKey');
@@ -22,24 +23,24 @@ export const getProviderProps = (dataset, scriptSrc) => {
   const providerProps = { baseUrl, recaptchaSiteKey, apiKey, disableSessionId };
 
   if (
-    lyketColorBackground ||
-    lyketColorPrimary ||
-    lyketColorSecondary ||
-    lyketColorText ||
-    lyketColorHighlight
+    Object.keys(dataset).some(k =>
+      Object.keys(allowedProviderProps).includes(k)
+    )
   ) {
-    providerProps.theme = { colors: {} };
+    const colors = Object.entries(allowedProviderProps).reduce(
+      (acc, [k, v]) => {
+        if (dataset[k]) {
+          acc[v] = dataset[k];
+        }
 
-    if (lyketColorBackground)
-      providerProps.theme.colors.background = lyketColorBackground;
-    if (lyketColorPrimary)
-      providerProps.theme.colors.primary = lyketColorPrimary;
-    if (lyketColorSecondary)
-      providerProps.theme.colors.secondary = lyketColorSecondary;
-    if (lyketColorText) providerProps.theme.colors.text = lyketColorText;
-    if (lyketColorHighlight)
-      providerProps.theme.colors.highlight = lyketColorHighlight;
+        return acc;
+      },
+      {}
+    );
+
+    providerProps.theme = { colors };
   }
+
   return providerProps;
 };
 
