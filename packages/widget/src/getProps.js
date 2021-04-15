@@ -1,4 +1,4 @@
-const allowedProviderProps = {
+const allowedColorsProps = {
   lyketColorBackground: 'background',
   lyketColorPrimary: 'primary',
   lyketColorSecondary: 'secondary',
@@ -24,10 +24,10 @@ export const getProviderProps = (dataset, scriptSrc) => {
 
   if (
     Object.keys(dataset).some(k =>
-      Object.keys(allowedProviderProps).includes(k)
+      Object.keys(allowedColorsProps).includes(k)
     )
   ) {
-    const colors = Object.entries(allowedProviderProps).reduce(
+    const colors = Object.entries(allowedColorsProps).reduce(
       (acc, [k, v]) => {
         if (dataset[k]) {
           acc[v] = dataset[k];
@@ -39,6 +39,10 @@ export const getProviderProps = (dataset, scriptSrc) => {
     );
 
     providerProps.theme = { colors };
+  }
+
+  if (Object.keys(dataset).find(k => k === 'lyketFontFamily')) {
+    providerProps.theme.fonts = { body: dataset.lyketFontFamily };
   }
 
   return providerProps;
