@@ -1,6 +1,6 @@
 {
   "name": "@lyket/widget",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Instantly add clap/like/vote buttons to your website",
   "main": "dist/lyket.js",
   "author": "Irene Oppo",
