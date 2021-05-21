@@ -64,11 +64,13 @@ export const Provider: FC<ProviderProps> = ({
   return (
     <ThemeProvider
       theme={{
-        useBodyStyles: false,
-        useLocalStorage: false,
+        config: {
+          useRootStyles: false,
+          useLocalStorage: false,
+          useColorSchemeMediaQuery: false,
+        },
         colors,
         fonts,
-        styles: {},
       }}
     >
       <ClientContext.Provider value={client}>{children}</ClientContext.Provider>

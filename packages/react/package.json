@@ -66,7 +66,7 @@
   },
   "dependencies": {
     "humps": "^2.0.1",
-    "theme-ui": "0.6.0-alpha.7"
+    "theme-ui": "^0.8.4"
   },
   "gitHead": "ee2d7ca1df3eb61e3b5fa5aa547a222bbaf64a59",
   "keywords": [

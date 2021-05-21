@@ -87,7 +87,8 @@ export const Chevron: FC<LikeButtonTemplateComponentProps> = ({
     variant: userLiked ? 'buttons.active' : 'buttons.inactive',
     '@media (hover: hover)': {
       ':hover': {
-        bg: userLiked ? 'primary' : 'background',
+        bg: theme =>
+          userLiked ? theme.rawColors?.primary : theme.rawColors?.background,
       },
     },
   };

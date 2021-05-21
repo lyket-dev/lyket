@@ -9,14 +9,14 @@ export const style: Record<string, ThemeUIStyleObject> = {
   },
   counter: {
     ml: '.5em',
-    color: 'text',
+    color: theme => theme.rawColors?.text,
     fontFamily: 'body',
   },
   icon: {
     height: '1.6em',
     display: 'block',
     margin: '0 auto',
-    fill: 'icon',
+    fill: theme => theme.rawColors?.icon,
   },
   ring: {
     opacity: '0',
@@ -24,7 +24,7 @@ export const style: Record<string, ThemeUIStyleObject> = {
     height: `90%`,
     borderRadius: `3em`,
     border: `1px solid`,
-    borderColor: 'highlight',
+    borderColor: theme => theme.rawColors?.highlight,
     boxSizing: 'border-box',
     position: 'absolute',
     top: '50%',
@@ -46,7 +46,7 @@ export const style: Record<string, ThemeUIStyleObject> = {
     height: '3em',
     padding: '0',
     lineHeight: '1em',
-    bg: 'background',
+    bg: theme => theme.rawColors?.background,
     ':hover': {
       transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
       opacity: 0.75,
