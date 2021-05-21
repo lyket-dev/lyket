@@ -23,26 +23,24 @@ export const getProviderProps = (dataset, scriptSrc) => {
   const providerProps = { baseUrl, recaptchaSiteKey, apiKey, disableSessionId };
 
   if (
-    Object.keys(dataset).some(k =>
-      Object.keys(allowedColorsProps).includes(k)
-    )
+    Object.keys(dataset).some(k => Object.keys(allowedColorsProps).includes(k))
   ) {
-    const colors = Object.entries(allowedColorsProps).reduce(
-      (acc, [k, v]) => {
-        if (dataset[k]) {
-          acc[v] = dataset[k];
-        }
+    const colors = Object.entries(allowedColorsProps).reduce((acc, [k, v]) => {
+      if (dataset[k]) {
+        acc[v] = dataset[k];
+      }
 
-        return acc;
-      },
-      {}
-    );
+      return acc;
+    }, {});
 
     providerProps.theme = { colors };
   }
 
   if (Object.keys(dataset).find(k => k === 'lyketFontFamily')) {
-    providerProps.theme.fonts = { body: dataset.lyketFontFamily };
+    providerProps.theme = {
+      ...providerProps.theme,
+      fonts: { body: dataset.lyketFontFamily },
+    };
   }
 
   return providerProps;
