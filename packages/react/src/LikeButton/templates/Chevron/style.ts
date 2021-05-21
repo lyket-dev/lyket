@@ -8,7 +8,7 @@ export const style: Record<string, ThemeUIStyleObject> = {
     alignItems: 'center',
   },
   counter: {
-    color: 'text',
+    color: theme => theme.rawColors?.text,
     fontFamily: 'body',
     mt: '.2em',
   },
@@ -16,7 +16,7 @@ export const style: Record<string, ThemeUIStyleObject> = {
     height: '0.8em',
     display: 'block',
     margin: '0 auto',
-    fill: 'icon',
+    fill: theme => theme.rawColors?.icon,
   },
   iconContainer: {
     transform: 'rotate(180deg)',
@@ -27,7 +27,7 @@ export const style: Record<string, ThemeUIStyleObject> = {
     height: `90%`,
     borderRadius: `3em`,
     border: `1px solid`,
-    borderColor: 'highlight',
+    borderColor: theme => theme.rawColors?.highlight,
     boxSizing: 'border-box',
     position: 'absolute',
     top: '50%',
@@ -49,7 +49,7 @@ export const style: Record<string, ThemeUIStyleObject> = {
     height: '3em',
     padding: '0',
     lineHeight: '1em',
-    bg: 'background',
+    bg: theme => theme.rawColors?.background,
     ':hover': {
       transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
       opacity: 0.75,

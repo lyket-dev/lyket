@@ -13,7 +13,7 @@ export const style: Record<string, ThemeUIStyleObject> = {
   },
   icon: {
     height: '2em',
-    fill: 'icon',
+    fill: theme => theme.rawColors?.icon,
     transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
   },
   button: {

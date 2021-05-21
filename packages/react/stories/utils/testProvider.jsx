@@ -10,7 +10,7 @@ export const ThemedProvider = ({ children }) => (
         primary: '#fed8b1',
         secondary: '#eeccff',
         text: 'grey',
-        icon: 'black',
+        icon: 'violet',
         background: 'rgba(243, 255, 135, 0.8)',
         highlight: 'orange',
       },
@@ -34,6 +34,7 @@ export const ThemedProviderContrast = ({ children }) => (
         text: 'black',
         background: 'aliceblue',
         highlight: 'orange',
+        icon: 'violet',
       },
     }}
   >

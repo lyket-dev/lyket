@@ -57,7 +57,7 @@ const BALOON = {
 const TRIANGLES = {
   count: 5,
   size: 0.2,
-  color: 'secondary',
+  color: theme => theme.rawColors?.secondary,
   durationMs: 300,
   animation: triangleFade,
 };
@@ -65,7 +65,7 @@ const TRIANGLES = {
 const CIRCLES = {
   count: 5,
   size: 0.05,
-  color: 'primary',
+  color: theme => theme.rawColors?.primary,
   durationMs: 500,
   animation: triangleFade,
 };
@@ -159,7 +159,10 @@ export const Heart: FC<ClapButtonTemplateComponentProps> = ({
 
   const iconStyle = {
     ...style.icon,
-    fill: userClaps && userClaps > 0 ? 'highlight' : 'icon',
+    fill: theme =>
+      userClaps && userClaps > 0
+        ? theme.rawColors?.highlight
+        : theme.rawColors?.icon,
     animation: animationActive
       ? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
       : null,

@@ -1,18 +1,18 @@
 export default {
   buttons: {
     upInactive: {
-      backgroundColor: 'background',
+      backgroundColor: theme => theme.rawColors?.background,
     },
     upActive: {
-      backgroundColor: 'primary',
+      backgroundColor: theme => theme.rawColors?.primary,
       transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     },
     downInactive: {
-      backgroundColor: 'background',
+      backgroundColor: theme => theme.rawColors?.background,
     },
     downActive: {
       transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-      backgroundColor: 'secondary',
+      backgroundColor: theme => theme.rawColors?.secondary,
     },
   },
 };

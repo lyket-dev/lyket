@@ -9,7 +9,7 @@ export const style: Record<string, ThemeUIStyleObject> = {
   counter: {
     ml: '.4em',
     fontFamily: 'body',
-    color: 'text',
+    color: theme => theme.rawColors?.text,
   },
   icon: {
     height: '2.2em',

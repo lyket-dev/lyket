@@ -67,6 +67,7 @@ export const Provider: FC<ProviderProps> = ({
         config: {
           useRootStyles: false,
           useLocalStorage: false,
+          useColorSchemeMediaQuery: false,
         },
         colors,
         fonts,
