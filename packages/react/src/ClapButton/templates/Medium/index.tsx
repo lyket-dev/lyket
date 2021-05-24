@@ -1,10 +1,11 @@
+/** @jsxRuntime classic */
 /* @jsx jsx */
 
 import { jsx } from 'theme-ui';
 import { ClapButtonTemplateComponentProps } from '../..';
 import { ClapEmpty } from './icons/ClapEmpty';
 import { ClapFull } from './icons/ClapFull';
-import { keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/react';
 import { FC, useCallback, useState, useRef } from 'react';
 import { style } from './style';
 
