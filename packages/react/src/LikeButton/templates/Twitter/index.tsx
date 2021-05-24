@@ -1,10 +1,11 @@
+/** @jsxRuntime classic */
 /* @jsx jsx */
 
 import { jsx } from 'theme-ui';
 import { LikeButtonTemplateComponentProps } from '../..';
 import { TwitterHeartFull } from './icons/TwitterHeartFull';
 import { TwitterHeartEmpty } from './icons/TwitterHeartEmpty';
-import { keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/react';
 import { FC, useCallback, useState } from 'react';
 import { style } from './style';
 

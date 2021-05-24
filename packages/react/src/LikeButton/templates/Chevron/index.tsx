@@ -1,9 +1,10 @@
+/** @jsxRuntime classic */
 /* @jsx jsx */
 
 import { jsx, ThemeProvider } from 'theme-ui';
 import { LikeButtonTemplateComponentProps } from '../..';
 import { ChevronIcon } from './icons/ChevronIcon';
-import { keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/react';
 import { FC, useCallback, useState } from 'react';
 import { style } from './style';
 import theme from './theme';

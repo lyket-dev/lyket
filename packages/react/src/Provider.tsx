@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /* @jsx jsx */
 
 import { FC, HTMLAttributes, ReactChild, useState, useEffect } from 'react';
