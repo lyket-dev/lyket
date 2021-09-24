@@ -1,5 +1,5 @@
 {
-  "version": "1.4.7",
+  "version": "1.4.8",
   "license": "MIT",
   "description": "Instantly add clap/like/vote buttons to your website",
   "name": "@lyket/react",
