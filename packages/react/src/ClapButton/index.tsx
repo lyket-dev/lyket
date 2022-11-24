@@ -31,14 +31,14 @@ export interface ClapButtonProps {
 	children?: (
 		props: ClapButtonTemplateComponentProps,
 	) => React.ReactElement<any, any> | null;
-	component?: React.ComponentType<ClapButtonTemplateComponentProps>;
+	component?: React.FC<ClapButtonTemplateComponentProps>;
 }
 
 type FCWithTemplates<Props> = FC<Props> & {
 	templates: {
-		Simple: React.ComponentType<ClapButtonTemplateComponentProps>;
-		Medium: React.ComponentType<ClapButtonTemplateComponentProps>;
-		Heart: React.ComponentType<ClapButtonTemplateComponentProps>;
+		Simple: React.FC<ClapButtonTemplateComponentProps>;
+		Medium: React.FC<ClapButtonTemplateComponentProps>;
+		Heart: React.FC<ClapButtonTemplateComponentProps>;
 	};
 };
 
@@ -107,8 +107,8 @@ const ClapButton: FCWithTemplates<ClapButtonProps> = ({
 
 	const props = {
 		isLoading: !response,
-		totalClaps: (response?.attributes.total_claps) || 0,
-		userClaps: (response?.attributes.user_claps) || 0,
+		totalClaps: response?.attributes.total_claps || 0,
+		userClaps: response?.attributes.user_claps || 0,
 		handlePress,
 		isCounterVisible,
 	};
