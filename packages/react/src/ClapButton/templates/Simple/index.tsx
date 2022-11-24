@@ -135,7 +135,7 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
         <div sx={style.buttonContainer}>
           <div sx={style.centeredContainer}>
             <div
-              key={timeoutId.current && timeoutId.current.toString()}
+              key={timeoutId.current?.toString()}
               sx={baloonStyle}
             >
               {userClaps}

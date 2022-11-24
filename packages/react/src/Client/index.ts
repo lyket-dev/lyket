@@ -155,7 +155,7 @@ export class Client {
     return this.request(url);
   }
 
-  async batch(calls: Array<[string]>) {
+  async batch(calls: [string][]) {
     // return Promise.all(calls.map(args => this.request(args[0])));
     const url: RequestInfo = '/buttons/batch';
 

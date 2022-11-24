@@ -53,9 +53,9 @@ export const style: Record<string, ThemeUIStyleObject> = {
   },
   ring: {
     opacity: '0',
-    width: `90%`,
-    height: `90%`,
-    borderRadius: `3em`,
+    width: "90%",
+    height: "90%",
+    borderRadius: "3em",
     boxSizing: 'border-box',
     position: 'absolute',
     top: '50%',

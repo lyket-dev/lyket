@@ -71,7 +71,7 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
         }
       }
     } catch (error) {
-      console.error('Lyket error:', error && error.errors[0].message);
+      console.error('Lyket error:', error?.errors[0].message);
       throw error;
     }
   }, [client, id, namespace, onLoad]);
@@ -93,7 +93,7 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
           }
         }
       } catch (error) {
-        console.error('Lyket error:', error && error.errors[0].message);
+        console.error('Lyket error:', error?.errors[0].message);
         throw error;
       }
     },
@@ -117,7 +117,7 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
           }
         }
       } catch (error) {
-        console.error('Lyket error:', error && error.errors[0].message);
+        console.error('Lyket error:', error?.errors[0].message);
         throw error;
       }
     },
@@ -137,9 +137,9 @@ const UpdownButton: FCWithTemplates<UpdownButtonProps> = ({
 
   const props = {
     isLoading: !response,
-    totalScore: (response && response.attributes.total_score) || 0,
+    totalScore: (response?.attributes.total_score) || 0,
     userVoteDirection:
-      (response && response.attributes.user_vote_direction) || 0,
+      (response?.attributes.user_vote_direction) || 0,
     handlePressUp,
     handlePressDown,
     isCounterVisible,

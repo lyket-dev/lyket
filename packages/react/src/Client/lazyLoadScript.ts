@@ -18,9 +18,9 @@ export function lazyLoadScript(src: string, opts: Options = {}) {
     const script = document.createElement('script');
     script.src = src;
 
-    if (async) script.setAttribute('async', 'true');
-    if (integrity) script.setAttribute('integrity', integrity);
-    if (type) script.setAttribute('type', type);
+    if (async) { script.setAttribute('async', 'true'); }
+    if (integrity) { script.setAttribute('integrity', integrity); }
+    if (type) { script.setAttribute('type', type); }
 
     script.onload = () => resolve(script);
     script.onerror = event => reject(event);
