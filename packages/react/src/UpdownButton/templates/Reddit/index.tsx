@@ -46,7 +46,6 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
 
 			if (userVoteDirection !== 1) {
 				setAnimationActiveUp(true);
-				setTimeout(() => setAnimationActiveUp(false), ICON.durationMs);
 			}
 		},
 		[userVoteDirection, handlePressUp],
@@ -58,7 +57,6 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
 
 			if (userVoteDirection !== -1) {
 				setAnimationActiveDown(true);
-				setTimeout(() => setAnimationActiveDown(false), ICON.durationMs);
 			}
 		},
 		[userVoteDirection, handlePressDown],
@@ -69,8 +67,9 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
 		...{
 			animation: animationActiveUp
 				? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
-				: null,
+				: "none",
 		},
+		fill: userVoteDirection === 1 ? "#cc3700" : "#25252550",
 	};
 
 	const iconStyleDown = {
@@ -78,35 +77,9 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
 		...{
 			animation: animationActiveDown
 				? `${ICON.animation} ${ICON.durationMs}ms ease forwards`
-				: null,
+				: "none",
 		},
-	};
-
-	const upButtonStyle = {
-		svg: {
-			fill: userVoteDirection === 1 ? "#cc3700" : "#25252550",
-		},
-		// fill: (theme) => {
-		// 	return userVoteDirection === 1 ? "#cc3700" : "#25252550";
-		// if (theme.rawColors?.primary && theme.rawColors?.icon) {
-		// 	return userVoteDirection === 1
-		// 		? theme.rawColors?.primary
-		// 		: theme.rawColors?.icon;
-		// }
-	};
-
-	const downButtonStyle = {
-		transform: "rotate(180deg)",
-		svg: {
-			fill: userVoteDirection === -1 ? "#5a75cc" : "#25252550",
-			// FIXME at the moment the component cannot know if the theme is custom
-			// fill: (theme) => {
-			// if (theme.rawColors?.secondary && theme.rawColors?.icon) {
-			// 	return userVoteDirection === -1
-			// 		? theme.rawColors?.secondary
-			// 		: theme.rawColors?.icon;
-			// }
-		},
+		fill: userVoteDirection === -1 ? "#5a75cc" : "#25252550",
 	};
 
 	return (
@@ -114,10 +87,8 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
 			<button
 				onClick={handleClickUp}
 				disabled={isLoading}
-				sx={{
-					...style.button,
-					...upButtonStyle,
-				}}
+				onAnimationEnd={() => setAnimationActiveUp(false)}
+				sx={style.button}
 			>
 				<RedditArrow sx={iconStyleUp} />
 			</button>
@@ -126,9 +97,10 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
 			<button
 				onClick={handleClickDown}
 				disabled={isLoading}
+				onAnimationEnd={() => setAnimationActiveDown(false)}
 				sx={{
 					...style.button,
-					...downButtonStyle,
+					transform: "rotate(180deg)",
 				}}
 			>
 				<RedditArrow sx={iconStyleDown} />

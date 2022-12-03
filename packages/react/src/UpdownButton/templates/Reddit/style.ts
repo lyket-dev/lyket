@@ -9,17 +9,16 @@ export const style: Record<string, ThemeUIStyleObject> = {
 		flexDirection: "column",
 	},
 	counter: {
-		mt: ".2em",
-		mb: ".2em",
 		minWidth: "2em",
 		textAlign: "center",
 		fontFamily: "body",
 	},
 	icon: {
-		height: "1em",
+		height: "1.1em",
 		display: "block",
 		margin: "0 auto",
-		animationTimingFunction: "cubic-bezier(0.280, 0.840, 0.420, 1)",
+		fill: "#878a8c",
+		backfaceVisibility: "hidden",
 	},
 	button: {
 		border: "none",
@@ -38,10 +37,6 @@ export const style: Record<string, ThemeUIStyleObject> = {
 		":hover": {
 			transition: "all 250ms cubic-bezier(0.4, 0.0, 0.2, 1) 0ms",
 			opacity: 0.75,
-		},
-		svg: {
-			transition: "all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-			fill: "#878a8c",
 		},
 	},
 };
