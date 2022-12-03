@@ -51,7 +51,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "humps": "^2.0.1",
-    "theme-ui": "^0.8.4"
+    "theme-ui": "^0.15.4"
   },
   "gitHead": "ee2d7ca1df3eb61e3b5fa5aa547a222bbaf64a59",
   "keywords": [
