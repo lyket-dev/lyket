@@ -1,13 +1,12 @@
 /** @jsxRuntime classic */
 /* @jsx jsx */
 
-import { jsx, ThemeProvider } from "theme-ui";
+import { jsx } from "theme-ui";
 import { LikeButtonTemplateComponentProps } from "../..";
 import { ThumbIcon } from "./icons/ThumbIcon";
 import { keyframes } from "@emotion/react";
 import { FC, useCallback, useState } from "react";
 import { style } from "./style";
-import theme from "./theme";
 
 const iconScale = keyframes({
 	"0%": {
@@ -95,21 +94,19 @@ export const Simple: FC<LikeButtonTemplateComponentProps> = ({
 	};
 
 	return (
-		<ThemeProvider theme={theme}>
-			<div sx={style.root}>
-				<button
-					onClick={handleClick}
-					disabled={isLoading}
-					sx={{
-						...style.button,
-						...buttonStyle,
-					}}
-				>
-					<div sx={ringStyle} />
-					<ThumbIcon sx={iconStyle} />
-				</button>
-				{isCounterVisible && <div sx={style.counter}>{totalLikes}</div>}
-			</div>
-		</ThemeProvider>
+		<div sx={style.root}>
+			<button
+				onClick={handleClick}
+				disabled={isLoading}
+				sx={{
+					...style.button,
+					...buttonStyle,
+				}}
+			>
+				<div sx={ringStyle} />
+				<ThumbIcon sx={iconStyle} />
+			</button>
+			{isCounterVisible && <div sx={style.counter}>{totalLikes}</div>}
+		</div>
 	);
 };
