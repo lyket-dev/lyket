@@ -119,13 +119,8 @@ export const Simple: FC<ClapButtonTemplateComponentProps> = ({
 
 	const buttonStyle = {
 		...style.button,
-		variant: userClaps ? "buttons.active" : "buttons.inactive",
-		"@media (hover: hover)": {
-			":hover": {
-				bg: (theme) =>
-					userClaps ? theme.rawColors?.primary : theme.rawColors?.background,
-			},
-		},
+		bg: (theme) =>
+			userClaps ? theme.rawColors?.primary : theme.rawColors?.background,
 	};
 
 	return (

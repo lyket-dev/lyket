@@ -117,29 +117,17 @@ export const Simple: FC<UpdownButtonTemplateComponentProps> = ({
 	};
 
 	const upButtonStyle = {
-		variant:
-			userVoteDirection === 1 ? "buttons.upActive" : "buttons.upInactive",
-		"@media (hover: hover)": {
-			":hover": {
-				bg: (theme) =>
-					userVoteDirection === 1
-						? theme.rawColors?.primary
-						: theme.rawColors?.background,
-			},
-		},
+		bg: (theme) =>
+			userVoteDirection === 1
+				? theme.rawColors?.primary
+				: theme.rawColors?.background,
 	};
 
 	const downButtonStyle = {
-		variant:
-			userVoteDirection === -1 ? "buttons.downActive" : "buttons.downInactive",
-		"@media (hover: hover)": {
-			":hover": {
-				bg: (theme) =>
-					userVoteDirection === -1
-						? theme.rawColors?.secondary
-						: theme.rawColors?.background,
-			},
-		},
+		bg: (theme) =>
+			userVoteDirection === -1
+				? theme.rawColors?.secondary
+				: theme.rawColors?.background,
 	};
 
 	return (

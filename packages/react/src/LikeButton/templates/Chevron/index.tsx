@@ -84,13 +84,8 @@ export const Chevron: FC<LikeButtonTemplateComponentProps> = ({
 	};
 
 	const buttonStyle = {
-		variant: userLiked ? "buttons.active" : "buttons.inactive",
-		"@media (hover: hover)": {
-			":hover": {
-				bg: (theme) =>
-					userLiked ? theme.rawColors?.primary : theme.rawColors?.background,
-			},
-		},
+		bg: (theme) =>
+			userLiked ? theme.rawColors?.primary : theme.rawColors?.background,
 	};
 
 	return (

@@ -82,6 +82,33 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
 		},
 	};
 
+	const upButtonStyle = {
+		svg: {
+			fill: userVoteDirection === 1 ? "#cc3700" : "#25252550",
+		},
+		// fill: (theme) => {
+		// 	return userVoteDirection === 1 ? "#cc3700" : "#25252550";
+		// if (theme.rawColors?.primary && theme.rawColors?.icon) {
+		// 	return userVoteDirection === 1
+		// 		? theme.rawColors?.primary
+		// 		: theme.rawColors?.icon;
+		// }
+	};
+
+	const downButtonStyle = {
+		transform: "rotate(180deg)",
+		svg: {
+			fill: userVoteDirection === -1 ? "#5a75cc" : "#25252550",
+			// FIXME at the moment the component cannot know if the theme is custom
+			// fill: (theme) => {
+			// if (theme.rawColors?.secondary && theme.rawColors?.icon) {
+			// 	return userVoteDirection === -1
+			// 		? theme.rawColors?.secondary
+			// 		: theme.rawColors?.icon;
+			// }
+		},
+	};
+
 	return (
 		<div sx={style.root}>
 			<button
@@ -89,18 +116,7 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
 				disabled={isLoading}
 				sx={{
 					...style.button,
-					...{
-						variant:
-							userVoteDirection === 1
-								? "buttons.upActive"
-								: "buttons.upInactive",
-						"@media (hover: hover)": {
-							":hover": {
-								variant: "buttons.upActive",
-								transition: "all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-							},
-						},
-					},
+					...upButtonStyle,
 				}}
 			>
 				<RedditArrow sx={iconStyleUp} />
@@ -112,19 +128,7 @@ export const Reddit: FC<UpdownButtonTemplateComponentProps> = ({
 				disabled={isLoading}
 				sx={{
 					...style.button,
-					...{
-						transform: "rotate(180deg)",
-						variant:
-							userVoteDirection === -1
-								? "buttons.downActive"
-								: "buttons.downInactive",
-						"@media (hover: hover)": {
-							":hover": {
-								variant: "buttons.downActive",
-								transition: "all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-							},
-						},
-					},
+					...downButtonStyle,
 				}}
 			>
 				<RedditArrow sx={iconStyleDown} />
