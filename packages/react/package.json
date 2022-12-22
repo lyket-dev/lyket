@@ -22,7 +22,7 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "pb": "rimraf dist && tsdx build && np",
-    "storybook": "start-storybook -p 6006",
+    "dev": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {

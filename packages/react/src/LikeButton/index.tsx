@@ -4,12 +4,14 @@ import { useSafeEffect } from "../hooks/useSafeEffect";
 import { Simple } from "./templates/Simple";
 import { Twitter } from "./templates/Twitter";
 import { Chevron } from "./templates/Chevron";
+import { Heart } from "./templates/Heart";
 import { camelizeKeys } from "humps";
 
 const templates = {
 	Simple,
 	Twitter,
 	Chevron,
+	Heart,
 };
 
 export interface LikeButtonTemplateComponentProps {
@@ -39,6 +41,7 @@ type FCWithTemplates<Props> = FC<Props> & {
 		Simple: React.FC<LikeButtonTemplateComponentProps>;
 		Twitter: React.FC<LikeButtonTemplateComponentProps>;
 		Chevron: React.FC<LikeButtonTemplateComponentProps>;
+		Heart: React.FC<LikeButtonTemplateComponentProps>;
 	};
 };
 
