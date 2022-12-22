@@ -5,15 +5,15 @@ type Deferred = {
   reject: (value: any) => void;
 };
 
-export function debounceCollect<Args extends Array<any>>(
-  func: (calls: Array<Args>) => Promise<Array<any>>,
+export function debounceCollect<Args extends any[]>(
+  func: (calls: Args[]) => Promise<any[]>,
   wait: number
 ) {
   let timer: NodeJS.Timeout | null;
   let timestamp: number;
 
-  let args: Array<Args> = [];
-  let deferreds: Array<Deferred> = [];
+  let args: Args[] = [];
+  let deferreds: Deferred[] = [];
 
   async function onTimeout() {
     let elapsed = now() - timestamp;
@@ -23,7 +23,7 @@ export function debounceCollect<Args extends Array<any>>(
     } else {
       timer = null;
       await call();
-      if (!timer) reset();
+      if (!timer) { reset(); }
     }
   }
 
@@ -45,7 +45,7 @@ export function debounceCollect<Args extends Array<any>>(
 
     timestamp = now();
 
-    if (!timer) timer = setTimeout(onTimeout, wait);
+    if (!timer) { timer = setTimeout(onTimeout, wait); }
 
     return new Promise((resolve, reject) => {
       deferreds.push({ resolve, reject });

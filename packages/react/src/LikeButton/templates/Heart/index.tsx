@@ -3,10 +3,10 @@
 
 import { jsx } from "theme-ui";
 import { LikeButtonTemplateComponentProps } from "../..";
-import { ThumbIcon } from "./icons/ThumbIcon";
+import { Icon } from "./icons/Icon";
 import { FC } from "react";
 import { Base } from "../Base";
 
-export const Simple: FC<LikeButtonTemplateComponentProps> = ({ ...props }) => {
-	return <Base {...props} Icon={ThumbIcon} />;
+export const Heart: FC<LikeButtonTemplateComponentProps> = ({ ...props }) => {
+	return <Base {...props} Icon={Icon} />;
 };

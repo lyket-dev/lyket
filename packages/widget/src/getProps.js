@@ -1,64 +1,66 @@
 const allowedColorsProps = {
-  lyketColorBackground: 'background',
-  lyketColorPrimary: 'primary',
-  lyketColorSecondary: 'secondary',
-  lyketColorText: 'text',
-  lyketColorHighlight: 'highlight',
-  lyketColorIcon: 'icon',
+	lyketColorBackground: "background",
+	lyketColorPrimary: "primary",
+	lyketColorSecondary: "secondary",
+	lyketColorText: "text",
+	lyketColorHighlight: "highlight",
+	lyketColorIcon: "icon",
 };
 
 export const getUrlParameter = (url, name) => {
-  const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-  const results = regex.exec(url);
+	const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+	const results = regex.exec(url);
 
-  return results && decodeURIComponent(results[1].replace(/\+/g, ' '));
+	return results && decodeURIComponent(results[1].replace(/\+/g, " "));
 };
 
 export const getProviderProps = (dataset, scriptSrc) => {
-  const apiKey = getUrlParameter(scriptSrc, 'apiKey');
-  const baseUrl = getUrlParameter(scriptSrc, 'baseUrl');
-  const recaptchaSiteKey = getUrlParameter(scriptSrc, 'recaptchaSiteKey');
-  const disableSessionId = scriptSrc.includes('disableSessionId');
+	const apiKey = getUrlParameter(scriptSrc, "apiKey");
+	const baseUrl = getUrlParameter(scriptSrc, "baseUrl");
+	const recaptchaSiteKey = getUrlParameter(scriptSrc, "recaptchaSiteKey");
+	const disableSessionId = scriptSrc.includes("disableSessionId");
 
-  const providerProps = { baseUrl, recaptchaSiteKey, apiKey, disableSessionId };
+	const providerProps = { baseUrl, recaptchaSiteKey, apiKey, disableSessionId };
 
-  if (
-    Object.keys(dataset).some(k => Object.keys(allowedColorsProps).includes(k))
-  ) {
-    const colors = Object.entries(allowedColorsProps).reduce((acc, [k, v]) => {
-      if (dataset[k]) {
-        acc[v] = dataset[k];
-      }
+	if (
+		Object.keys(dataset).some((k) =>
+			Object.keys(allowedColorsProps).includes(k),
+		)
+	) {
+		const colors = Object.entries(allowedColorsProps).reduce((acc, [k, v]) => {
+			if (dataset[k]) {
+				acc[v] = dataset[k];
+			}
 
-      return acc;
-    }, {});
+			return acc;
+		}, {});
 
-    providerProps.theme = { colors };
-  }
+		providerProps.theme = { colors };
+	}
 
-  if (Object.keys(dataset).find(k => k === 'lyketFontFamily')) {
-    providerProps.theme = {
-      ...providerProps.theme,
-      fonts: { body: dataset.lyketFontFamily },
-    };
-  }
+	if (Object.keys(dataset).find((k) => k === "lyketFontFamily")) {
+		providerProps.theme = {
+			...providerProps.theme,
+			fonts: { body: dataset.lyketFontFamily },
+		};
+	}
 
-  return providerProps;
+	return providerProps;
 };
 
 export const getComponentProps = (dataset, button) => {
-  const {
-    lyketId: id,
-    lyketNamespace: namespace,
-    lyketShowCounterFrom: hideCounterIfLessThan,
-    lyketTemplate: template,
-  } = dataset;
+	const {
+		lyketId: id,
+		lyketNamespace: namespace,
+		lyketShowCounterFrom: hideCounterIfLessThan,
+		lyketTemplate: template,
+	} = dataset;
 
-  const initialProps = { id, namespace, hideCounterIfLessThan };
+	let initialProps = { id, namespace, hideCounterIfLessThan };
 
-  if (template) {
-    initialProps.component = button.templates[template.toLowerCase()];
-  }
+	if (template) {
+		initialProps.component = button.templates[template.toLowerCase()];
+	}
 
-  return initialProps;
+	return initialProps;
 };

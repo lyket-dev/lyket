@@ -1,0 +1,55 @@
+import { ThemeUIStyleObject } from "@theme-ui/css";
+
+export const style: Record<string, ThemeUIStyleObject> = {
+	root: {
+		color: "inherit",
+		fontFamily: "inherit",
+		display: "inline-flex",
+		alignItems: "center",
+	},
+	counter: {
+		ml: ".5em",
+		color: (theme) => theme.rawColors?.text,
+		fontFamily: "body",
+	},
+	icon: {
+		height: "1.2em",
+		display: "block",
+		margin: "0 auto",
+		fill: (theme) => theme.rawColors?.icon,
+	},
+	ring: {
+		opacity: "0",
+		width: "90%",
+		height: "90%",
+		borderRadius: "3em",
+		border: "1px solid",
+		borderColor: (theme) => theme.rawColors?.highlight,
+		boxSizing: "border-box",
+		position: "absolute",
+		top: "50%",
+		left: "50%",
+		transform: "translate(-50%, -50%)",
+	},
+	button: {
+		border: "none !important",
+		outline: "none !important",
+		boxShadow: "0 0 0",
+		transform: "translate3d(0,0,0)",
+		cursor: "pointer",
+		bg: (theme) => theme.rawColors?.background,
+		appearance: "none",
+		position: "relative",
+		fontSize: "inherit",
+		transition: "all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+		borderRadius: "100% !important",
+		width: "3em !important",
+		height: "3em !important",
+		padding: "0 !important",
+		lineHeight: "1em",
+		":hover": {
+			transition: "all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+			opacity: 0.75,
+		},
+	},
+};
