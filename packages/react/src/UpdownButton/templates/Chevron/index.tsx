@@ -141,7 +141,7 @@ export const Chevron: FC<UpdownButtonTemplateComponentProps> = ({
 				}}
 			>
 				<div sx={ringStyleUp} />
-				<div style={{ transform: "rotate(180deg)" }}>
+				<div>
 					<ChevronIcon sx={iconStyleUp} />
 				</div>
 			</button>
@@ -156,7 +156,9 @@ export const Chevron: FC<UpdownButtonTemplateComponentProps> = ({
 				}}
 			>
 				<div sx={ringStyleDown} />
-				<ChevronIcon sx={iconStyleDown} />
+				<div style={{ transform: "rotate(180deg)" }}>
+					<ChevronIcon sx={iconStyleDown} />
+				</div>
 			</button>
 		</div>
 	);
