@@ -16,7 +16,7 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch --verbose --noClean",
+    "serve": "tsdx watch --verbose --noClean",
     "build": "rimraf dist && tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
