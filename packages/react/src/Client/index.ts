@@ -111,6 +111,42 @@ class UpdownButtonClient {
 	}
 }
 
+class RateButtonClient {
+	client: Client;
+
+	constructor(client: Client) {
+		this.client = client;
+	}
+
+	press({
+		id,
+		namespace,
+		amount,
+	}: Paths.RateButtonPress.PathParameters): Promise<Paths.RateButtonPress.Responses.$200> {
+		return this.client.put(
+			namespace
+				? `/rate-buttons/${namespace}/${id}/press`
+				: `/rate-buttons/${id}/press`,
+			"press",
+			{
+				type: "rate-buttons",
+				data: {
+					attributes: { amount },
+				},
+			},
+		);
+	}
+
+	info({
+		id,
+		namespace,
+	}: Paths.RateButtonInfo.PathParameters): Promise<Paths.RateButtonInfo.Responses.$200> {
+		return this.client.enqueueToBatch(
+			namespace ? `/rate-buttons/${namespace}/${id}` : `/rate-buttons/${id}`,
+		);
+	}
+}
+
 export class Client {
 	apiKey: string;
 	baseUrl: string;
@@ -118,6 +154,7 @@ export class Client {
 	recaptchaSiteKey: string | undefined;
 	likeButtons: LikeButtonClient;
 	clapButtons: ClapButtonClient;
+	rateButtons: RateButtonClient;
 	updownButtons: UpdownButtonClient;
 	enqueueToBatch: (url: string) => Promise<any>;
 
@@ -135,6 +172,7 @@ export class Client {
 		this.likeButtons = new LikeButtonClient(this);
 		this.clapButtons = new ClapButtonClient(this);
 		this.updownButtons = new UpdownButtonClient(this);
+		this.rateButtons = new RateButtonClient(this);
 
 		this.enqueueToBatch = debounceCollect<[string]>(this.batch.bind(this), 500);
 	}
@@ -160,8 +198,8 @@ export class Client {
 		return result.data.attributes.responses;
 	}
 
-	put(url: string, recaptchaAction: string) {
-		return this.request(url, { method: "PUT", recaptchaAction });
+	put(url: string, recaptchaAction: string, body = {}) {
+		return this.request(url, { method: "PUT", recaptchaAction, body });
 	}
 
 	async request(
