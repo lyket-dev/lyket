@@ -1,6 +1,6 @@
 ## Lyket React
 
-Lyket is a tool to quickly implement GDPR-compliant clap, like and like/dislike buttons on a webpage. To create a new button you need to choose a type (Like, Clap or Updown) and a unique identifier. From that moment on, Lyket's server will keep track of every visitor interaction on that button without storing personal data.
+Lyket is a tool to quickly implement GDPR-compliant applause, like, like/dislike and rating buttons on a webpage. To create a new button you need to choose a type (Like, Clap, Updown, Rate) and a unique identifier. From that moment on, Lyket's server will keep track of every visitor interaction on that button without storing personal data.
 
 Visit [Lyket website](https://lyket.dev/docs/react) to get started with Lyket.
 
