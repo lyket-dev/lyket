@@ -6,14 +6,12 @@ export const style: Record<string, ThemeUIStyleObject> = {
 		fontFamily: "inherit",
 		display: "inline-flex",
 		alignItems: "center",
-		// ":hover svg": {
-		// 	fill: (theme) => theme.rawColors?.icon,
-		// },
 	},
 	counter: {
 		ml: ".5em",
 		color: (theme) => theme.rawColors?.text,
 		fontFamily: "body",
+		whiteSpace: "nowrap",
 	},
 	icon: {
 		height: "1.2em",

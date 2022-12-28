@@ -119,10 +119,10 @@ export const Base: FC<BaseRateButtonProps> = ({
 			})}
 
 			{isCounterVisible && showRating === "average" && (
-				<div sx={style.counter}>
+				<span sx={style.counter}>
 					{totalVotes}{" "}
 					{totalReviewsLabel || `review${totalVotes !== 1 ? "s" : ""}`}
-				</div>
+				</span>
 			)}
 		</div>
 	);
