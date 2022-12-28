@@ -26,28 +26,27 @@ const onPress = (button) => {
 	}
 };
 
-export const Simple = () => {
-	const [rerender, setRerender] = React.useState(true);
+export const Star = () => {
 	return (
 		<>
 			<Provider>
 				<div style={{ marginTop: "20px", fontSize: "20px" }}>
 					<RateButton
 						showRating="user"
-						id="simple-example-f"
+						id="star-example-f"
 						namespace="stories"
 						onPress={onPress}
 					/>
-					{rerender && <RateButton id="simple-example-f" namespace="stories" />}
+					<RateButton id="star-example-f" namespace="stories" />
 				</div>
 				<div style={{ marginTop: "20px", fontSize: "30px" }}>
 					<RateButton
 						showRating="user"
-						id="simple-example-s"
+						id="star-example-s"
 						namespace="stories"
 						onPress={onPress}
 					/>
-					{rerender && <RateButton id="simple-example-s" namespace="stories" />}
+					<RateButton id="star-example-s" namespace="stories" />
 				</div>
 			</Provider>
 			<ThemedProvider>
@@ -59,6 +58,104 @@ export const Simple = () => {
 					<RateButton
 						id="custom-button"
 						namespace="stories"
+						onLoad={onLoad}
+						onPress={onPress}
+					>
+						{({
+							handlePress,
+							averageRating,
+							userRating,
+							isLoading,
+							totalVotes,
+						}) => (
+							<>
+								{Array.from(Array(5).keys()).map((index) => {
+									if (userRating > index) {
+										return (
+											<button
+												onClick={() => handlePress(index + 1)}
+												disabled={isLoading}
+											>
+												❤️
+											</button>
+										);
+									} else {
+										return (
+											<button
+												onClick={() => handlePress(index + 1)}
+												disabled={isLoading}
+											>
+												💔
+											</button>
+										);
+									}
+								})}
+								<div>Your rating: {userRating}</div>
+								<div>Average rating: {averageRating} stars out of 5</div>
+								<div>Total votes: {totalVotes}</div>
+							</>
+						)}
+					</RateButton>
+				</div>
+			</ThemedProvider>
+		</>
+	);
+};
+
+export const Heart = () => {
+	return (
+		<>
+			<Provider>
+				<div style={{ marginTop: "20px", fontSize: "20px" }}>
+					<RateButton
+						showRating="user"
+						id="heart-example-f"
+						namespace="stories"
+						component={RateButton.templates.Heart}
+						onPress={onPress}
+					/>
+
+					<RateButton
+						id="heart-example-f"
+						namespace="stories"
+						component={RateButton.templates.Heart}
+					/>
+				</div>
+				<div style={{ marginTop: "20px", fontSize: "30px" }}>
+					<RateButton
+						showRating="user"
+						id="heart-example-s"
+						namespace="stories"
+						component={RateButton.templates.Heart}
+						onPress={onPress}
+					/>
+
+					<RateButton
+						id="heart-example-s"
+						namespace="stories"
+						component={RateButton.templates.Heart}
+					/>
+				</div>
+			</Provider>
+			<ThemedProvider>
+				<div style={{ marginTop: "20px", fontSize: "40px" }}>
+					<RateButton
+						showRating="user"
+						id="heart-themed"
+						namespace="stories"
+						component={RateButton.templates.Heart}
+					/>
+					<RateButton
+						id="heart-themed"
+						namespace="stories"
+						component={RateButton.templates.Heart}
+					/>
+				</div>
+				<div style={{ marginTop: "20px", fontSize: "18px" }}>
+					<RateButton
+						id="custom-button"
+						namespace="stories"
+						component={RateButton.templates.Heart}
 						onLoad={onLoad}
 						onPress={onPress}
 					>

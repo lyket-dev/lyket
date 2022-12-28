@@ -57,6 +57,7 @@ export const Base: FC<BaseRateButtonProps> = ({
 	averageRating,
 	totalVotes,
 	showRating = "average",
+	totalReviewsLabel,
 	handlePress,
 	isCounterVisible,
 	Icon,
@@ -119,7 +120,8 @@ export const Base: FC<BaseRateButtonProps> = ({
 
 			{isCounterVisible && showRating === "average" && (
 				<div sx={style.counter}>
-					{averageRating} ({totalVotes})
+					{totalVotes}{" "}
+					{totalReviewsLabel || `review${totalVotes !== 1 ? "s" : ""}`}
 				</div>
 			)}
 		</div>

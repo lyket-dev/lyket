@@ -7,6 +7,6 @@ import { StarIcon } from "./icons/StarIcon";
 import { FC } from "react";
 import { Base } from "../Base";
 
-export const Simple: FC<RateButtonTemplateComponentProps> = ({ ...props }) => {
+export const Star: FC<RateButtonTemplateComponentProps> = ({ ...props }) => {
 	return <Base {...props} Icon={StarIcon} />;
 };

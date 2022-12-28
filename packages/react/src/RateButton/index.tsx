@@ -1,12 +1,14 @@
 import React, { FC, useCallback, useContext, useState } from "react";
 import { ClientContext } from "../contexts/ClientContext";
 import { useSafeEffect } from "../hooks/useSafeEffect";
-import { Simple } from "./templates/Simple";
+import { Star } from "./templates/Star";
+import { Heart } from "./templates/Heart";
 import { camelizeKeys } from "humps";
 import { useForceUpdate } from "../contexts/RatingContext";
 
 const templates = {
-	Simple,
+	Star,
+	Heart,
 };
 
 export interface RateButtonTemplateComponentProps {
@@ -17,6 +19,7 @@ export interface RateButtonTemplateComponentProps {
 	handlePress: (amount: number) => void;
 	isCounterVisible: boolean;
 	showRating?: "average" | "user";
+	totalReviewsLabel?: string;
 }
 
 type CallbackProps = Components.Schemas.RateButton["data"];
@@ -36,7 +39,8 @@ export interface RateButtonProps {
 
 type FCWithTemplates<Props> = FC<Props> & {
 	templates: {
-		Simple: React.FC<RateButtonTemplateComponentProps>;
+		Star: React.FC<RateButtonTemplateComponentProps>;
+		Heart: React.FC<RateButtonTemplateComponentProps>;
 	};
 };
 
@@ -129,7 +133,7 @@ const RateButton: FCWithTemplates<RateButtonProps> = ({
 		return children(props);
 	}
 
-	const Component = component || Simple;
+	const Component = component || Star;
 
 	return <Component {...props} />;
 };
