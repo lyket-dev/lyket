@@ -3,6 +3,7 @@ import { ClientContext } from "../contexts/ClientContext";
 import { useSafeEffect } from "../hooks/useSafeEffect";
 import { Simple } from "./templates/Simple";
 import { camelizeKeys } from "humps";
+import { useForceUpdate } from "../contexts/RatingContext";
 
 const templates = {
 	Simple,
@@ -12,7 +13,7 @@ export interface RateButtonTemplateComponentProps {
 	isLoading: boolean;
 	userRating: number;
 	averageRating: number;
-	totalVotes: number | undefined;
+	totalVotes: number;
 	handlePress: (amount: number) => void;
 	isCounterVisible: boolean;
 	showRating?: "average" | "user";
@@ -50,6 +51,9 @@ const RateButton: FCWithTemplates<RateButtonProps> = ({
 	onPress,
 }) => {
 	const client = useContext(ClientContext);
+	const { registeredButtons, forceUpdate } = useForceUpdate();
+	const rateButtonId = `${namespace || "no-namespace"}:${id}`;
+	const shouldUpdate = registeredButtons[rateButtonId];
 
 	const [response, setResponse] = useState<
 		Components.Schemas.RateButton["data"] | null
@@ -71,7 +75,7 @@ const RateButton: FCWithTemplates<RateButtonProps> = ({
 			console.error("Lyket error:", error?.errors[0].message);
 			throw error;
 		}
-	}, [client, id, namespace, onLoad, setResponse]);
+	}, [client, id, namespace, onLoad, setResponse, shouldUpdate]);
 
 	const handlePress = useCallback(
 		async (amount: number) => {
@@ -87,6 +91,7 @@ const RateButton: FCWithTemplates<RateButtonProps> = ({
 				});
 
 				setResponse(result.data);
+				forceUpdate({ ...registeredButtons, [rateButtonId]: {} });
 
 				if (onPress) {
 					onPress(camelizeKeys(result.data));
@@ -96,7 +101,7 @@ const RateButton: FCWithTemplates<RateButtonProps> = ({
 				throw error;
 			}
 		},
-		[client, id, namespace, onPress, setResponse],
+		[client, id, namespace, onPress, setResponse, shouldUpdate],
 	);
 
 	let isCounterVisible = true;

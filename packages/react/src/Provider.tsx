@@ -1,10 +1,11 @@
 /** @jsxRuntime classic */
 /* @jsx jsx */
 
-import { FC, HTMLAttributes, ReactChild, useState, useEffect } from "react";
+import { FC, HTMLAttributes, useState, useEffect, ReactNode } from "react";
 import { jsx, ThemeProvider } from "theme-ui";
 import { Client, ConstructorArguments } from "./Client";
 import { ClientContext } from "./contexts/ClientContext";
+import { RatingProvider } from "./contexts/RatingContext";
 import { defaultTheme, ThemeRecord } from "./theme";
 
 export interface ProviderProps extends HTMLAttributes<HTMLDivElement> {
@@ -12,7 +13,7 @@ export interface ProviderProps extends HTMLAttributes<HTMLDivElement> {
 	recaptchaSiteKey?: string;
 	disableSessionId?: boolean;
 	baseUrl?: string;
-	children?: ReactChild;
+	children?: ReactNode;
 	theme?: ThemeRecord | null;
 }
 
@@ -74,7 +75,9 @@ export const Provider: FC<ProviderProps> = ({
 				fonts,
 			}}
 		>
-			<ClientContext.Provider value={client}>{children}</ClientContext.Provider>
+			<ClientContext.Provider value={client}>
+				<RatingProvider>{children}</RatingProvider>
+			</ClientContext.Provider>
 		</ThemeProvider>
 	);
 };

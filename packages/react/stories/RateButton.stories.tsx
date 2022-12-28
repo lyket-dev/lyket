@@ -16,13 +16,14 @@ const onLoad = async (data) => {
 	console.log("response", await foo);
 };
 
-const onPress = (button, rerender) => {
+const onPress = (button) => {
 	if (button.attributes.userRating > 3) {
-		alert(`Thanks for your ${button.attributes.userRating} stars rating! 🥳`);
+		console.log(
+			`Thanks for your ${button.attributes.userRating} stars rating! 🥳`,
+		);
 	} else if (button.attributes.userRating > 0) {
-		alert(`You rated ${button.attributes.userRating} stars :(`);
+		console.log(`You rated ${button.attributes.userRating} stars :(`);
 	}
-	rerender("1");
 };
 
 export const Simple = () => {
@@ -35,35 +36,31 @@ export const Simple = () => {
 						showRating="user"
 						id="simple-example-f"
 						namespace="stories"
-						onPress={(button) => onPress(button, setRerender)}
+						onPress={onPress}
 					/>
 					{rerender && <RateButton id="simple-example-f" namespace="stories" />}
 				</div>
 				<div style={{ marginTop: "20px", fontSize: "30px" }}>
 					<RateButton
 						showRating="user"
-						id="simple-example-f"
+						id="simple-example-s"
 						namespace="stories"
-						onPress={(button) => onPress(button, setRerender)}
+						onPress={onPress}
 					/>
 					{rerender && <RateButton id="simple-example-s" namespace="stories" />}
 				</div>
 			</Provider>
 			<ThemedProvider>
 				<div style={{ marginTop: "20px", fontSize: "40px" }}>
-					<RateButton id="simple-example" namespace="stories" />
-					<RateButton
-						showRating="user"
-						id="simple-example"
-						namespace="stories"
-					/>
+					<RateButton showRating="user" id="themed" namespace="stories" />
+					<RateButton id="themed" namespace="stories" />
 				</div>
 				<div style={{ marginTop: "20px", fontSize: "18px" }}>
 					<RateButton
 						id="custom-button"
 						namespace="stories"
 						onLoad={onLoad}
-						onPress={() => onPress(setRerender)}
+						onPress={onPress}
 					>
 						{({
 							handlePress,

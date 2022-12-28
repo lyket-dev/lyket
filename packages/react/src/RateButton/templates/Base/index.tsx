@@ -106,7 +106,7 @@ export const Base: FC<BaseRateButtonProps> = ({
 
 				return (
 					<button
-						key={index}
+						key={`${Icon.toString()}${index}`}
 						onClick={(e) => handleClick(e, index + 1)}
 						disabled={isLoading || showRating === "average"}
 						sx={showRating === "user" ? style.button : style.buttonInactive}
