@@ -121,7 +121,7 @@ class RateButtonClient {
 	press({
 		id,
 		namespace,
-		amount,
+		rating,
 	}: Paths.RateButtonPress.PathParameters): Promise<Paths.RateButtonPress.Responses.$200> {
 		return this.client.put(
 			namespace
@@ -131,7 +131,7 @@ class RateButtonClient {
 			{
 				type: "rate-buttons",
 				data: {
-					attributes: { amount },
+					attributes: { rating },
 				},
 			},
 		);

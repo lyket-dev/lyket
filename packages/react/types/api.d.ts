@@ -176,18 +176,18 @@ declare namespace Paths {
 	}
 	namespace ClapButtonPress {
 		export interface BodyParameters {
-			amount?: /**
+			rating?: /**
 			 * example:
 			 * 3
 			 */
-			Parameters.Amount;
+			Parameters.Rating;
 		}
 		namespace Parameters {
 			/**
 			 * example:
 			 * 3
 			 */
-			export type Amount = number;
+			export type Rating = number;
 			/**
 			 * example:
 			 * how-to-reduce-your-footprint
@@ -391,18 +391,18 @@ declare namespace Paths {
 	}
 	namespace RateButtonPress {
 		export interface BodyParameters {
-			amount?: /**
+			rating?: /**
 			 * example:
 			 * 3
 			 */
-			Parameters.Amount;
+			Parameters.Rating;
 		}
 		namespace Parameters {
 			/**
 			 * example:
 			 * 3
 			 */
-			export type Amount = number;
+			export type Rating = number;
 			/**
 			 * example:
 			 * how-to-reduce-your-footprint
@@ -425,11 +425,11 @@ declare namespace Paths {
 			 * how-to-reduce-your-footprint
 			 */
 			Parameters.Id;
-			amount: /**
+			rating: /**
 			 * example:
 			 * 3
 			 */
-			Parameters.Amount;
+			Parameters.Rating;
 		}
 		namespace Responses {
 			export type $200 = Components.Schemas.RateButton;

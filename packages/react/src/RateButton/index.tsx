@@ -16,7 +16,7 @@ export interface RateButtonTemplateComponentProps {
 	userRating: number;
 	averageRating: number;
 	totalVotes: number;
-	handlePress: (amount: number) => void;
+	handlePress: (rating: number) => void;
 	isCounterVisible: boolean;
 	showRating?: "average" | "user";
 	totalReviewsLabel?: string;
@@ -82,7 +82,7 @@ const RateButton: FCWithTemplates<RateButtonProps> = ({
 	}, [client, id, namespace, onLoad, setResponse, shouldUpdate]);
 
 	const handlePress = useCallback(
-		async (amount: number) => {
+		async (rating: number) => {
 			if (!client) {
 				return;
 			}
@@ -91,7 +91,7 @@ const RateButton: FCWithTemplates<RateButtonProps> = ({
 				const result = await client.rateButtons.press({
 					id,
 					namespace,
-					amount,
+					rating,
 				});
 
 				setResponse(result.data);
