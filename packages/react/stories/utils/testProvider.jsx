@@ -7,7 +7,7 @@ export const ThemedProvider = ({ children }) => (
 		baseUrl="http://localhost:3000"
 		theme={{
 			colors: {
-				primary: "#fed8b1",
+				primary: "khaki",
 				secondary: "#eeccff",
 				text: "grey",
 				icon: "violet",

@@ -108,38 +108,6 @@ export const Twitter = () => (
 	</Provider>
 );
 
-export const Heart = () => (
-	<>
-		<Provider>
-			<div style={{ marginBottom: "50px", fontSize: "20px" }}>
-				<LikeButton
-					id="twitter-example-small"
-					namespace="stories"
-					onLoad={onLoad}
-					onPress={onPress}
-					component={LikeButton.templates.Heart}
-				/>
-			</div>
-		</Provider>
-		<ThemedProvider>
-			<div style={{ marginBottom: "50px", fontSize: "50px" }}>
-				<LikeButton
-					id="Heart-example-med"
-					namespace="stories"
-					component={LikeButton.templates.Heart}
-				/>
-			</div>
-			<div style={{ marginBottom: "50px", fontSize: "90px" }}>
-				<LikeButton
-					id="Heart-example-big"
-					namespace="stories"
-					component={LikeButton.templates.Heart}
-				/>
-			</div>
-		</ThemedProvider>
-	</>
-);
-
 export const Custom = () => (
 	<Provider>
 		<LikeButton

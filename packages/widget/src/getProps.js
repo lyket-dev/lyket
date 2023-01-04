@@ -8,7 +8,7 @@ const allowedColorsProps = {
 };
 
 export const getUrlParameter = (url, name) => {
-	const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+	const regex = new RegExp(`[\\?&]${name}=([^&#]*)`);
 	const results = regex.exec(url);
 
 	return results && decodeURIComponent(results[1].replace(/\+/g, " "));
@@ -54,9 +54,10 @@ export const getComponentProps = (dataset, button) => {
 		lyketNamespace: namespace,
 		lyketShowCounterFrom: hideCounterIfLessThan,
 		lyketTemplate: template,
+		lyketShowRating: showRating,
 	} = dataset;
 
-	let initialProps = { id, namespace, hideCounterIfLessThan };
+	let initialProps = { id, namespace, hideCounterIfLessThan, showRating };
 
 	if (template) {
 		initialProps.component = button.templates[template.toLowerCase()];

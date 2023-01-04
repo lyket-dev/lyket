@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.0.1 01-01-2023
+
+- Added new button `RateButton`.
+
+## v2.0.0 12-12-2022
+
+- Added `heart` template for like button.
+
+**Breaking changes**
+
+- Updated all dependencies. Version 2 is compatible with React >=17
+
 ## v1.4.2 24-03-2021
 
 - Added `chevron` template for like and updown button.
