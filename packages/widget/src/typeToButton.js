@@ -1,4 +1,4 @@
-import { ClapButton, LikeButton, UpdownButton } from "@lyket/react";
+import { ClapButton, LikeButton, UpdownButton, RateButton } from "@lyket/react";
 
 const templateHashGenerator = (button) => {
 	const templateObj = {};
@@ -22,5 +22,9 @@ export const typeToButton = {
 	like: {
 		component: LikeButton,
 		templates: templateHashGenerator(LikeButton),
+	},
+	rate: {
+		component: RateButton,
+		templates: templateHashGenerator(RateButton),
 	},
 };
