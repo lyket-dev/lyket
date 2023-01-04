@@ -26,7 +26,7 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=17"
   },
   "author": "Irene Oppo",
   "module": "dist/lyket.esm.js",
