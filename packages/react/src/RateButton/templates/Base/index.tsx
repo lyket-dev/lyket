@@ -8,6 +8,7 @@ import { FC, useCallback, useState } from "react";
 import { style } from "./style";
 
 interface BaseRateButtonProps extends RateButtonTemplateComponentProps {
+	iconColor?: { active: string; inactive: string };
 	Icon: ({
 		className,
 	}: {
@@ -61,6 +62,7 @@ export const Base: FC<BaseRateButtonProps> = ({
 	handlePress,
 	isCounterVisible,
 	Icon,
+	iconColor,
 }) => {
 	const [animationActive, setAnimationActive] = useState<boolean>(false);
 
@@ -104,6 +106,14 @@ export const Base: FC<BaseRateButtonProps> = ({
 								: null,
 						}),
 				};
+
+				if (iconColor) {
+					iconStyle = {
+						...iconStyle,
+						fill:
+							selectedRating > index ? iconColor.active : iconColor.inactive,
+					};
+				}
 
 				return (
 					<button

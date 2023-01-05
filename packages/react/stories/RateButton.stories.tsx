@@ -26,27 +26,27 @@ const onPress = (button) => {
 	}
 };
 
-export const Star = () => {
+export const Custom = () => {
 	return (
 		<>
 			<Provider>
 				<div style={{ marginTop: "20px", fontSize: "20px" }}>
 					<RateButton
 						showRating="user"
-						id="star-example-f"
+						id="custom-example-f"
 						namespace="stories"
 						onPress={onPress}
 					/>
-					<RateButton id="star-example-f" namespace="stories" />
+					<RateButton id="custom-example-f" namespace="stories" />
 				</div>
 				<div style={{ marginTop: "20px", fontSize: "30px" }}>
 					<RateButton
 						showRating="user"
-						id="star-example-s"
+						id="custom-example-s"
 						namespace="stories"
 						onPress={onPress}
 					/>
-					<RateButton id="star-example-s" namespace="stories" />
+					<RateButton id="custom-example-s" namespace="stories" />
 				</div>
 			</Provider>
 			<ThemedProvider>
@@ -155,7 +155,6 @@ export const Heart = () => {
 					<RateButton
 						id="custom-button"
 						namespace="stories"
-						component={RateButton.templates.Heart}
 						onLoad={onLoad}
 						onPress={onPress}
 					>
@@ -196,6 +195,45 @@ export const Heart = () => {
 					</RateButton>
 				</div>
 			</ThemedProvider>
+		</>
+	);
+};
+
+export const Star = () => {
+	return (
+		<>
+			<Provider>
+				<div style={{ marginTop: "20px", fontSize: "20px" }}>
+					<RateButton
+						showRating="user"
+						id="star-example-f"
+						namespace="stories"
+						component={RateButton.templates.Star}
+						onPress={onPress}
+					/>
+
+					<RateButton
+						id="star-example-f"
+						namespace="stories"
+						component={RateButton.templates.Star}
+					/>
+				</div>
+				<div style={{ marginTop: "20px", fontSize: "30px" }}>
+					<RateButton
+						showRating="user"
+						id="star-example-s"
+						namespace="stories"
+						component={RateButton.templates.Star}
+						onPress={onPress}
+					/>
+
+					<RateButton
+						id="star-example-s"
+						namespace="stories"
+						component={RateButton.templates.Star}
+					/>
+				</div>
+			</Provider>
 		</>
 	);
 };

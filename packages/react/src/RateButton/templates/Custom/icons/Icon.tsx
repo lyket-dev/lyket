@@ -4,7 +4,7 @@ interface Props {
 	className?: string;
 }
 
-export const StarIcon = ({ className }: Props) => (
+export const Icon = ({ className }: Props) => (
 	<svg
 		className={className}
 		version="1.1"

@@ -1,14 +1,16 @@
 import React, { FC, useCallback, useContext, useState } from "react";
 import { ClientContext } from "../contexts/ClientContext";
 import { useSafeEffect } from "../hooks/useSafeEffect";
-import { Star } from "./templates/Star";
+import { Custom } from "./templates/Custom";
 import { Heart } from "./templates/Heart";
+import { Star } from "./templates/Star";
 import { camelizeKeys } from "humps";
 import { useForceUpdate } from "../contexts/RatingContext";
 
 const templates = {
-	Star,
+	Custom,
 	Heart,
+	Star,
 };
 
 export interface RateButtonTemplateComponentProps {
@@ -29,6 +31,7 @@ export interface RateButtonProps {
 	namespace?: string;
 	hideCounterIfLessThan?: number;
 	showRating?: "average" | "user";
+	totalReviewsLabel?: string;
 	onLoad?: (props: CallbackProps) => void;
 	onPress?: (props: CallbackProps) => void;
 	children?: (
@@ -39,8 +42,9 @@ export interface RateButtonProps {
 
 type FCWithTemplates<Props> = FC<Props> & {
 	templates: {
-		Star: React.FC<RateButtonTemplateComponentProps>;
+		Custom: React.FC<RateButtonTemplateComponentProps>;
 		Heart: React.FC<RateButtonTemplateComponentProps>;
+		Star: React.FC<RateButtonTemplateComponentProps>;
 	};
 };
 
